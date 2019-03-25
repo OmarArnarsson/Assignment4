@@ -25,7 +25,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author stein
  */
-public class FXMLDocumentController implements Initializable {
+public class InterfaceController implements Initializable {
 
     @FXML
     private AnchorPane Grunnur;
