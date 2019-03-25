@@ -8,6 +8,7 @@ package is.hi.assignment4;
 
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -44,14 +46,19 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void buttonHandler(ActionEvent event) {
+        System.out.print(dagsetning.getValue());
     }
 
     @FXML
     private void leitHandler(ActionEvent event) {
+        System.out.print(leit.getText());
+        
     }
 
+
     @FXML
-    private void dateHandler(ActionEvent event) {
+    private void dateHandler(MouseEvent event) {
+        System.out.print(dagsetning.getValue());
     }
     
 }
