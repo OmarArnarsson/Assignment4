@@ -9,6 +9,8 @@ package is.hi.assignment4;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,18 +37,28 @@ public class InterfaceController implements Initializable {
     private TextField leit;
     @FXML
     private DatePicker dagsetning;
-
+    @FXML
+    private TextField leit1;
+    @FXML
+    private DatePicker dagsetning1;
+    
+    
+    private SearchController sc;
+    
+   
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        sc = new SearchController();
+ 
+        
+    }
 
     @FXML
     private void buttonHandler(ActionEvent event) {
-        System.out.print(dagsetning.getValue());
+        sc.processFlight(dagsetning.getValue(), dagsetning1.getValue(),1000);
     }
 
     @FXML

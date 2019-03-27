@@ -5,6 +5,7 @@
  */
 package is.hi.assignment4;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
@@ -15,14 +16,14 @@ public class MockDayTour {
     
     private int id;
     private String type;
-    private LocalTime dateStart;
-    private LocalTime dateEnd;
+    private LocalDate dateStart;
+    private LocalDate dateEnd;
     private int price;
     private String destination;
     private int groupSize;
     
     
-    public MockDayTour(LocalTime start, LocalTime end, int price,
+    public MockDayTour(LocalDate start, LocalDate end, int price,
                     String destination, int groupSize){
         
         this.dateStart = start;

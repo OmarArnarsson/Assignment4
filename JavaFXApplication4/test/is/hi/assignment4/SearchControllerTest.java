@@ -5,7 +5,9 @@
  */
 package is.hi.assignment4;
 
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,7 +17,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Þorsteinn Óskarsson, Háskóli Íslands, tho85@hi.is
+ * @author stein
  */
 public class SearchControllerTest {
     
@@ -36,6 +38,20 @@ public class SearchControllerTest {
     
     @After
     public void tearDown() {
+    }
+
+    /**
+     * Test of initialize method, of class SearchController.
+     */
+    @Test
+    public void testInitialize() {
+        System.out.println("initialize");
+        URL url = null;
+        ResourceBundle rb = null;
+        SearchController instance = new SearchController();
+        instance.initialize(url, rb);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -60,9 +76,8 @@ public class SearchControllerTest {
         System.out.println("processDayTours");
         LocalDate start = null;
         LocalDate end = null;
-        String filter = "";
         SearchController instance = new SearchController();
-        instance.processDayTours(start, end, filter);
+        instance.processDayTours(start, end);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

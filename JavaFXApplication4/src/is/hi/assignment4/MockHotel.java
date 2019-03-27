@@ -6,6 +6,7 @@
 package is.hi.assignment4;
 
 import java.time.Clock;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
@@ -15,13 +16,13 @@ import java.time.LocalTime;
 public class MockHotel {
     
     private int price;
-    private LocalTime timeStart;
-    private LocalTime timeEnd;
+    private LocalDate timeStart;
+    private LocalDate timeEnd;
     private int stars;
     
     
     
-    public MockHotel(int price, LocalTime start, LocalTime end, int stars){
+    public MockHotel(LocalDate start, LocalDate end, int price, int stars){
         this.price = price;
         this.timeStart = start;
         this.timeEnd = end;
