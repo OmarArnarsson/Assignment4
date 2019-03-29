@@ -13,7 +13,7 @@ import java.time.LocalTime;
  *
  * @author stein
  */
-public class MockHotel {
+public class Hotel {
     
     private int price;
     private LocalDate timeStart;
@@ -22,7 +22,7 @@ public class MockHotel {
     
     
     
-    public MockHotel(LocalDate start, LocalDate end, int price, int stars){
+    public Hotel(LocalDate start, LocalDate end, int price, int stars){
         this.price = price;
         this.timeStart = start;
         this.timeEnd = end;

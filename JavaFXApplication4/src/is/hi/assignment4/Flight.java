@@ -13,7 +13,7 @@ import java.time.LocalTime;
  *
  * @author stein
  */
-public class MockFlight {
+public class Flight {
     private int price;
     private LocalDate timeStart;
     private LocalDate timeEnd;
@@ -21,7 +21,7 @@ public class MockFlight {
     private int flightId;
     
     
-    public MockFlight(LocalDate start, LocalDate end, int price ){
+    public Flight(LocalDate start, LocalDate end, int price ){
         this.price = price;
         this.timeStart = start;
         this.timeEnd = end;

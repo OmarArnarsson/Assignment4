@@ -12,7 +12,7 @@ import java.time.LocalTime;
  *
  * @author stein
  */
-public class MockDayTour {
+public class DayTour {
     
     private int id;
     private String type;
@@ -23,7 +23,7 @@ public class MockDayTour {
     private int groupSize;
     
     
-    public MockDayTour(LocalDate start, LocalDate end, int price,
+    public DayTour(LocalDate start, LocalDate end, int price,
                     String destination, int groupSize){
         
         this.dateStart = start;
