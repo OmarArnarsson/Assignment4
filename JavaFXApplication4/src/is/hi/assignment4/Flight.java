@@ -8,33 +8,34 @@ package is.hi.assignment4;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Calendar;
 
 /**
  *
  * @author stein
  */
 public class Flight {
-    private int price;
-    private LocalDate timeStart;
-    private LocalDate timeEnd;
-    private Clock clock;
-    private int flightId;
-    
-    
-    public Flight(LocalDate start, LocalDate end, int price ){
-        this.price = price;
-        this.timeStart = start;
-        this.timeEnd = end;
-        this.clock = Clock.systemUTC();
-        this.flightId = (int)Math.random()*10;
+    private String depLocation;
+    private Calendar depDate;
+    private String arrLocation;
+    private Calendar arrDate;
+    private Double economyPrice;
+
+
+    public Flight(String depLocation, Calendar depDate, String arrLocation, Calendar arrDate,  Double economyPrice){
+        this.depLocation = depLocation;
+        this.depDate = depDate;
+        this.arrLocation = arrLocation;
+        this.arrDate = arrDate;
+        this.economyPrice = economyPrice;
         
     }
     
-    public LocalDate getStart(){
-        return this.timeStart;
+    public Calendar getDepDate(){
+        return this.depDate;
     }
-    public LocalDate getEnd(){
-        return this.timeEnd;
+    public Calendar getArrDate(){
+        return this.arrDate;
     }
     
     

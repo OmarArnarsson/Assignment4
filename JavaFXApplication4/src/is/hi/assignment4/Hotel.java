@@ -8,6 +8,7 @@ package is.hi.assignment4;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Calendar;
 
 /**
  *
@@ -16,13 +17,13 @@ import java.time.LocalTime;
 public class Hotel {
     
     private int price;
-    private LocalDate timeStart;
-    private LocalDate timeEnd;
+    private Calendar timeStart;
+    private Calendar timeEnd;
     private int stars;
     
     
     
-    public Hotel(LocalDate start, LocalDate end, int price, int stars){
+    public Hotel(Calendar start, Calendar end, int price, int stars){
         this.price = price;
         this.timeStart = start;
         this.timeEnd = end;

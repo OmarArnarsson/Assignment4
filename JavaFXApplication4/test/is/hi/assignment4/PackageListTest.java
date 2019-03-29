@@ -6,6 +6,7 @@
 package is.hi.assignment4;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,18 +43,32 @@ public class PackageListTest {
      * Test of buildPackage method, of class PackageList.
      */
     @Test
-    public void testBuildPackage() {
+    public void testBuildPackageFail1() {
         System.out.println("buildPackage");
-        ArrayList<Flight> f1 = null;
-        ArrayList<Flight> f2 = null;
-        ArrayList<Hotel> h = null;
-        ArrayList<DayTour> d = null;
+      
+        ArrayList<Flight> f1 = new ArrayList<Flight>();
+        ArrayList<Flight> f2 = new ArrayList<Flight>();
+        ArrayList<Hotel> h = new ArrayList<Hotel>();
+        ArrayList<DayTour> d = new ArrayList<DayTour>();
+        
+        String depLocation;
+        Calendar depDate =  Calendar.getInstance();
+        String arrLocation;
+        Calendar arrDate = Calendar.getInstance();
+        Double economyPrice;
+        for(int i = 0; i<5; i++){
+            f1.add(new Flight("Akureyri", depDate, "Reykjavik", arrDate, Math.random()*150000));
+            f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, Math.random()*150000));
+            
+            h.add(new Hotel(arrDate, arrDate, (int)Math.random()*10000, (int)Math.random()*5));
+        }
+        
+        
         PackageList instance = new PackageList();
         ArrayList<PackageList> expResult = null;
         ArrayList<PackageList> result = instance.buildPackage(f1, f2, h, d);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertNull( result);
+        
     }
     
 }
