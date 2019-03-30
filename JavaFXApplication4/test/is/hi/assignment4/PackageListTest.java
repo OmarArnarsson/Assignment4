@@ -141,6 +141,9 @@ public class PackageListTest {
 
         Calendar arrDate = Calendar.getInstance();
         
+        Calendar wrong = Calendar.getInstance();
+        wrong.add((Calendar.MONTH), 2);   
+        String wrongString = "Höfn";
         
         f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, Math.random()*150000));
         f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, Math.random()*150000));
@@ -148,9 +151,9 @@ public class PackageListTest {
         h.add(new Hotel(arrDate, arrDate, (int)Math.random()*10000, (int)Math.random()*5));
         
         f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, Math.random()*150000));
-        f2.add(new Flight("Höfn", depDate, "Akureyri", arrDate, Math.random()*150000));
+        f2.add(new Flight(wrongString, depDate, "Akureyri", arrDate, Math.random()*150000));
         d.add(new DayTour(depDate, arrDate, (int)Math.random()*10000, "Reykjavík", 4));
-        h.add(new Hotel(arrDate, arrDate, (int)Math.random()*10000, (int)Math.random()*5));
+        h.add(new Hotel(wrong, arrDate, (int)Math.random()*10000, (int)Math.random()*5));
         
         
                 
@@ -160,7 +163,7 @@ public class PackageListTest {
         for(int j = 0; j<2; j++){
             for(int i = 0; i<1; i++){
                 for(int s = 0; s<2; s++){
-                    for(int l = 0; l<2; l++){
+                    for(int l = 0; l<1; l++){
                         k.add(instance.new Package(f1.get(j), f2.get(i), d.get(s), h.get(l)));
                     }
                 }
@@ -172,7 +175,6 @@ public class PackageListTest {
         ArrayList<PackageList.Package> expResult = k;
         ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate);
         assertEquals(true, myComparison(k,result));
-        randomString();
     
     }
     

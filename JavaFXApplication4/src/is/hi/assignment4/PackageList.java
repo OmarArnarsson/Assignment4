@@ -48,59 +48,21 @@ public class PackageList {
         else {
 
             ArrayList<Package> a = new ArrayList<Package>();
-
-            int whole = f1.size()*f2.size()*h.size()*d.size();
-            
+       
             PackageList s = new PackageList();
             
-            for(int i = 0; i<f1.size(); i++){
-                System.out.println("Flight1: ");
-                if(!f1.get(i).depLocation.equals(dep) || !f1.get(i).depDate.equals(go)
-                   || !f1.get(i).arrLocation.equals( dest)   ){
-                    
-                     System.out.print(f1.remove(i));
-                    /*System.out.println("dep  "+f1.get(i).depLocation.equals(dep)+"   "+f1.get(i).depLocation+"  " +dep);
-                    System.out.println("depDate  "+f1.get(i).depDate.equals(go));
-                    System.out.println("arr  "+f1.get(i).arrLocation.equals( dest)+"   "+f1.get(i).arrLocation+"  " +dest );*/
-                }
-                    
-                
-            }
+            checkFlight(f1, dep, dest, go);
+            checkFlight(f2, dest, dep, home);
+            checkHotel(h, go, home);
+            checkDayTour(d, go, home);
             
-            for(int i = 0; i<f2.size(); i++){
-                System.out.println("Flight2: ");
-                if(!f2.get(i).depLocation.equals(dest) || !f2.get(i).depDate.equals(home )
-                   || !f2.get(i).arrLocation.equals(dep)){
-                   
-                    System.out.print(f2.remove(i));
-                   /* System.out.println("dep  "+f2.get(i).depLocation.equals(dep)+"   "+f2.get(i).depLocation+"  " +dest);
-                    System.out.println("depDate  "+f2.get(i).depDate.equals(go));
-                    System.out.println("arr  "+f2.get(i).arrLocation.equals( dest) +"   "+f2.get(i).arrLocation+"  " +dest);*/
-                }
-            }
-            
-            for(int i = 0; i<d.size(); i++){
-                System.out.println("DT: ");
-                if(d.get(i).dateStart.compareTo(go) < 0 || d.get(i).dateStart.compareTo(home) > 0 ){
-                     System.out.println(d.remove(i));
-                }
-                    
-            }
-            
-            for(int i = 0; i<h.size(); i++){
-                System.out.println("Hotel: ");
-                if(h.get(i).timeStart.compareTo(go) != 0 || h.get(i).timeEnd.compareTo(home) != 0 ){
-                     System.out.print(h.remove(i));
-                }
-                   
-            }
             
             
             for(int j = 0; j<f1.size(); j++){
                 for(int i = 0; i<f2.size(); i++){
                     for(int k = 0; k<h.size(); k++){
                         for(int l = 0; l<d.size(); l++){
-                            a.add(s.new Package(f1.get(j),f2.get(i), d.get(k), h.get(l)));     
+                            a.add(s.new Package(f1.get(j),f2.get(i), d.get(l), h.get(k)));     
                         }
                     }
                 }
@@ -112,6 +74,38 @@ public class PackageList {
 
            
         }
+        
+    }
+    
+    public void checkFlight(ArrayList<Flight> f, String dep, String dest, Calendar depDate){
+        for(int i = 0; i<f.size(); i++){
+                System.out.println("Flight1: ");
+                if(!f.get(i).depLocation.equals(dep) || !f.get(i).depDate.equals(depDate)
+                   || !f.get(i).arrLocation.equals( dest)   ){   
+                     f.remove(i);          
+                }                 
+            }
+    }
+    
+    public void checkHotel(ArrayList<Hotel> h, Calendar go, Calendar home){
+          for(int i = 0; i<h.size(); i++){
+                System.out.println("Hotel: ");
+                if(h.get(i).timeStart.compareTo(go) != 0 || h.get(i).timeEnd.compareTo(home) != 0 ){
+                    h.remove(i);
+                }
+                   
+            }
+    }
+    
+    public void checkDayTour(ArrayList<DayTour> d, Calendar go, Calendar home){
+         
+            for(int i = 0; i<d.size(); i++){
+                System.out.println("DT: ");
+                if(d.get(i).dateStart.compareTo(go) < 0 || d.get(i).dateStart.compareTo(home) > 0 ){
+                    d.remove(i);
+                }
+                    
+            }
         
     }
     
