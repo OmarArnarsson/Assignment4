@@ -16,10 +16,10 @@ import java.util.Calendar;
  */
 public class Hotel {
     
-    private int price;
-    private Calendar timeStart;
-    private Calendar timeEnd;
-    private int stars;
+    public int price;
+    public Calendar timeStart;
+    public Calendar timeEnd;
+    public int stars;
     
     
     

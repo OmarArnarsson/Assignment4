@@ -15,11 +15,12 @@ import java.util.Calendar;
  * @author stein
  */
 public class Flight {
-    private String depLocation;
-    private Calendar depDate;
-    private String arrLocation;
-    private Calendar arrDate;
-    private Double economyPrice;
+    public String depLocation;
+    public Calendar depDate;
+    public String arrLocation;
+    public Calendar arrDate;
+    public Double economyPrice;
+    public int flightNr;
 
 
     public Flight(String depLocation, Calendar depDate, String arrLocation, Calendar arrDate,  Double economyPrice){
@@ -28,15 +29,9 @@ public class Flight {
         this.arrLocation = arrLocation;
         this.arrDate = arrDate;
         this.economyPrice = economyPrice;
+        this.flightNr = (int)Math.random()*10;
         
     }
-    
-    public Calendar getDepDate(){
-        return this.depDate;
-    }
-    public Calendar getArrDate(){
-        return this.arrDate;
-    }
-    
+
     
 }

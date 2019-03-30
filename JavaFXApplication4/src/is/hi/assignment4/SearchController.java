@@ -28,7 +28,7 @@ public class SearchController implements Initializable {
     }    
     
     public void processFlight(LocalDate start, LocalDate end, int price){
-        
+               
     }
     
     public void processDayTours(LocalDate start, LocalDate end){

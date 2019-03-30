@@ -7,6 +7,7 @@ package is.hi.assignment4;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Calendar;
 
 /**
  *
@@ -14,16 +15,16 @@ import java.time.LocalTime;
  */
 public class DayTour {
     
-    private int id;
-    private String type;
-    private LocalDate dateStart;
-    private LocalDate dateEnd;
-    private int price;
-    private String destination;
-    private int groupSize;
+    public int id;
+    public String type;
+    public Calendar dateStart;
+    public Calendar dateEnd;
+    public int price;
+    public String destination;
+    public int groupSize;
     
     
-    public DayTour(LocalDate start, LocalDate end, int price,
+    public DayTour(Calendar start, Calendar end, int price,
                     String destination, int groupSize){
         
         this.dateStart = start;
