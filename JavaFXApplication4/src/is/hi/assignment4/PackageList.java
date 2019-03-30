@@ -38,7 +38,7 @@ public class PackageList {
     }
     
     public ArrayList<Package> buildPackage (ArrayList<Flight> f1, ArrayList<Flight> f2, ArrayList<Hotel> h, ArrayList<DayTour> d,
-                                            String dest, String dep, Calendar go,  Calendar home)
+                                            String dep, String dest, Calendar go,  Calendar home)
     {
         
         if(f1.isEmpty() || f2.isEmpty() || h.isEmpty() || d.isEmpty()){
@@ -58,10 +58,10 @@ public class PackageList {
                 if(!f1.get(i).depLocation.equals(dep) || !f1.get(i).depDate.equals(go)
                    || !f1.get(i).arrLocation.equals( dest)   ){
                     
-                    // System.out.print(f1.remove(i));
-                    System.out.println("dep  "+f1.get(i).depLocation.equals(dep));
+                     System.out.print(f1.remove(i));
+                    /*System.out.println("dep  "+f1.get(i).depLocation.equals(dep)+"   "+f1.get(i).depLocation+"  " +dep);
                     System.out.println("depDate  "+f1.get(i).depDate.equals(go));
-                    System.out.print("arr  "+f1.get(i).arrLocation.equals( dest) );
+                    System.out.println("arr  "+f1.get(i).arrLocation.equals( dest)+"   "+f1.get(i).arrLocation+"  " +dest );*/
                 }
                     
                 
@@ -72,18 +72,17 @@ public class PackageList {
                 if(!f2.get(i).depLocation.equals(dest) || !f2.get(i).depDate.equals(home )
                    || !f2.get(i).arrLocation.equals(dep)){
                    
-                    //System.out.print(f2.remove(i));
-                    System.out.println("dep  "+f2.get(i).depLocation.equals(dep));
+                    System.out.print(f2.remove(i));
+                   /* System.out.println("dep  "+f2.get(i).depLocation.equals(dep)+"   "+f2.get(i).depLocation+"  " +dest);
                     System.out.println("depDate  "+f2.get(i).depDate.equals(go));
-                    System.out.print("arr  "+f2.get(i).arrLocation.equals( dest) );
+                    System.out.println("arr  "+f2.get(i).arrLocation.equals( dest) +"   "+f2.get(i).arrLocation+"  " +dest);*/
                 }
             }
             
             for(int i = 0; i<d.size(); i++){
                 System.out.println("DT: ");
                 if(d.get(i).dateStart.compareTo(go) < 0 || d.get(i).dateStart.compareTo(home) > 0 ){
-                     System.out.print("DT");
-                     System.out.print(d.remove(i));
+                     System.out.println(d.remove(i));
                 }
                     
             }
@@ -91,13 +90,11 @@ public class PackageList {
             for(int i = 0; i<h.size(); i++){
                 System.out.println("Hotel: ");
                 if(h.get(i).timeStart.compareTo(go) != 0 || h.get(i).timeEnd.compareTo(home) != 0 ){
-                     // System.out.print(h.remove(i));
-                     System.out.print("HotelSKR");
+                     System.out.print(h.remove(i));
                 }
                    
             }
             
-            System.out.print("Size f1  "+f1.size()+"  Size f2  "+f2.size());
             
             for(int j = 0; j<f1.size(); j++){
                 for(int i = 0; i<f2.size(); i++){
