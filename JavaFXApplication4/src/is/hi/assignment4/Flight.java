@@ -29,7 +29,7 @@ public class Flight {
         this.arrLocation = arrLocation;
         this.arrDate = arrDate;
         this.economyPrice = economyPrice;
-        this.flightNr = (int)Math.random()*10;
+        this.flightNr = (int)Math.random()*10000;
         
     }
 

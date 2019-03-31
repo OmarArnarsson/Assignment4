@@ -25,13 +25,14 @@ public class DayTour {
     
     
     public DayTour(Calendar start, Calendar end, int price,
-                    String destination, int groupSize){
+                    String destination, int groupSize, String type){
         
         this.dateStart = start;
         this.dateEnd = end;
         this.price = price;
         this.destination = destination;
         this.groupSize = groupSize;
+        this.type = type;
         
     }
     
