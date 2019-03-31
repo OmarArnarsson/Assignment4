@@ -66,93 +66,7 @@ public class PackageListTest {
     }
 
     
-    
-    @Test
-    public void testTypePriceFilteringAndWrongHotelOrFlightLocation() {
-        System.out.println("testTypePriceFilteringAndWrongHotelOrFlightLocation");
-        
-        String[] types = {"Outdoor", "Activity", "Nature", "Culture"};
-        for(int i = 0; i<4; i++){
-            f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, 50000.0));
-            f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, 50000.0));
-            d.add(new DayTour(depDate, arrDate, 40000, "Reykjavík", 4, types[i]));
-            h.add(new Hotel(arrDate, arrDate, 40000, (int)Math.random()*5));
-        }
-        f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, 150000.0));
-        f2.add(new Flight(wrongString, depDate, "Akureyri", arrDate, 30000.0));
-        d.add(new DayTour(depDate, arrDate, 10000, "Reykjavík", 4, "Nature"));
-        h.add(new Hotel(wrong, arrDate, 10000, (int)Math.random()*5));
-        
- 
-        PackageList instance = new PackageList();
-        
-        
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík",  depDate, arrDate, 60000.0, 240000.0, "Outdoor");
-        assertEquals(checkType(result, "Outdoor"), checkPrice(result,60000.0, 250000.0));
-        
-        // 64 because 4*4*1*4=80, 4 flights to because one is makes the package too expensive,
-        // 4 flights back because one has wrong date, 1 daytour that matches Outdoor,
-        // 4 hotels because one has wrong date
-        assertEquals(64,result.size());
-        
-        
-    }
-    
-    
-    
-    @Test
-    public void testTypes() {
-        System.out.println("testTypes");
-        
-        String[] types = {"Outdoor", "Activity", "Nature", "Nature", "Culture"};
-        for(int i = 0; i<5; i++){
-            f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, Math.random()*150000));
-            f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, Math.random()*150000));
-            d.add(new DayTour(depDate, arrDate, (int)Math.random()*10000, "Reykjavík", 4, types[i]));
-            h.add(new Hotel(arrDate, arrDate, (int)Math.random()*10000, (int)Math.random()*5));
-        }
-        
-       
-        ArrayList<PackageList.Package> k = new ArrayList<PackageList.Package>();
-        
-        PackageList instance = new PackageList();
-        
-        
-        ArrayList<PackageList.Package> expResult = k;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 10000000.0, "Outdoor");
-        assertTrue(checkType(result, "Outdoor"));
-        
-    }
-    
-    
-    
-    
-    
-    @Test
-    public void testPriceRange() {
-        System.out.println("testPriceRange");
-       
-        String[] types = {"Outdoor", "Activity", "Nature", "Nature", "Culture"};
-        for(int i = 0; i<5; i++){
-            f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, Math.random()*150000));
-            f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, Math.random()*150000));
-            d.add(new DayTour(depDate, arrDate, (int)Math.random()*10000, "Reykjavík", 4, types[i]));
-            h.add(new Hotel(arrDate, arrDate, (int)Math.random()*10000, (int)Math.random()*5));
-        }       
-       
-        ArrayList<PackageList.Package> k = new ArrayList<PackageList.Package>();
-        
-        PackageList instance = new PackageList();
-        
-        
-        ArrayList<PackageList.Package> expResult = k;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 100000.0, "");
-        assertTrue(checkPrice(result, 0.0, 100000.0));
-        
-    }
-    
-    
-    @Test
+     @Test
     public void testNull() {
         System.out.println("testNull");
       
@@ -168,7 +82,6 @@ public class PackageListTest {
         assertNull( result);
         
     }
-    
     
     @Test
     public void testAllTheSame() {
@@ -197,7 +110,54 @@ public class PackageListTest {
     
     }
     
-   
+    
+     @Test
+    public void testTypes() {
+        System.out.println("testTypes");
+        
+        String[] types = {"Outdoor", "Activity", "Nature", "Nature", "Culture"};
+        for(int i = 0; i<5; i++){
+            f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, Math.random()*150000));
+            f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, Math.random()*150000));
+            d.add(new DayTour(depDate, arrDate, (int)Math.random()*10000, "Reykjavík", 4, types[i]));
+            h.add(new Hotel(arrDate, arrDate, (int)Math.random()*10000, (int)Math.random()*5));
+        }
+        
+       
+        ArrayList<PackageList.Package> k = new ArrayList<PackageList.Package>();
+        
+        PackageList instance = new PackageList();
+        
+        
+        ArrayList<PackageList.Package> expResult = k;
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 10000000.0, "Outdoor");
+        assertTrue(checkType(result, "Outdoor"));
+        
+    }
+    
+     @Test
+    public void testPriceRange() {
+        System.out.println("testPriceRange");
+       
+        String[] types = {"Outdoor", "Activity", "Nature", "Nature", "Culture"};
+        for(int i = 0; i<5; i++){
+            f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, Math.random()*150000));
+            f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, Math.random()*150000));
+            d.add(new DayTour(depDate, arrDate, (int)Math.random()*10000, "Reykjavík", 4, types[i]));
+            h.add(new Hotel(arrDate, arrDate, (int)Math.random()*10000, (int)Math.random()*5));
+        }       
+       
+        ArrayList<PackageList.Package> k = new ArrayList<PackageList.Package>();
+        
+        PackageList instance = new PackageList();
+        
+        
+        ArrayList<PackageList.Package> expResult = k;
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 100000.0, "");
+        assertTrue(checkPrice(result, 0.0, 100000.0));
+        
+    }
+    
     @Test
     public void testWrongHotelDateAndWrongFlight() {
         System.out.println("testWrongHotelDateAndWrongFlight");
@@ -236,6 +196,45 @@ public class PackageListTest {
     
     }
     
+    @Test
+    public void testTypePriceFilteringAndWrongHotelOrFlightLocation() {
+        System.out.println("testTypePriceFilteringAndWrongHotelOrFlightLocation");
+        
+        String[] types = {"Outdoor", "Activity", "Nature", "Culture"};
+        for(int i = 0; i<4; i++){
+            f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, 50000.0));
+            f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, 50000.0));
+            d.add(new DayTour(depDate, arrDate, 40000, "Reykjavík", 4, types[i]));
+            h.add(new Hotel(arrDate, arrDate, 40000, (int)Math.random()*5));
+        }
+        f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, 150000.0));
+        f2.add(new Flight(wrongString, depDate, "Akureyri", arrDate, 30000.0));
+        d.add(new DayTour(depDate, arrDate, 10000, "Reykjavík", 4, "Nature"));
+        h.add(new Hotel(wrong, arrDate, 10000, (int)Math.random()*5));
+        
+ 
+        PackageList instance = new PackageList();
+        
+        
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík",  depDate, arrDate, 60000.0, 240000.0, "Outdoor");
+        assertEquals(checkType(result, "Outdoor"), checkPrice(result,60000.0, 250000.0));
+        
+        // 64 because 4*4*1*4=80, 4 flights to because one is makes the package too expensive,
+        // 4 flights back because one has wrong date, 1 daytour that matches Outdoor,
+        // 4 hotels because one has wrong date
+        assertEquals(64,result.size());
+        
+        
+    }
+    
+    
+    
+   
+   
+    
+    ////////////////////////////////////
+    /// HELPERS FOR CONFIRMING TESTS ///
+    ////////////////////////////////////
     
     // Function that checks some values of Flight, DayTour and Hotels for the purpose of
     // confirming that they are the same for testing purposes, its not a complete
