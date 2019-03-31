@@ -20,6 +20,7 @@ public class PackageList {
         public Flight f2;
         public DayTour d;
         public Hotel h;
+        public Double price;
          
         
         
@@ -30,6 +31,15 @@ public class PackageList {
             this.d=d;
         }  
         
+        public void setPrice(double f1, double f2, double h, double d){
+            this.price = f1+f2+d+h;
+        }
+        private Double getPrice(){
+            return this.price;
+            
+        }
+        
+        
     }
     
     
@@ -38,7 +48,7 @@ public class PackageList {
     }
     
     public ArrayList<Package> buildPackage (ArrayList<Flight> f1, ArrayList<Flight> f2, ArrayList<Hotel> h, ArrayList<DayTour> d,
-                                            String dep, String dest, Calendar go,  Calendar home)
+                                            String dep, String dest, Calendar go,  Calendar home, Double priceLow, Double priceHigh)
     {
         
         if(f1.isEmpty() || f2.isEmpty() || h.isEmpty() || d.isEmpty()){
@@ -62,19 +72,34 @@ public class PackageList {
                 for(int i = 0; i<f2.size(); i++){
                     for(int k = 0; k<h.size(); k++){
                         for(int l = 0; l<d.size(); l++){
-                            a.add(s.new Package(f1.get(j),f2.get(i), d.get(l), h.get(k)));     
+                            
+                            Package pack = new Package(f1.get(j),f2.get(i), d.get(l), h.get(k));
+                            pack.setPrice(pack.f1.economyPrice, pack.f2.economyPrice, pack.h.price, pack.d.price);
+                            a.add(pack);     
                         }
                     }
                 }
             }
-                    
-        
-                
+            System.out.print(a.size());
+            filterPrice(a, priceLow, priceHigh);  
             return a;
 
            
         }
         
+    }
+    
+    
+    public void filterPrice(ArrayList<Package> a, Double priceLow, Double priceHigh){
+        int size = a.size();
+        for(int i = 0; i<size; i++){
+
+            if(!(a.get(i).getPrice() < priceHigh && a.get(i).getPrice() > priceLow)){
+                 a.remove(i);    
+               
+            }
+        }
+
     }
     
     public void checkFlight(ArrayList<Flight> f, String dep, String dest, Calendar depDate){

@@ -44,24 +44,45 @@ public class PackageListTest {
     /**
      * Test of buildPackage method, of class PackageList.
      */
-   /* @Test
-    public void testBuildPackage() {
+    @Test
+    public void test() {
         System.out.println("buildPackage");
-        ArrayList<Flight> f1 = null;
-        ArrayList<Flight> f2 = null;
-        ArrayList<Hotel> h = null;
-        ArrayList<DayTour> d = null;
-        String dest = "";
-        String dep = "";
-        Calendar go = null;
-        Calendar home = null;
-        PackageList instance = new PackageList();
-        ArrayList<PackageList.Package> expResult = null;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, dest, dep, go, home);
-        assertEquals(expResult, result);
+        ArrayList<Flight> f1 = new ArrayList<Flight>();
+        ArrayList<Flight> f2 = new ArrayList<Flight>();
+        ArrayList<Hotel> h = new ArrayList<Hotel>();
+        ArrayList<DayTour> d = new ArrayList<DayTour>();
+        
 
-    }*/
-    
+        Calendar depDate =  Calendar.getInstance();
+
+        Calendar arrDate = Calendar.getInstance();
+
+        for(int i = 0; i<5; i++){
+            f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, 1000.0));
+            f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, 1000.0));
+            d.add(new DayTour(depDate, arrDate, 1000, "Reykjavík", 4));
+            h.add(new Hotel(arrDate, arrDate, 1500, (int)Math.random()*5));
+        }
+        ArrayList<PackageList.Package> k = new ArrayList<PackageList.Package>();
+        PackageList instance = new PackageList();
+        for(int j = 0; j<f1.size(); j++){
+            for(int i = 0; i<f2.size(); i++){
+                for(int s = 0; s<h.size(); s++){
+                    for(int l = 0; l<d.size(); l++){
+                        PackageList.Package pack = instance.new Package(f1.get(j), f2.get(i),d.get(s), h.get(l));
+                        pack.setPrice(f1.get(j).economyPrice, f2.get(i).economyPrice, h.get(l).price, d.get(s).price);
+                        k.add(pack);
+                    }
+                }
+            }
+        }
+        
+        ArrayList<PackageList.Package> expResult = k;
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate, 5000.0, 6000.0);
+        System.out.print(result.get(0).price);
+        assertTrue(result.isEmpty());
+    }
+        
     @Test
     public void testNull() {
         System.out.println("buildPackage");
@@ -84,7 +105,7 @@ public class PackageListTest {
         }
         
         PackageList instance = new PackageList();
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate);
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate, 0.0, 1000000000.0);
         assertNull( result);
         
     }
@@ -122,14 +143,14 @@ public class PackageListTest {
         }
         
         ArrayList<PackageList.Package> expResult = k;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate);
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate,0.0, 1000000000.0);
         assertEquals(true, myComparison(k,result));
     
     }
     
     
     @Test
-    public void testForValidity() {
+    public void testWrongHotelDateAndWrongFlight() {
         System.out.println("buildPackage");
         ArrayList<Flight> f1 = new ArrayList<Flight>();
         ArrayList<Flight> f2 = new ArrayList<Flight>();
@@ -173,7 +194,7 @@ public class PackageListTest {
 
         
         ArrayList<PackageList.Package> expResult = k;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate);
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate, 0.0, 1000000000.0);
         assertEquals(true, myComparison(k,result));
     
     }
