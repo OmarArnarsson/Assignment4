@@ -123,6 +123,7 @@ public class PackageList {
         for(int i = f.size()-1; i>=0; i--){
                 if(!f.get(i).depLocation.equals(dep) || !f.get(i).depDate.equals(depDate)
                    || !f.get(i).arrLocation.equals( dest)   ){   
+                     System.out.println(f.get(i).depDate+"    "+depDate);
                      f.remove(i);          
                 }                 
             }
@@ -131,6 +132,7 @@ public class PackageList {
     public void checkHotel(ArrayList<Hotel> h, Calendar go, Calendar home){
           for(int i = h.size()-1; i>=0; i--){
                 if(h.get(i).timeStart.compareTo(go) != 0 || h.get(i).timeEnd.compareTo(home) != 0 ){
+                    System.out.println("RemoveHotel");
                     h.remove(i);
                 }
                    
@@ -141,6 +143,7 @@ public class PackageList {
          
             for(int i = d.size()-1; i>=0; i--){
                 if(d.get(i).dateStart.compareTo(go) < 0 || d.get(i).dateStart.compareTo(home) > 0 ){
+                    System.out.println("RemoveDT");
                     d.remove(i);
                 }
                     

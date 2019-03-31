@@ -22,23 +22,47 @@ import static org.junit.Assert.*;
  */
 public class PackageListTest {
     
+    private ArrayList<Flight> f1, f2;
+    private ArrayList<Hotel> h;
+    private ArrayList<DayTour> d;
+    private Calendar depDate; 
+    private Calendar arrDate;
+    private Calendar wrong; 
+    private String wrongString;
+    
     public PackageListTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
     
     @Before
     public void setUp() {
+        
+        f1 = new ArrayList<Flight>();
+        f2 = new ArrayList<Flight>();
+        h = new ArrayList<Hotel>();
+        d = new ArrayList<DayTour>();
+        depDate =  Calendar.getInstance();
+        arrDate = Calendar.getInstance();        
+        wrong = Calendar.getInstance();
+        wrong.add((Calendar.MONTH), 2);  
+        depDate.set(Calendar.MILLISECOND, 0);
+        arrDate.set(Calendar.MILLISECOND, 0);
+        wrong.set(Calendar.MILLISECOND, 0);
+        wrongString = "Höfn";
+        
     }
     
     @After
     public void tearDown() {
+        f1 = null;
+        f2 = null;
+        h = null;
+        d = null;
+        depDate = null;
+        arrDate = null;     
+        wrong = null;  
+        wrongString = null;
+        
     }
 
     
@@ -46,19 +70,6 @@ public class PackageListTest {
     @Test
     public void testTypePriceFilteringAndWrongHotelOrFlightLocation() {
         System.out.println("testTypePriceFilteringAndWrongHotelOrFlightLocation");
-        ArrayList<Flight> f1 = new ArrayList<Flight>();
-        ArrayList<Flight> f2 = new ArrayList<Flight>();
-        ArrayList<Hotel> h = new ArrayList<Hotel>();
-        ArrayList<DayTour> d = new ArrayList<DayTour>();
-        
-
-        Calendar depDate =  Calendar.getInstance();
-
-        Calendar arrDate = Calendar.getInstance();
-        
-        Calendar wrong = Calendar.getInstance();
-        wrong.add((Calendar.MONTH), 2);   
-        String wrongString = "Höfn";
         
         String[] types = {"Outdoor", "Activity", "Nature", "Culture"};
         for(int i = 0; i<4; i++){
@@ -71,13 +82,12 @@ public class PackageListTest {
         f2.add(new Flight(wrongString, depDate, "Akureyri", arrDate, 30000.0));
         d.add(new DayTour(depDate, arrDate, 10000, "Reykjavík", 4, "Nature"));
         h.add(new Hotel(wrong, arrDate, 10000, (int)Math.random()*5));
-        System.out.println(f1.size()+"  "+ f2.size()+"  "+ h.size()+"  "+  d.size());
-
         
+ 
         PackageList instance = new PackageList();
         
         
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate, 60000.0, 240000.0, "Outdoor");
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík",  depDate, arrDate, 60000.0, 240000.0, "Outdoor");
         assertEquals(checkType(result, "Outdoor"), checkPrice(result,60000.0, 250000.0));
         
         // 64 because 4*4*1*4=80, 4 flights to because one is makes the package too expensive,
@@ -93,15 +103,7 @@ public class PackageListTest {
     @Test
     public void testTypes() {
         System.out.println("testTypes");
-        ArrayList<Flight> f1 = new ArrayList<Flight>();
-        ArrayList<Flight> f2 = new ArrayList<Flight>();
-        ArrayList<Hotel> h = new ArrayList<Hotel>();
-        ArrayList<DayTour> d = new ArrayList<DayTour>();
         
-
-        Calendar depDate =  Calendar.getInstance();
-
-        Calendar arrDate = Calendar.getInstance();
         String[] types = {"Outdoor", "Activity", "Nature", "Nature", "Culture"};
         for(int i = 0; i<5; i++){
             f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, Math.random()*150000));
@@ -117,7 +119,7 @@ public class PackageListTest {
         
         
         ArrayList<PackageList.Package> expResult = k;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate, 0.0, 10000000.0, "Outdoor");
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 10000000.0, "Outdoor");
         assertTrue(checkType(result, "Outdoor"));
         
     }
@@ -129,15 +131,7 @@ public class PackageListTest {
     @Test
     public void testPriceRange() {
         System.out.println("testPriceRange");
-        ArrayList<Flight> f1 = new ArrayList<Flight>();
-        ArrayList<Flight> f2 = new ArrayList<Flight>();
-        ArrayList<Hotel> h = new ArrayList<Hotel>();
-        ArrayList<DayTour> d = new ArrayList<DayTour>();
-        
-
-        Calendar depDate =  Calendar.getInstance();
-
-        Calendar arrDate = Calendar.getInstance();
+       
         String[] types = {"Outdoor", "Activity", "Nature", "Nature", "Culture"};
         for(int i = 0; i<5; i++){
             f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, Math.random()*150000));
@@ -152,7 +146,7 @@ public class PackageListTest {
         
         
         ArrayList<PackageList.Package> expResult = k;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate, 0.0, 100000.0, "");
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 100000.0, "");
         assertTrue(checkPrice(result, 0.0, 100000.0));
         
     }
@@ -162,16 +156,6 @@ public class PackageListTest {
     public void testNull() {
         System.out.println("testNull");
       
-        ArrayList<Flight> f1 = new ArrayList<Flight>();
-        ArrayList<Flight> f2 = new ArrayList<Flight>();
-        ArrayList<Hotel> h = new ArrayList<Hotel>();
-        ArrayList<DayTour> d = new ArrayList<DayTour>();
-        
-        String depLocation;
-        Calendar depDate =  Calendar.getInstance();
-        String arrLocation;
-        Calendar arrDate = Calendar.getInstance();
-        Double economyPrice;
         for(int i = 0; i<5; i++){
             f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, 10.0));
             f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, Math.random()*150000));
@@ -180,7 +164,7 @@ public class PackageListTest {
         }
         
         PackageList instance = new PackageList();
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate, 0.0, 1000000000.0, "");
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 1000000000.0, "");
         assertNull( result);
         
     }
@@ -188,16 +172,7 @@ public class PackageListTest {
     
     @Test
     public void testAllTheSame() {
-        System.out.println("testAllTheSame");
-        ArrayList<Flight> f1 = new ArrayList<Flight>();
-        ArrayList<Flight> f2 = new ArrayList<Flight>();
-        ArrayList<Hotel> h = new ArrayList<Hotel>();
-        ArrayList<DayTour> d = new ArrayList<DayTour>();
-        
 
-        Calendar depDate =  Calendar.getInstance();
-
-        Calendar arrDate = Calendar.getInstance();
 
         for(int i = 0; i<5; i++){
             f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, Math.random()*150000));
@@ -217,28 +192,16 @@ public class PackageListTest {
             }
         }
         
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate,0.0, 1000000000.0, "");
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 1000000000.0, "");
         assertEquals(true, myComparison(k,result));
     
     }
     
-    
+   
     @Test
     public void testWrongHotelDateAndWrongFlight() {
         System.out.println("testWrongHotelDateAndWrongFlight");
-        ArrayList<Flight> f1 = new ArrayList<Flight>();
-        ArrayList<Flight> f2 = new ArrayList<Flight>();
-        ArrayList<Hotel> h = new ArrayList<Hotel>();
-        ArrayList<DayTour> d = new ArrayList<DayTour>();
-        
 
-        Calendar depDate =  Calendar.getInstance();
-
-        Calendar arrDate = Calendar.getInstance();
-        
-        Calendar wrong = Calendar.getInstance();
-        wrong.add((Calendar.MONTH), 2);   
-        String wrongString = "Höfn";
         
         f1.add(new Flight("Akureyri", depDate, "Reykjavík", arrDate, Math.random()*150000));
         f2.add(new Flight("Reykjavík", depDate, "Akureyri", arrDate, Math.random()*150000));
@@ -268,7 +231,7 @@ public class PackageListTest {
 
         
         ArrayList<PackageList.Package> expResult = k;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", arrDate, depDate, 0.0, 1000000000.0, "");
+        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 1000000000.0, "");
         assertEquals(true, myComparison(k,result));
     
     }
