@@ -1,0 +1,12 @@
+.list-cell {
+    -fx-padding: 0;
+    -fx-background-color: white;
+}
+
+.titled-pane:focused {
+    -fx-text-fill: black;
+}
+
+.titled-pane > .title {
+    -fx-background-color: -fx-box-border, -fx-inner-border, white;
+}

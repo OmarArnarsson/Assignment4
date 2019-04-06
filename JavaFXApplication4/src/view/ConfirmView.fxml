@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="639.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="59.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full name" />
+      <Text fx:id="fullName" layoutX="184.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="59.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birth date" />
+      <Text fx:id="birthdate" layoutX="184.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="59.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number" />
+      <Text fx:id="phoneNumber" layoutX="184.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="email" layoutX="184.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="59.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+      <Text layoutX="107.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm booking information">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <Text layoutX="58.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Natioanlity" />
+      <Text fx:id="nationality" layoutX="184.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <ListView fx:id="listView" layoutX="58.0" layoutY="313.0" prefHeight="247.0" prefWidth="484.0" />
+      <Button fx:id="seatButton" layoutX="216.0" layoutY="581.0" mnemonicParsing="false" onAction="#confirmBooking" text="Confirm booking">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

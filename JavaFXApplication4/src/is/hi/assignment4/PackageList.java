@@ -15,45 +15,16 @@ import java.util.Calendar;
 public class PackageList {
     
     
-    public class Package {
-        public Flight f1;
-        public Flight f2;
-        public DayTour d;
-        public Hotel h;
-        public Double price;
-        public String type; 
-        
-        
-        public Package(Flight f1, Flight f2, DayTour d, Hotel h){
-            this.f1 = f1;
-            this.f2 = f2;   
-            this.h=h;
-            this.d=d;
-            this.type = d.type;
-        }  
-        
-        public void setPrice(double f1, double f2, double h, double d){
-            this.price = f1+f2+d+h;
-        }
-        
-        public Double getPrice(){
-            return this.price;    
-        }
-        public String getType(){
-            return this.type;    
-        }
-        
-        
-        
-    }
-    
-    
-    public PackageList(){
-        
-    }
-    
-    public ArrayList<Package> buildPackage (ArrayList<Flight> f1, ArrayList<Flight> f2, ArrayList<Hotel> h, ArrayList<DayTour> d,
-                                            String dep, String dest, Calendar go,  Calendar home, Double priceLow, Double priceHigh,
+    public ArrayList<Package> buildPackage (ArrayList<Flight> f1,
+                                            ArrayList<Flight> f2, 
+                                            ArrayList<Hotel> h,
+                                            ArrayList<DayTour> d,
+                                            String dep,
+                                            String dest,
+                                            Calendar go, 
+                                            Calendar home, 
+                                            Double priceLow, 
+                                            Double priceHigh,
                                             String type)
     {
   

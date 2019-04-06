@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="600.0">
+         <children>
+            <Text layoutX="125.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passanger information">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Text>
+            <TextField fx:id="fullName" layoutX="169.0" layoutY="110.0" prefHeight="25.0" prefWidth="369.0" />
+            <Text layoutX="69.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full name" wrappingWidth="111.13671875" />
+            <DatePicker fx:id="birthdate" layoutX="169.0" layoutY="160.0" prefHeight="25.0" prefWidth="373.0" />
+            <Text layoutX="70.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birth date" wrappingWidth="54.615234375" />
+            <TextField fx:id="phoneNumber" layoutX="169.0" layoutY="217.0" prefHeight="25.0" prefWidth="373.0" />
+            <Text layoutX="69.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number" />
+            <TextField fx:id="email" layoutX="170.0" layoutY="268.0" prefHeight="25.0" prefWidth="372.0" />
+            <Text layoutX="70.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+            <TextField fx:id="nationality" layoutX="168.0" layoutY="321.0" prefHeight="25.0" prefWidth="374.0" />
+            <Text layoutX="68.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationality" />
+            <Button fx:id="seatButton" layoutX="244.0" layoutY="426.0" mnemonicParsing="false" onAction="#pickSeat" text="Pick a seat">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Text layoutX="69.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="With country code">
+               <font>
+                  <Font name="System Italic" size="10.0" />
+               </font>
+            </Text>
+            <TextField fx:id="baggage" layoutX="167.0" layoutY="371.0" prefHeight="25.0" prefWidth="374.0" />
+            <Text layoutX="68.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bag count" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

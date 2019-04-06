@@ -78,7 +78,7 @@ public class PackageListTest {
         }
         
         PackageList instance = new PackageList();
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 1000000000.0, "");
+        ArrayList<Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 1000000000.0, "");
         assertNull( result);
         
     }
@@ -93,19 +93,19 @@ public class PackageListTest {
             d.add(new DayTour(depDate, arrDate, (int)Math.random()*10000, "Reykjavík", 4,""));
             h.add(new Hotel(arrDate, arrDate, (int)Math.random()*10000, (int)Math.random()*5));
         }
-        ArrayList<PackageList.Package> k = new ArrayList<PackageList.Package>();
+        ArrayList<Package> k = new ArrayList<Package>();
         PackageList instance = new PackageList();
         for(int j = 0; j<f1.size(); j++){
             for(int i = 0; i<f2.size(); i++){
                 for(int s = 0; s<h.size(); s++){
                     for(int l = 0; l<d.size(); l++){
-                        k.add(instance.new Package(f1.get(j), f2.get(i),d.get(s), h.get(l)));
+                        k.add(new Package(f1.get(j), f2.get(i),d.get(s), h.get(l)));
                     }
                 }
             }
         }
         
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 1000000000.0, "");
+        ArrayList<Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 1000000000.0, "");
         assertEquals(true, myComparison(k,result));
     
     }
@@ -124,13 +124,13 @@ public class PackageListTest {
         }
         
        
-        ArrayList<PackageList.Package> k = new ArrayList<PackageList.Package>();
+        ArrayList<Package> k = new ArrayList<Package>();
         
         PackageList instance = new PackageList();
         
         
-        ArrayList<PackageList.Package> expResult = k;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 10000000.0, "Outdoor");
+        ArrayList<Package> expResult = k;
+        ArrayList<Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 10000000.0, "Outdoor");
         assertTrue(checkType(result, "Outdoor"));
         
     }
@@ -147,13 +147,13 @@ public class PackageListTest {
             h.add(new Hotel(arrDate, arrDate, (int)Math.random()*10000, (int)Math.random()*5));
         }       
        
-        ArrayList<PackageList.Package> k = new ArrayList<PackageList.Package>();
+        ArrayList<Package> k = new ArrayList<Package>();
         
         PackageList instance = new PackageList();
         
         
-        ArrayList<PackageList.Package> expResult = k;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 100000.0, "");
+        ArrayList<Package> expResult = k;
+        ArrayList<Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 100000.0, "");
         assertTrue(checkPrice(result, 0.0, 100000.0));
         
     }
@@ -175,14 +175,14 @@ public class PackageListTest {
         
         
                 
-        ArrayList<PackageList.Package> k = new ArrayList<PackageList.Package>();
+        ArrayList<Package> k = new ArrayList<Package>();
         PackageList instance = new PackageList();
        
         for(int j = 0; j<2; j++){
             for(int i = 0; i<1; i++){
                 for(int s = 0; s<2; s++){
                     for(int l = 0; l<1; l++){
-                        k.add(instance.new Package(f1.get(j), f2.get(i), d.get(s), h.get(l)));
+                        k.add(new Package(f1.get(j), f2.get(i), d.get(s), h.get(l)));
                     }
                 }
             }
@@ -190,8 +190,8 @@ public class PackageListTest {
         
 
         
-        ArrayList<PackageList.Package> expResult = k;
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 1000000000.0, "");
+        ArrayList<Package> expResult = k;
+        ArrayList<Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík", depDate, arrDate, 0.0, 1000000000.0, "");
         assertEquals(true, myComparison(k,result));
     
     }
@@ -216,7 +216,7 @@ public class PackageListTest {
         PackageList instance = new PackageList();
         
         
-        ArrayList<PackageList.Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík",  depDate, arrDate, 60000.0, 240000.0, "Outdoor");
+        ArrayList<Package> result = instance.buildPackage(f1, f2, h, d, "Akureyri", "Reykjavík",  depDate, arrDate, 60000.0, 240000.0, "Outdoor");
         assertEquals(checkType(result, "Outdoor"), checkPrice(result,60000.0, 250000.0));
         
         // 64 because 4*4*1*4=80, 4 flights to because one is makes the package too expensive,
@@ -239,7 +239,7 @@ public class PackageListTest {
     // Function that checks some values of Flight, DayTour and Hotels for the purpose of
     // confirming that they are the same for testing purposes, its not a complete
     // comparison because it is not needed.
-    public boolean myComparison(ArrayList<PackageList.Package> first, ArrayList<PackageList.Package> second){
+    public boolean myComparison(ArrayList<Package> first, ArrayList<Package> second){
         
         boolean ret = false;
         
@@ -278,7 +278,7 @@ public class PackageListTest {
        }
     
     
-    public boolean checkPrice(ArrayList<PackageList.Package> a, Double low, Double high){
+    public boolean checkPrice(ArrayList<Package> a, Double low, Double high){
         
         boolean ret = true;
         
@@ -293,7 +293,7 @@ public class PackageListTest {
     }
     
     
-    public boolean checkType(ArrayList<PackageList.Package> a, String type){
+    public boolean checkType(ArrayList<Package> a, String type){
         
         boolean ret = true;
         
