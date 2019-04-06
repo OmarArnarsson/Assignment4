@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -77,60 +78,131 @@ public class InterfaceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         sc = new SearchController();
         list = new PackageList();
-        
     }
 
     @FXML
     private void buttonHandler(ActionEvent event) throws SQLException, CloneNotSupportedException {
-        sc.processFlight(dagsetning.getValue(), dagsetning1.getValue(),1000);
-        ArrayList<Package> a = sc.getResults();
-    }
+        sc.setDepLoc(leit.getText());
+        sc.setArrLoc(leit1.getText());
+        sc.setDepLoc1(leit1.getText());
+        sc.setArrLoc1(leit.getText());
+        sc.setDepDate(dagsetning.getValue());
+        sc.setHomeDate(dagsetning1.getValue());
+        sc.getResults();
+        
 
-    @FXML
-    private void leitHandler(ActionEvent event) {
-        System.out.print(leit.getText());
+        
+        ObservableList<Package> l = FXCollections.observableArrayList();
         
         
         
+      /*  listinn.setItems(l);
+        listinn.setCellFactory(lv -> new ListCell<Package>() {
+            @Override
+            public void updateItem(Package item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    String text = "" ; // get text from item
+                    setText(text);
+                }
+            }
+        });
+      */
+  
+        
     }
 
 
-    @FXML
-    private void dateHandler(MouseEvent event) {
-        System.out.print(dagsetning.getValue());
-    }
+ 
 
     @FXML
     private void check50Handler(ActionEvent event) {
-        sc.setPriceRange(50000);
-        this.check150.setDisable(true);
-        this.check150.setDisable(true);
-        this.check150.setDisable(true);
+        if(this.check50.isSelected()){
+            this.check100.setDisable(true);
+            this.check150.setDisable(true);
+            this.checkOver.setDisable(true);
+            sc.setPriceRange1(1);
+        }
+        else {
+            this.check100.setDisable(false);
+            this.check150.setDisable(false);
+            this.checkOver.setDisable(false);
+            sc.setPriceRange1(0);
+        }
     }
 
     @FXML
     private void check100Handler(ActionEvent event) {
+        if(this.check100.isSelected()){
+            this.check50.setDisable(true);
+            this.check150.setDisable(true);
+            this.checkOver.setDisable(true);
+            sc.setPriceRange1(2);
+        }
+        else {
+            this.check50.setDisable(false);
+            this.check150.setDisable(false);
+            this.checkOver.setDisable(false);
+            sc.setPriceRange1(0);
+        }
     }
 
     @FXML
     private void check150Handler(ActionEvent event) {
+        if(this.check150.isSelected()){
+            this.check50.setDisable(true);
+            this.check100.setDisable(true);
+            this.checkOver.setDisable(true);
+            sc.setPriceRange1(3);
+        }
+        else {
+            this.check50.setDisable(false);
+            this.check100.setDisable(false);
+            this.checkOver.setDisable(false);
+            sc.setPriceRange1(0);
+        }
     }
 
     @FXML
     private void checkOverHandler(ActionEvent event) {
+        if(this.checkOver.isSelected()){
+            this.check50.setDisable(true);
+            this.check100.setDisable(true);
+            this.check150.setDisable(true);
+            sc.setPriceRange1(4);
+        }
+        else {
+            this.check50.setDisable(false);
+            this.check100.setDisable(false);
+            this.check150.setDisable(false);
+            sc.setPriceRange1(4);
+        }
     }
 
     @FXML
     private void checkMenningHandler(ActionEvent event) {
-        
+        if(this.checkMenning.isSelected())
+            sc.setMenning(true);
+        else 
+            sc.setMenning(false);
     }
 
     @FXML
     private void checkAdventureHandler(ActionEvent event) {
+        if(this.checkAdventure.isSelected())
+            sc.setAdventure(true);
+        else 
+            sc.setAdventure(false);
     }
 
     @FXML
     private void checkSkodunHandler(ActionEvent event) {
+        if(this.checkSkodun.isSelected())
+            sc.setSkodunar(true);
+        else 
+            sc.setSkodunar(false);
     }
     
 }
