@@ -7,9 +7,12 @@ package is.hi.assignment4;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import model.SearchEngine;
@@ -22,10 +25,9 @@ import model.SearchResult;
  */
 public class SearchController{
     
-    private String depLocation;
 
-    private SearchEngine flightSearch;
-    
+    private SearchEngine flightSearchTo;
+    private SearchEngine flightSearchBack;
 
     private double[] priceRange = new double[2];
     private boolean menning;
@@ -40,18 +42,24 @@ public class SearchController{
     private LocalDate departure;
     private LocalDate home;
 
+    private int count;
+    
     
     public SearchController(){
         
-        flightSearch = new SearchEngine();
-        
+        flightSearchTo = new SearchEngine();
+        flightSearchBack = new SearchEngine();
     }  
     
     public ArrayList<Package> getResults() throws SQLException, CloneNotSupportedException{
         
-        //process strings
         
-        //leita flug
+        //process strings
+        this.processFlight();
+        SearchResult a = flightSearchTo.findFlightCourse();
+        SearchResult b = flightSearchBack.findFlightCourse();
+        
+        System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
         //leita hotel
         //leita daytour
         
@@ -63,8 +71,40 @@ public class SearchController{
     }
     
     public void processFlight(){
-       
+        //flight to
+        flightSearchTo.setPassangerCount(this.count);
+        flightSearchTo.setEconomy(true);
+        flightSearchTo.setDepLocation(this.depLoc);
+
+        Instant instant = Instant.from(this.departure.atStartOfDay(ZoneId.systemDefault()));
+        long time = instant.toEpochMilli();
+        Calendar cal =  Calendar.getInstance();
+        cal.setTimeInMillis(time);
+        
+        flightSearchTo.setDepDate(cal);
+        flightSearchTo.setArrLocation(this.arrLoc);
+        flightSearchTo.setFlexibility(0);
+        
+        
+        //flight home
+        flightSearchBack.setPassangerCount(this.count);
+        flightSearchBack.setEconomy(true);
+        flightSearchBack.setDepLocation(this.arrLoc);
+
+        Instant instant1 = Instant.from(this.home.atStartOfDay(ZoneId.systemDefault()));
+        long time1 = instant1.toEpochMilli();
+        Calendar cal1 =  Calendar.getInstance();
+        cal1.setTimeInMillis(time1);
+        
+        flightSearchBack.setDepDate(cal1);
+        flightSearchBack.setArrLocation(this.depLoc);
+        flightSearchBack.setFlexibility(0);
+        
+        
+        
     }
+      
+    
     
     public void processDayTours(){
         
@@ -74,7 +114,14 @@ public class SearchController{
         
     }
     
-
+    
+    public void setFlightEngine(){
+        this.flightSearchTo = new SearchEngine();
+        this.flightSearchBack = new SearchEngine();
+    }
+    public void setCount(int a){
+        this.count = a;
+    }
     public void setDepLoc(String a){
         this.depLoc = a;
     }

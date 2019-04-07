@@ -65,11 +65,12 @@ public class InterfaceController implements Initializable {
     private CheckBox checkSkodun;
     @FXML
     private ListView<Package> listinn;
-   
+    @FXML
+    private TextField fjoldi;
         
     private SearchController sc;
     private PackageList list;
- 
+
     
     /**
      * Initializes the controller class.
@@ -82,6 +83,10 @@ public class InterfaceController implements Initializable {
 
     @FXML
     private void buttonHandler(ActionEvent event) throws SQLException, CloneNotSupportedException {
+        
+        sc.setFlightEngine();
+
+        sc.setCount(Integer.parseInt(fjoldi.getText()));
         sc.setDepLoc(leit.getText());
         sc.setArrLoc(leit1.getText());
         sc.setDepLoc1(leit1.getText());

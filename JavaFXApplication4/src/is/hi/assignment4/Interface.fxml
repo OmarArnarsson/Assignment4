@@ -45,5 +45,7 @@
             <CheckBox fx:id="checkSkodun" mnemonicParsing="false" onAction="#checkSkodunHandler" text="Skoðunarferðir" />
          </children>
       </VBox>
+      <TextField fx:id="fjoldi" layoutX="329.0" layoutY="46.0" prefHeight="25.0" prefWidth="46.0" />
+      <Label layoutX="329.0" layoutY="24.0" text="Fjöldi" />
     </children>
 </AnchorPane>
