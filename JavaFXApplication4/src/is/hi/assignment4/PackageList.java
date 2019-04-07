@@ -5,9 +5,11 @@
  */
 package is.hi.assignment4;
 
+import hotelStuff.Hotel;
 import java.util.ArrayList;
 import java.util.Calendar;
-import model.ConnectedFlight;
+import modelflight.ConnectedFlight;
+import modeldaytour.Tour;
 
 /**
  *
@@ -19,7 +21,7 @@ public class PackageList {
     public ArrayList<Package> buildPackage (ArrayList<ConnectedFlight> f1,
                                             ArrayList<ConnectedFlight> f2, 
                                             ArrayList<Hotel> h,
-                                            ArrayList<DayTour> d,
+                                            ArrayList<Tour> d,
                                             String dep,
                                             String dest,
                                             Calendar go, 
@@ -37,10 +39,10 @@ public class PackageList {
 
             ArrayList<Package> a = new ArrayList<Package>();
       
-            checkFlight(f1, dep, dest, go);
+         /*   checkFlight(f1, dep, dest, go);
             checkFlight(f2, dest, dep, home);
             checkHotel(h, go, home);
-            checkDayTour(d, go, home);
+            checkDayTour(d, go, home);*/
             
             
             for(int j = 0; j<f1.size(); j++){
@@ -48,7 +50,7 @@ public class PackageList {
                     for(int k = 0; k<h.size(); k++){
                         for(int l = 0; l<d.size(); l++){
                             Package pack = new Package(f1.get(j),f2.get(i), d.get(l), h.get(k));
-                            pack.setPrice(pack.f1.getTotalEconomyPrice(), pack.f2.getTotalEconomyPrice(), pack.h.price, pack.d.price);
+                            pack.setPrice(pack.f1.getTotalEconomyPrice(), pack.f2.getTotalEconomyPrice(), pack.h.getPricerange(), pack.d.getPrice());
                             a.add(pack);     
                         }
                     }
@@ -91,7 +93,7 @@ public class PackageList {
     }
     
     // Að neðan færum við mögulega yfir í search
-    public void checkFlight(ArrayList<ConnectedFlight> f, String dep, String dest, Calendar depDate){
+  /*  public void checkFlight(ArrayList<ConnectedFlight> f, String dep, String dest, Calendar depDate){
         for(int i = f.size()-1; i>=0; i--){
                 if(!f.get(i).getFlight(i).getArrDate().equals(i)){//)|| !f.get(i).getDepDate.equals(depDate)
                   // || !f.get(i).arrLocation.equals( dest)   ){   
@@ -121,6 +123,6 @@ public class PackageList {
                     
             }
         
-    }
+    }*/
     
 }

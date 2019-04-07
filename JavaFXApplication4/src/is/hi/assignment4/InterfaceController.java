@@ -29,7 +29,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import model.ConnectedFlight;
 
 /**
  * FXML Controller class
