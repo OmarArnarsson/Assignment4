@@ -60,6 +60,7 @@ public class SearchController{
         SearchResult b = flightSearchBack.findFlightCourse();
         
         System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
+        
         //leita hotel
         //leita daytour
         

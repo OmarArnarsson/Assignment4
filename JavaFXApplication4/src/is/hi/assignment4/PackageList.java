@@ -7,6 +7,7 @@ package is.hi.assignment4;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import model.ConnectedFlight;
 
 /**
  *
@@ -15,8 +16,8 @@ import java.util.Calendar;
 public class PackageList {
     
     
-    public ArrayList<Package> buildPackage (ArrayList<Flight> f1,
-                                            ArrayList<Flight> f2, 
+    public ArrayList<Package> buildPackage (ArrayList<ConnectedFlight> f1,
+                                            ArrayList<ConnectedFlight> f2, 
                                             ArrayList<Hotel> h,
                                             ArrayList<DayTour> d,
                                             String dep,
@@ -47,7 +48,7 @@ public class PackageList {
                     for(int k = 0; k<h.size(); k++){
                         for(int l = 0; l<d.size(); l++){
                             Package pack = new Package(f1.get(j),f2.get(i), d.get(l), h.get(k));
-                            pack.setPrice(pack.f1.economyPrice, pack.f2.economyPrice, pack.h.price, pack.d.price);
+                            pack.setPrice(pack.f1.getTotalEconomyPrice(), pack.f2.getTotalEconomyPrice(), pack.h.price, pack.d.price);
                             a.add(pack);     
                         }
                     }
@@ -90,11 +91,11 @@ public class PackageList {
     }
     
     // Að neðan færum við mögulega yfir í search
-    public void checkFlight(ArrayList<Flight> f, String dep, String dest, Calendar depDate){
+    public void checkFlight(ArrayList<ConnectedFlight> f, String dep, String dest, Calendar depDate){
         for(int i = f.size()-1; i>=0; i--){
-                if(!f.get(i).depLocation.equals(dep) || !f.get(i).depDate.equals(depDate)
-                   || !f.get(i).arrLocation.equals( dest)   ){   
-                     System.out.println(f.get(i).depDate+"    "+depDate);
+                if(!f.get(i).getFlight(i).getArrDate().equals(i)){//)|| !f.get(i).getDepDate.equals(depDate)
+                  // || !f.get(i).arrLocation.equals( dest)   ){   
+                     System.out.println(f.get(i).getFlight(i).getArrDate()+"    "+depDate);
                      f.remove(i);          
                 }                 
             }

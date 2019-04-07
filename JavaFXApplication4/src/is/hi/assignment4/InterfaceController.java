@@ -29,6 +29,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import model.ConnectedFlight;
 
 /**
  * FXML Controller class
@@ -93,13 +94,11 @@ public class InterfaceController implements Initializable {
         sc.setArrLoc1(leit.getText());
         sc.setDepDate(dagsetning.getValue());
         sc.setHomeDate(dagsetning1.getValue());
-        sc.getResults();
         
 
         
         ObservableList<Package> l = FXCollections.observableArrayList();
-        
-        
+
         
       /*  listinn.setItems(l);
         listinn.setCellFactory(lv -> new ListCell<Package>() {
