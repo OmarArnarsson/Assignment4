@@ -1,6 +1,6 @@
-package model;
+package modelflight;
 
-import controller.DatabaseController;
+import controllerflight.DatabaseController;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

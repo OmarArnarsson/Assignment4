@@ -1,6 +1,6 @@
-package view;
+package viewflight;
 
-import controller.BookingManager;
+import controllerflight.BookingManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,8 +10,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import model.Booking;
-import model.ConnectedBooking;
+import modelflight.Booking;
+import modelflight.ConnectedBooking;
 
 import java.util.Set;
 

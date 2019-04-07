@@ -1,4 +1,4 @@
-package view;
+package viewflight;
 
 import javafx.application.Application;
 import javafx.beans.InvalidationListener;
@@ -14,10 +14,10 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.ConnectedFlight;
-import model.Flight;
-import model.SearchEngine;
-import model.SearchResult;
+import modelflight.ConnectedFlight;
+import modelflight.Flight;
+import modelflight.SearchEngine;
+import modelflight.SearchResult;
 import java.sql.SQLException;
 
 import java.net.URL;

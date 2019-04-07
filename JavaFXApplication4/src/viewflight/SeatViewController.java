@@ -1,4 +1,4 @@
-package view;
+package viewflight;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

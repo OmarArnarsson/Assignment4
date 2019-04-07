@@ -1,6 +1,6 @@
-package view;
+package viewflight;
 
-import controller.BookingManager;
+import controllerflight.BookingManager;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -24,10 +24,10 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import model.Booking;
-import model.ConnectedBooking;
-import model.ConnectedFlight;
-import model.Flight;
+import modelflight.Booking;
+import modelflight.ConnectedBooking;
+import modelflight.ConnectedFlight;
+import modelflight.Flight;
 
 import java.io.IOException;
 import java.sql.Array;

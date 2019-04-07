@@ -1,4 +1,4 @@
-package model;
+package modelflight;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

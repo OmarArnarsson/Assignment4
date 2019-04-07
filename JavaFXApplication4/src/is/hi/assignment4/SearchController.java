@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import model.SearchEngine;
-import model.SearchResult;
+import modelflight.SearchEngine;
+import modelflight.SearchResult;
 
 
 /**

@@ -1,7 +1,7 @@
-package view;
+package viewflight;
 
 
-import controller.BookingManager;
+import controllerflight.BookingManager;
 import javafx.fxml.FXML;
 
 import javafx.event.ActionEvent;
@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Traveller;
+import modelflight.Traveller;
 
 import java.io.IOException;
 import java.time.LocalDate;
