@@ -5,6 +5,8 @@
  */
 package is.hi.assignment4;
 
+import hotelStuff.FilterEngine;
+import hotelStuff.HotelDAO;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.Instant;
@@ -28,6 +30,7 @@ public class SearchController{
 
     private SearchEngine flightSearchTo;
     private SearchEngine flightSearchBack;
+    private FilterEngine Hotel;
 
     private double[] priceRange = new double[2];
     private boolean menning;
@@ -49,6 +52,7 @@ public class SearchController{
         
         flightSearchTo = new SearchEngine();
         flightSearchBack = new SearchEngine();
+        Hotel =  new FilterEngine();
     }  
     
     public ArrayList<Package> getResults() throws SQLException, CloneNotSupportedException{
@@ -61,6 +65,10 @@ public class SearchController{
         
         System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
         //leita hotel
+        //this.processHotel();
+        ArrayList<hotelStuff.Hotel> Hotels = Hotel.findHotelLoc(arrLoc);
+        System.out.print(Hotels);
+        //System.out.print(HotelDAO.getAllHotels());
         //leita daytour
         
         // byggja pakka = a
@@ -110,8 +118,8 @@ public class SearchController{
         
     }
     
-    public void processHotel(){
-        
+    public void processHotel() throws SQLException{
+        //Hotel.findHotelLoc(this.depLoc);
     }
     
     

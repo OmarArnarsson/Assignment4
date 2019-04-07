@@ -1,3 +1,5 @@
+package hotelStuff;
+
 public class Room {
     private String hotelId;
     private int beds;

@@ -1,3 +1,5 @@
+package hotelStuff;
+
 public class Hotel {
     private String name;
     private String type;
