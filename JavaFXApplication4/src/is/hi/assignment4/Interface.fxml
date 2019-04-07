@@ -13,10 +13,10 @@
          <font>
             <Font name="DejaVu Sans Mono Bold" size="13.0" />
          </font></Button>
-      <TextField fx:id="leit" layoutX="34.0" layoutY="46.0" onAction="#leitHandler" prefHeight="25.0" prefWidth="217.0" />
-      <DatePicker fx:id="dagsetning" layoutX="249.0" layoutY="46.0" onMouseClicked="#dateHandler" prefHeight="25.0" prefWidth="43.0" />
-      <TextField fx:id="leit1" layoutX="34.0" layoutY="100.0" onAction="#leitHandler" prefHeight="25.0" prefWidth="217.0" />
-      <DatePicker fx:id="dagsetning1" layoutX="249.0" layoutY="100.0" onMouseClicked="#dateHandler" prefHeight="25.0" prefWidth="43.0" />
+      <TextField fx:id="leit" layoutX="34.0" layoutY="46.0" prefHeight="25.0" prefWidth="217.0" />
+      <DatePicker fx:id="dagsetning" layoutX="249.0" layoutY="46.0" prefHeight="25.0" prefWidth="43.0" />
+      <TextField fx:id="leit1" layoutX="34.0" layoutY="100.0" prefHeight="25.0" prefWidth="217.0" />
+      <DatePicker fx:id="dagsetning1" layoutX="249.0" layoutY="100.0" prefHeight="25.0" prefWidth="43.0" />
       <Label layoutX="34.0" layoutY="23.0" text="Frá">
          <font>
             <Font name="DejaVu Sans Mono Bold" size="13.0" />
@@ -28,7 +28,7 @@
          </font>
       </Label>
       <ListView fx:id="listinn" layoutX="312.0" layoutY="167.0" prefHeight="464.0" prefWidth="613.0" />
-      <VBox layoutX="14.0" layoutY="150.0" prefHeight="163.0" prefWidth="123.0" spacing="15.0">
+      <VBox layoutX="41.0" layoutY="167.0" prefHeight="163.0" prefWidth="123.0" spacing="15.0">
          <children>
             <Label text="Verðbil" />
             <CheckBox fx:id="check50" mnemonicParsing="false" onAction="#check50Handler" text="0 - 50000kr" />
@@ -37,7 +37,7 @@
             <CheckBox fx:id="checkOver" mnemonicParsing="false" onAction="#checkOverHandler" text="150000kr +" />
          </children>
       </VBox>
-      <VBox layoutX="176.0" layoutY="150.0" prefHeight="163.0" prefWidth="123.0" spacing="15.0">
+      <VBox layoutX="41.0" layoutY="374.0" prefHeight="163.0" prefWidth="123.0" spacing="15.0">
          <children>
             <Label text="Týpa" />
             <CheckBox fx:id="checkMenning" mnemonicParsing="false" onAction="#checkMenningHandler" text="Menning" />
@@ -45,6 +45,5 @@
             <CheckBox fx:id="checkSkodun" mnemonicParsing="false" onAction="#checkSkodunHandler" text="Skoðunarferðir" />
          </children>
       </VBox>
-      <VBox layoutX="14.0" layoutY="347.0" prefHeight="200.0" prefWidth="100.0" />
     </children>
 </AnchorPane>
