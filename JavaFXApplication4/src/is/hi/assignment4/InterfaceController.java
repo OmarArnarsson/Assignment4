@@ -93,13 +93,11 @@ public class InterfaceController implements Initializable {
         sc.setArrLoc1(leit.getText());
         sc.setDepDate(dagsetning.getValue());
         sc.setHomeDate(dagsetning1.getValue());
-        sc.getResults();
         
 
         
         ObservableList<Package> l = FXCollections.observableArrayList();
-        
-        
+
         
       /*  listinn.setItems(l);
         listinn.setCellFactory(lv -> new ListCell<Package>() {

@@ -1,5 +1,9 @@
 package is.hi.assignment4;
 
+import hotelStuff.Hotel;
+import modelflight.ConnectedFlight;
+import modeldaytour.Tour;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,20 +15,20 @@ package is.hi.assignment4;
  * @author Þorsteinn Óskarsson, Háskóli Íslands, tho85@hi.is
  */
 public class Package {
-        public Flight f1;
-        public Flight f2;
-        public DayTour d;
+        public ConnectedFlight f1;
+        public ConnectedFlight f2;
+        public Tour d;
         public Hotel h;
         public Double price;
         public String type; 
         
         
-        public Package(Flight f1, Flight f2, DayTour d, Hotel h){
+        public Package(ConnectedFlight f1, ConnectedFlight f2, Tour d, Hotel h){
             this.f1 = f1;
             this.f2 = f2;   
             this.h=h;
             this.d=d;
-            this.type = d.type;
+            this.type = d.getTourType();
         }  
         
         public void setPrice(double f1, double f2, double h, double d){

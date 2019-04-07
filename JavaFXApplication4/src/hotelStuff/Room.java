@@ -1,5 +1,9 @@
 package hotelStuff;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b7f0820fc3fbf2bcb56af0438cac415b6dde8b8f
 public class Room {
     private String hotelId;
     private int beds;

@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import model.SearchEngine;
-import model.SearchResult;
+import modelflight.SearchEngine;
+import modelflight.SearchResult;
 
 
 /**
@@ -64,6 +64,7 @@ public class SearchController{
         SearchResult b = flightSearchBack.findFlightCourse();
         
         System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
+        
         //leita hotel
         //this.processHotel();
         ArrayList<hotelStuff.Hotel> Hotels = Hotel.findHotelLoc(arrLoc);

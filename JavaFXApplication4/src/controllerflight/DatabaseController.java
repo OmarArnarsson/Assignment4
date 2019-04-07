@@ -1,7 +1,7 @@
-package controller;
+package controllerflight;
 
-import model.ConnectedBooking;
-import model.Flight;
+import modelflight.ConnectedBooking;
+import modelflight.Flight;
 
 import java.sql.*;
 import java.util.Calendar;
