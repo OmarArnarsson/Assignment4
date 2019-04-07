@@ -1,6 +1,10 @@
-package controller;
+package controllerflight;
 
-import model.*;
+import modelflight.Traveller;
+import modelflight.Flight;
+import modelflight.Booking;
+import modelflight.ConnectedBooking;
+import modelflight.ConnectedFlight;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

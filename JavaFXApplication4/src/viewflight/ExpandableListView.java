@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package view;
+package viewflight;
 
-import controller.BookingManager;
+import controllerflight.BookingManager;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +31,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import model.ConnectedFlight;
+import modelflight.ConnectedFlight;
 
 import java.io.IOException;
 import java.util.HashSet;

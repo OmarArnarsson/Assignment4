@@ -1,13 +1,13 @@
-package view;
+package viewflight;
 
 import javafx.application.Application;
-import controller.DatabaseController;
+import controllerflight.DatabaseController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.SearchEngine;
-import model.SearchResult;
+import modelflight.SearchEngine;
+import modelflight.SearchResult;
 
 import java.io.IOException;
 import java.sql.ResultSet;
