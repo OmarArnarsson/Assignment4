@@ -1,5 +1,6 @@
 package is.hi.assignment4;
 
+
 import hotelStuff.Hotel;
 import modelflight.ConnectedFlight;
 import modeldaytour.Tour;

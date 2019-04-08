@@ -5,8 +5,13 @@
  */
 package is.hi.assignment4;
 
+
 import controllerdaytour.DatabaseManager;
 import controllerdaytour.TourController;
+
+import hotelStuff.FilterEngine;
+import hotelStuff.HotelDAO;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.Instant;
@@ -33,6 +38,7 @@ public class SearchController{
 
     private SearchEngine flightSearchTo;
     private SearchEngine flightSearchBack;
+    private FilterEngine Hotel;
 
     private TourController tourController;
     private TourFilter tourFilter;
@@ -57,10 +63,14 @@ public class SearchController{
         
         flightSearchTo = new SearchEngine();
         flightSearchBack = new SearchEngine();
+
         
         tourDB = new DatabaseManager();
         tourFilter = new TourFilter();
         tourController = new TourController(tourDB);
+
+        Hotel =  new FilterEngine();
+
     }  
     
     public ArrayList<Package> getResults() throws SQLException, CloneNotSupportedException, Exception{
@@ -74,6 +84,10 @@ public class SearchController{
         System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
         this.processDayTours();
         //leita hotel
+        //this.processHotel();
+        ArrayList<hotelStuff.Hotel> Hotels = Hotel.findHotelLoc(arrLoc);
+        System.out.print(Hotels);
+        //System.out.print(HotelDAO.getAllHotels());
         //leita daytour
         
         // byggja pakka = a
@@ -206,8 +220,8 @@ System.out.print(temp);
         
     
     
-    public void processHotel(){
-        
+    public void processHotel() throws SQLException{
+        //Hotel.findHotelLoc(this.depLoc);
     }
     
     

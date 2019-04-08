@@ -40,7 +40,7 @@ public class FilterEngine {
         allHotels = hdao.getAllHotels();
         locfilteredlist = new ArrayList<>();
         for (Hotel hotel : allHotels) {
-            if (hotel.getLocation() == location) {
+            if (hotel.getLocation().equals(location)) {
                 locfilteredlist.add(hotel);
             }
         }
