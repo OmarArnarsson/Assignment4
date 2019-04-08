@@ -4,28 +4,12 @@ import java.util.Date;
 
 public class Booking {
 
-    private int tourId;
-    private int price;
-    private String customerId;
-    private Date time;
-    private int bookingStatus; //breyta þessu síðar kannsk
+    private int tourId;         // id of the tour that the customer has chosen
+    private int price;          // price of the tour that has been chosen
+    private String customerId;  // id of the customer booking the trip
+    private Date time;          // date of the tour
 
-    /**
-     * Constructor for Booking class
-     * @param tourId
-     * @param price
-     * @param customerId
-     * @param time
-     * @param bookingStatus
-     */
-    private Booking(int tourId, int price, String customerId,
-                   Date time, int bookingStatus) {
-        this.tourId = tourId;
-        this.price = price;
-        this.customerId = customerId;
-        this.time = time;
-        this.bookingStatus = bookingStatus;
-    }
+    // GETTERS --------------------------------------------------------------
 
     public int getTourId() {
         return tourId;
@@ -43,7 +27,22 @@ public class Booking {
         return time;
     }
 
-    public int getBookingStatus() {
-        return bookingStatus;
+    // SETTERS ---------------------------------------------------------------
+
+    public void setTourId(int tourId) {
+        this.tourId = tourId;
     }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
 }

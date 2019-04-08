@@ -45,9 +45,9 @@ public class DatabaseManager implements DatabaseManagerInterface {
                            "location LIKE ? AND " +        // 1
                            "timeStart LIKE ? AND " +       // 2
                            "tourType LIKE ? AND " +        // 3
-                           "privateTour LIKE ? AND " +     // 4
-                           "accessibility LIKE ? AND " +   // 5
-                           "guidedTour LIKE ? AND " +      // 6
+                           "privateTour = ? AND " +     // 4
+                           "accessibility = ? AND " +   // 5
+                           "guidedTour = ? AND " +      // 6
                            "seatsLeft >= ? AND " +         // 7
                            "price <= ?";                   // 8
 
@@ -69,27 +69,26 @@ public class DatabaseManager implements DatabaseManagerInterface {
 
             while(rs.next())
             {
-                if (rs.getInt("seatsLeft") >= filterGroupSize) {
 
-                    Tour tour = new Tour();
+                Tour tour = new Tour();
 
-                    tour.setId(rs.getInt("id"));
-                    tour.setTourName(rs.getString("tourName"));
-                    tour.setTourType(rs.getString("tourType"));
-                    tour.setLocation(rs.getString("location"));
-                    tour.setAbout(rs.getString("aboutTour"));
-                    tour.setTimeStart(rs.getString("timeStart"));
-                    tour.setTimeFinish(rs.getString("timeFinish"));
-                    tour.setSeatsLeft(rs.getInt("seatsLeft"));
-                    tour.setPrivateTour(rs.getInt("privateTour"));
-                    tour.setGuidedTour(rs.getInt("guidedTour"));
-                    tour.setAccessibility(rs.getInt("accessibility"));
-                    tour.setPrice(rs.getInt("price"));
+                tour.setId(rs.getInt("id"));
+                tour.setTourName(rs.getString("tourName"));
+                tour.setTourType(rs.getString("tourType"));
+                tour.setLocation(rs.getString("location"));
+                tour.setAbout(rs.getString("aboutTour"));
+                tour.setTimeStart(rs.getString("timeStart"));
+                tour.setTimeFinish(rs.getString("timeFinish"));
+                tour.setSeatsLeft(rs.getInt("seatsLeft"));
+                tour.setPrivateTour(rs.getInt("privateTour"));
+                tour.setGuidedTour(rs.getInt("guidedTour"));
+                tour.setAccessibility(rs.getInt("accessibility"));
+                tour.setPrice(rs.getInt("price"));
 
-                    result.add(tour);
+                result.add(tour);
 
-                    numTripsFound++;
-                }
+                numTripsFound++;
+
             }
 
         } catch (SQLException e) {

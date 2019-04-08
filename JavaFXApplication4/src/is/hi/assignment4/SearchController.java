@@ -5,8 +5,13 @@
  */
 package is.hi.assignment4;
 
+
+import controllerdaytour.DatabaseManager;
+import controllerdaytour.TourController;
+
 import hotelStuff.FilterEngine;
 import hotelStuff.HotelDAO;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.Instant;
@@ -15,8 +20,11 @@ import java.time.Month;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import modeldaytour.Tour;
+import modeldaytour.TourFilter;
 import modelflight.SearchEngine;
 import modelflight.SearchResult;
 
@@ -32,6 +40,9 @@ public class SearchController{
     private SearchEngine flightSearchBack;
     private FilterEngine Hotel;
 
+    private TourController tourController;
+    private TourFilter tourFilter;
+    private DatabaseManager tourDB;
     private double[] priceRange = new double[2];
     private boolean menning;
     private boolean adventure;
@@ -52,10 +63,17 @@ public class SearchController{
         
         flightSearchTo = new SearchEngine();
         flightSearchBack = new SearchEngine();
+
+        
+        tourDB = new DatabaseManager();
+        tourFilter = new TourFilter();
+        tourController = new TourController(tourDB);
+
         Hotel =  new FilterEngine();
+
     }  
     
-    public ArrayList<Package> getResults() throws SQLException, CloneNotSupportedException{
+    public ArrayList<Package> getResults() throws SQLException, CloneNotSupportedException, Exception{
         
         
         //process strings
@@ -64,7 +82,7 @@ public class SearchController{
         SearchResult b = flightSearchBack.findFlightCourse();
         
         System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
-        
+        this.processDayTours();
         //leita hotel
         //this.processHotel();
         ArrayList<hotelStuff.Hotel> Hotels = Hotel.findHotelLoc(arrLoc);
@@ -115,9 +133,92 @@ public class SearchController{
       
     
     
-    public void processDayTours(){
+    public void processDayTours() throws Exception{
+
+        /*public TourFilter(int price, String groupSize,
+                      String location, String tourType,
+                      String timeStart, boolean guidedTour,
+                      boolean privateTour, boolean accessibility) {
+
+        this.price = price;
+        this.groupSize = gSize(Integer.parseInt(groupSize));
+        this.location = location;
+        this.tourType = tourType;
+        this.timeStart = timeStart;
+        this.guidedTour = guidedTour;
+        this.privateTour = privateTour;
+        this.accessibility = accessibility;
+        TourFilter tourFilter ;
+        if(this.menning && this.adventure && this.skodunarferdir || !this.menning && !this.adventure && !this.skodunarferdir) {
+            TourFilter filtAdv;
+            TourFilter filtBus;
+            TourFilter filtCar;
+            TourFilter filtBar;
+            TourFilter filtFood;
+            TourFilter filtBeer;
+            TourFilter filtJeep;
+            /*
+            busride
+            carride
+            barcrawl
+            foodtour
+            beertour
+            adv
+            jeepride
+            
+        }
+        else if(this.menning && this.adventure ){
+            
+        }
+        else if(this.adventure && this.skodunarferdir){
+            
+        }
+        else if(this.menning && this.skodunarferdir){
+            
+        }
+        else if(){
+            
+        }
+        else if(){
+            
+        }
+        else if(){
+            
+        }*/
+        ArrayList<Tour> listinn = new ArrayList<>();
         
+        tourFilter.setPrice(999999999);
+        tourFilter.setGroupSize(this.count);
+        tourFilter.setLocation(this.arrLoc);
+        tourFilter.setTimeStart(this.departure+"");
+        tourFilter.setTourType("%");
+        
+        LocalDate temp = this.departure;
+temp.plusDays(1L);
+System.out.print(temp);
+       /* while(temp.compareTo(this.home) < 0){
+            
+            tourFilter.setTimeStart(temp+"");
+            
+            LinkedList<Tour> liste = tourController.search(tourFilter);
+            for(int i = 0; i<liste.size(); i++){
+                    
+                listinn.add(liste.get(i));
+        
+            }
+            
+            temp.plusDays(1L);
+            System.out.println(temp);
+        }*/
+        tourFilter.setAccessibility(false);
+        tourFilter.setGuidedTour(true);
+        tourFilter.setPrivateTour(false);
+       
+        LinkedList<Tour> lll = tourController.search(tourFilter);
+        System.out.print(lll.size());
     }
+        
+    
     
     public void processHotel() throws SQLException{
         //Hotel.findHotelLoc(this.depLoc);
