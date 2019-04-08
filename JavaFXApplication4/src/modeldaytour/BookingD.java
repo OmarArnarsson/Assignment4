@@ -2,7 +2,7 @@ package modeldaytour;
 
 import java.util.Date;
 
-public class Booking {
+public class BookingD {
 
     private int tourId;         // id of the tour that the customer has chosen
     private int price;          // price of the tour that has been chosen

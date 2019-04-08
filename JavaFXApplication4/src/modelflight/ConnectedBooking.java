@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ConnectedBooking {
 
-    ArrayList<Booking> bookingList;
+    ArrayList<BookingF> bookingList;
     ConnectedFlight flightList;
     Traveller passenger;
     String bookingNumber;
@@ -12,14 +12,14 @@ public class ConnectedBooking {
 
     public ConnectedBooking(ConnectedFlight connFlight) {
         this.flightList = connFlight;
-        bookingList = new ArrayList<Booking>();
+        bookingList = new ArrayList<BookingF>();
     }
 
     public void addTraveller(Traveller traveller) {
         this.passenger = traveller;
     }
 
-    public void addBooking(Booking booking) {
+    public void addBooking(BookingF booking) {
         this.bookingList.add(booking);
     }
 
@@ -29,11 +29,11 @@ public class ConnectedBooking {
 
 
     /* Getters and setters */
-    public ArrayList<Booking> getBookingList() {
+    public ArrayList<BookingF> getBookingList() {
         return bookingList;
     }
 
-    public void setBookingList(ArrayList<Booking> bookingList) {
+    public void setBookingList(ArrayList<BookingF> bookingList) {
         this.bookingList = bookingList;
     }
 

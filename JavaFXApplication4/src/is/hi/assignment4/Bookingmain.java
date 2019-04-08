@@ -5,9 +5,11 @@
  */
 
 package is.hi.assignment4;
-import modeldaytour.Booking;
-import  modelflight.ConnectedBooking;
-
+import java.util.Calendar;
+import modeldaytour.BookingD;
+import modeldaytour.Customer;
+import  modelflight.BookingF;
+import modelflight.Traveller;
 /**
  *
  * @author Högni Freyr Gunnarsson hfg7@hi.is
@@ -18,20 +20,31 @@ public class Bookingmain {
     
    // private BookingID
     private Package pack;
-    private ConnectedBooking flightBooking1;    
-    private ConnectedBooking flightBooking2;
-    private Booking dtBooking;
-    private boolean confirmation=false;
+    private BookingF flightBooking1;    
+    private BookingF flightBooking2;
+    private BookingD dtBooking;
+    private Traveller traveller;
+    private Customer customer;
+    //hlutir sem við fáum frá interface-inu
+    private Integer costumerID;
+    private String seatnumber;
+    private Integer baggage;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private Calendar birthday;
+    private String passportNumber;
+    private String phoneNumber;
     
+
+
+
     public Bookingmain(Package pack){
         this.pack =pack;
     }
     
     public void makeBookings(){
-        this.flightBooking1= new ConnectedBooking(this.pack.f1);
-        this.flightBooking2= new ConnectedBooking(this.pack.f2);
-        //this.dtBooking= new Booking(this.pack.d.getId(),this.pack.d.getPrice(),null,null,0);
-    
+        this.flightBooking1 = new BookingF(this.pack.f1, this.seatnumber, this.baggage, this.pack.f1.getTotalEconomyPrice());
     }
 
 }

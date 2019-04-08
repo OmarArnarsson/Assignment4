@@ -9,11 +9,11 @@ public class Customer {
     public String mobile;
     public TourFilter filter; // search criteria from customer to be looked for in the db
     public int tourId;        // id of the tour that the customer chooses
-    public Booking booking;   // booking for the customer
+    public BookingD booking;   // booking for the customer
 
     public Customer() {
         filter = new TourFilter();
-        booking = new Booking();
+        booking = new BookingD();
     }
 
     // GETTERS --------------------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ public class Customer {
         return tourId;
     }
 
-    public Booking getBooking() {
+    public BookingD getBooking() {
         return booking;
     }
 
@@ -80,7 +80,7 @@ public class Customer {
         this.tourId = tourPickID;
     }
 
-    public void setBooking(Booking booking) {
+    public void setBooking(BookingD booking) {
         this.booking = booking;
     }
 }

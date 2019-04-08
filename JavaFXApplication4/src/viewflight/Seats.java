@@ -24,7 +24,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import modelflight.Booking;
+import modelflight.BookingF;
 import modelflight.ConnectedBooking;
 import modelflight.ConnectedFlight;
 import modelflight.Flight;
