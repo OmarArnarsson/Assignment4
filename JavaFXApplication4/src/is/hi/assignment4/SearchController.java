@@ -81,16 +81,19 @@ public class SearchController{
         SearchResult a = flightSearchTo.findFlightCourse();
         SearchResult b = flightSearchBack.findFlightCourse();
         
-        System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
-        this.processDayTours();
         //leita hotel
         //this.processHotel();
         ArrayList<hotelStuff.Hotel> Hotels = Hotel.findHotelLoc(arrLoc);
         System.out.print(Hotels);
         //System.out.print(HotelDAO.getAllHotels());
         //leita daytour
-        
+        System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
+        ArrayList<Tour> DT = this.processDayTours();
         // byggja pakka = a
+        PackageList Pakkar = new PackageList();
+        double low = priceRange[0];
+        double high = priceRange[1];
+        ArrayList<Package> Pakkarnir = Pakkar.buildPackage(a, b, Hotels, DT, arrLoc, depLoc, departure, home, low, high, "");
         
         //skila pakka a
         
@@ -133,7 +136,7 @@ public class SearchController{
       
     
     
-    public void processDayTours() throws Exception{
+    public ArrayList<Tour> processDayTours() throws Exception{
 
         /*public TourFilter(int price, String groupSize,
                       String location, String tourType,
@@ -194,9 +197,9 @@ public class SearchController{
         tourFilter.setTourType("%");
         
         LocalDate temp = this.departure;
-temp.plusDays(1L);
-System.out.print(temp);
-       /* while(temp.compareTo(this.home) < 0){
+        temp.plusDays(1);
+        System.out.print(temp);
+        while(temp.compareTo(this.home) < 0){
             
             tourFilter.setTimeStart(temp+"");
             
@@ -207,15 +210,18 @@ System.out.print(temp);
         
             }
             
-            temp.plusDays(1L);
+            temp=temp.plusDays(1);
             System.out.println(temp);
-        }*/
+        }
+        
+        
         tourFilter.setAccessibility(false);
         tourFilter.setGuidedTour(true);
         tourFilter.setPrivateTour(false);
        
         LinkedList<Tour> lll = tourController.search(tourFilter);
         System.out.print(lll.size());
+        return listinn;
     }
         
     
