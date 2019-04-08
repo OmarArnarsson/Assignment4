@@ -27,7 +27,7 @@ public class TourController {
         return result;
     }
     public LinkedList<Tour> searchByDate(TourFilter filter) throws Exception {
-        result = databaseManagerInterface.selectTours(filter);
+        result = databaseManagerInterface.searchByDate(filter);
         return result;
     }
 

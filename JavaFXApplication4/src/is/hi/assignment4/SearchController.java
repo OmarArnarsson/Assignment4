@@ -10,6 +10,7 @@ import controllerdaytour.DatabaseManager;
 import controllerdaytour.TourController;
 
 import hotelStuff.FilterEngine;
+import hotelStuff.Hotel;
 import hotelStuff.HotelDAO;
 
 import java.net.URL;
@@ -25,6 +26,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import modeldaytour.Tour;
 import modeldaytour.TourFilter;
+import modelflight.ConnectedFlight;
 import modelflight.SearchEngine;
 import modelflight.SearchResult;
 
@@ -81,16 +83,20 @@ public class SearchController{
         SearchResult a = flightSearchTo.findFlightCourse();
         SearchResult b = flightSearchBack.findFlightCourse();
         
-        System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
-        this.processDayTours();
+        
         //leita hotel
         //this.processHotel();
-        ArrayList<hotelStuff.Hotel> Hotels = Hotel.findHotelLoc(arrLoc);
+        ArrayList<Hotel> Hotels = Hotel.findHotelLoc(arrLoc);
         System.out.print(Hotels);
         //System.out.print(HotelDAO.getAllHotels());
         //leita daytour
-        
+        System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
+        ArrayList<Tour> DT = this.processDayTours();
         // byggja pakka = a
+        PackageList Pakkar = new PackageList();
+        double low = priceRange[0];
+        double high = priceRange[1];
+       // ArrayList<Package> Pakkarnir = Pakkar.buildPackage(a, b, Hotels, DT, arrLoc, depLoc, departure, home, low, high, "");
         
         //skila pakka a
         
@@ -133,7 +139,7 @@ public class SearchController{
       
     
     
-    public void processDayTours() throws Exception{
+    public ArrayList<Tour> processDayTours() throws Exception{
 
         /*public TourFilter(int price, String groupSize,
                       String location, String tourType,
@@ -194,25 +200,30 @@ public class SearchController{
         tourFilter.setTourType("%");
         
         LocalDate temp = this.departure;
+
         temp.plusDays(1L);
         System.out.print(temp);
-       /*while(temp.compareTo(this.home) < 0){
+        
+        while(temp.compareTo(this.home) < 0){
+
             
             tourFilter.setTimeStart(temp+"");
             
-            LinkedList<Tour> liste = tourController.search(tourFilter);
+            LinkedList<Tour> liste = tourController.searchByDate(tourFilter);
             for(int i = 0; i<liste.size(); i++){
                     
                 listinn.add(liste.get(i));
         
             }
             
-            temp.plusDays(1L);
+            temp=temp.plusDays(1);
             System.out.println(temp);
-        }*/
 
-        LinkedList<Tour> lll = tourController.searchByDate(tourFilter);
+        }
         
+        System.out.print(listinn.size());
+        return listinn;
+
     }
         
     
@@ -222,9 +233,10 @@ public class SearchController{
     }
     
     
-    public void setFlightEngine(){
+    public void resetEngines(){
         this.flightSearchTo = new SearchEngine();
         this.flightSearchBack = new SearchEngine();
+        this.tourFilter = new TourFilter();
     }
     public void setCount(int a){
         this.count = a;
@@ -242,7 +254,7 @@ public class SearchController{
         this.arrLoc1 = a;
     }
     
-    public void setPriceRange1(double a){
+    public void setPriceRange(double a){
         if(a == 0){
             this.priceRange[0] = 0;
             this.priceRange[1] = Integer.MAX_VALUE;;
