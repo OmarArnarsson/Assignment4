@@ -108,17 +108,12 @@ public class SearchController{
         System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
         ArrayList<Tour> DT = this.processDayTours();
         // byggja pakka = a
-<<<<<<< HEAD
-        PackageList Pakkar = new PackageList();
-        double low = priceRange[0];
-        double high = priceRange[1];
-       // ArrayList<Package> Pakkarnir = Pakkar.buildPackage(a, b, Hotels, DT, arrLoc, depLoc, departure, home, low, high, "");
-=======
+
         //PackageList Pakkar = new PackageList();
         //double low = priceRange[0];
         //double high = priceRange[1];
         //ArrayList<Package> Pakkarnir = Pakkar.buildPackage(a, b, Hotels, DT, arrLoc, depLoc, departure, home, low, high, "");
->>>>>>> fcdc71af6b26cad8b3e540cc4621c059853a5a72
+
         
         //skila pakka a
         
