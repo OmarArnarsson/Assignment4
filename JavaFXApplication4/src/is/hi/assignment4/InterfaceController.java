@@ -67,7 +67,9 @@ public class InterfaceController implements Initializable {
     private ListView<Package> listinn;
     @FXML
     private TextField fjoldi;
-        
+    @FXML
+    private Button purchaseButton;
+    
     private SearchController sc;
     private PackageList list;
 
