@@ -2,36 +2,28 @@ package modeldaytour;
 
 public class Customer {
 
-    public String id;
+    public String customerId;
     public String firstName;
     public String lastName;
     public String email;
     public String mobile;
-    public TourFilter filter;
-    public int tourPickID;       // helga added this, should we not save the tour that the customer picks?
-    public Booking booking;
+    public TourFilter filter; // search criteria from customer to be looked for in the db
+    public int tourId;        // id of the tour that the customer chooses
+    public Booking booking;   // booking for the customer
 
-    public Customer(String id, String firstName, String lastName, String email,
-                    String mobile, TourFilter filter, int tourPickID) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.mobile = mobile;
-        this.filter = filter;
-        this.tourPickID = tourPickID;
+    public Customer() {
+        filter = new TourFilter();
+        booking = new Booking();
     }
 
-    public String getId() {
-        return id;
+    // GETTERS --------------------------------------------------------------------------------------------
+
+    public String getCustomerId() {
+        return customerId;
     }
 
     public String getFirstName() {
         return firstName;
-    }
-
-    public Customer(String id) {
-        this.id = id;
     }
 
     public String getLastName() {
@@ -50,8 +42,45 @@ public class Customer {
         return filter;
     }
 
+    public int getTourId() {
+        return tourId;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    // SETTERS --------------------------------------------------------------------------------------------
+
+    public void setCustomerId(String id) {
+        this.customerId = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     public void setFilter(TourFilter filter) {
         this.filter = filter;
     }
 
+    public void setTourId(int tourPickID) {
+        this.tourId = tourPickID;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
 }

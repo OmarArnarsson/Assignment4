@@ -82,7 +82,7 @@ public class InterfaceController implements Initializable {
     }
 
     @FXML
-    private void buttonHandler(ActionEvent event) throws SQLException, CloneNotSupportedException {
+    private void buttonHandler(ActionEvent event) throws SQLException, CloneNotSupportedException, Exception {
         
         sc.setFlightEngine();
 
@@ -93,6 +93,7 @@ public class InterfaceController implements Initializable {
         sc.setArrLoc1(leit.getText());
         sc.setDepDate(dagsetning.getValue());
         sc.setHomeDate(dagsetning1.getValue());
+        sc.getResults();
         
 
         
