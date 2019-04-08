@@ -67,7 +67,9 @@ public class InterfaceController implements Initializable {
     private ListView<Package> listinn;
     @FXML
     private TextField fjoldi;
-        
+    @FXML
+    private Button purchaseButton;
+    
     private SearchController sc;
     private PackageList list;
 
@@ -84,7 +86,7 @@ public class InterfaceController implements Initializable {
     @FXML
     private void buttonHandler(ActionEvent event) throws SQLException, CloneNotSupportedException, Exception {
         
-        sc.setFlightEngine();
+        sc.resetEngines();
 
         sc.setCount(Integer.parseInt(fjoldi.getText()));
         sc.setDepLoc(leit.getText());
@@ -127,13 +129,13 @@ public class InterfaceController implements Initializable {
             this.check100.setDisable(true);
             this.check150.setDisable(true);
             this.checkOver.setDisable(true);
-            sc.setPriceRange1(1);
+            sc.setPriceRange(1);
         }
         else {
             this.check100.setDisable(false);
             this.check150.setDisable(false);
             this.checkOver.setDisable(false);
-            sc.setPriceRange1(0);
+            sc.setPriceRange(0);
         }
     }
 
@@ -143,13 +145,13 @@ public class InterfaceController implements Initializable {
             this.check50.setDisable(true);
             this.check150.setDisable(true);
             this.checkOver.setDisable(true);
-            sc.setPriceRange1(2);
+            sc.setPriceRange(2);
         }
         else {
             this.check50.setDisable(false);
             this.check150.setDisable(false);
             this.checkOver.setDisable(false);
-            sc.setPriceRange1(0);
+            sc.setPriceRange(0);
         }
     }
 
@@ -159,13 +161,13 @@ public class InterfaceController implements Initializable {
             this.check50.setDisable(true);
             this.check100.setDisable(true);
             this.checkOver.setDisable(true);
-            sc.setPriceRange1(3);
+            sc.setPriceRange(3);
         }
         else {
             this.check50.setDisable(false);
             this.check100.setDisable(false);
             this.checkOver.setDisable(false);
-            sc.setPriceRange1(0);
+            sc.setPriceRange(0);
         }
     }
 
@@ -175,13 +177,13 @@ public class InterfaceController implements Initializable {
             this.check50.setDisable(true);
             this.check100.setDisable(true);
             this.check150.setDisable(true);
-            sc.setPriceRange1(4);
+            sc.setPriceRange(4);
         }
         else {
             this.check50.setDisable(false);
             this.check100.setDisable(false);
             this.check150.setDisable(false);
-            sc.setPriceRange1(4);
+            sc.setPriceRange(4);
         }
     }
 

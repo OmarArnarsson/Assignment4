@@ -16,6 +16,7 @@ import modeldaytour.Tour;
  * @author Þorsteinn Óskarsson, Háskóli Íslands, tho85@hi.is
  */
 public class PackageList {
+    private ArrayList<Package> listinn;
     
     
     public ArrayList<Package> buildPackage (ArrayList<ConnectedFlight> f1,

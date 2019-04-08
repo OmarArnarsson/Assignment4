@@ -26,6 +26,10 @@ public class TourController {
         result = databaseManagerInterface.selectTours(filter);
         return result;
     }
+    public LinkedList<Tour> searchByDate(TourFilter filter) throws Exception {
+        result = databaseManagerInterface.searchByDate(filter);
+        return result;
+    }
 
     /*
     public void bookTour() {

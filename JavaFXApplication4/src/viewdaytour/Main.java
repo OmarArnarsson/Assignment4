@@ -8,12 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import modeldaytour.Customer;
-import modeldaytour.Tour;
-import modeldaytour.TourFilter;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedList;
 
 public class Main extends Application {
 
@@ -26,8 +20,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Daytours");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Day tours");
+        primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
     }
 

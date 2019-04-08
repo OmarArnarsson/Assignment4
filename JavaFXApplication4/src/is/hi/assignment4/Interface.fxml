@@ -47,5 +47,7 @@
       </VBox>
       <TextField fx:id="fjoldi" layoutX="329.0" layoutY="46.0" prefHeight="25.0" prefWidth="46.0" />
       <Label layoutX="329.0" layoutY="24.0" text="Fjöldi" />
+      <Button fx:id="purchaseButton" layoutX="863.0" layoutY="654.0" mnemonicParsing="false" onAction="#buttonHandler" text="Kaupa" />
+      <fx:include fx:id="kaupaPakka" source="Purchase.fxml" />
     </children>
 </AnchorPane>
