@@ -20,9 +20,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.searchController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.searchController">
    <children>
-      <HBox prefHeight="0.0" prefWidth="600.0">
+      <HBox alignment="CENTER" layoutX="3.0" layoutY="104.0" prefHeight="39.0" prefWidth="600.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" minWidth="250.0" prefWidth="200.0" text="When would you like to go?" textAlignment="CENTER">
+                     <font>
+                        <Font name="AppleGothic Regular" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <DatePicker fx:id="startTrip" minWidth="230.0" promptText="Date of trip" />
+               </children>
+               <HBox.margin>
+                  <Insets top="80.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="2.0" layoutY="28.0" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #5F9EA0;">
+         <children>
+            <Label prefHeight="40.0" text="Book your tour" textFill="WHITE">
+               <font>
+                  <Font name="AppleGothic Regular" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_CENTER" layoutX="3.0" layoutY="520.0" prefHeight="0.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="fintMyTourButton" alignment="CENTER" mnemonicParsing="false" onAction="#getFilters" style="-fx-background-color: #5F9EA0;" text="Find my tour" textFill="WHITE">
+               <font>
+                  <Font name="AppleGothic Regular" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <HBox layoutX="3.0" prefHeight="0.0" prefWidth="600.0">
          <children>
             <HBox alignment="CENTER" prefHeight="39.0" prefWidth="680.0">
                <children>
@@ -47,8 +85,9 @@
                   </MenuBar>
                </children>
             </HBox>
-         </children></HBox>
-      <HBox alignment="CENTER" layoutY="180.0" prefHeight="342.0" prefWidth="600.0">
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="3.0" layoutY="262.0" prefHeight="199.0" prefWidth="600.0">
          <children>
             <VBox alignment="CENTER" prefHeight="494.0" prefWidth="391.0">
                <children>
@@ -58,7 +97,8 @@
                      </font>
                      <VBox.margin>
                         <Insets top="35.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                  </Label>
                   <Slider fx:id="chosenPrice" max="20000.0" maxWidth="200.0" prefWidth="200.0" value="10000.0">
                      <VBox.margin>
                         <Insets bottom="20.0" top="10.0" />
@@ -75,7 +115,8 @@
                   <ChoiceBox fx:id="chosenLocation" prefWidth="150.0">
                      <VBox.margin>
                         <Insets left="40.0" />
-                     </VBox.margin></ChoiceBox>
+                     </VBox.margin>
+                  </ChoiceBox>
                   <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="192.0" text="How many persons?">
                      <font>
                         <Font name="AppleGothic Regular" size="14.0" />
@@ -95,21 +136,24 @@
                      </VBox.margin>
                      <font>
                         <Font name="AppleGothic Regular" size="14.0" />
-                     </font></CheckBox>
+                     </font>
+                  </CheckBox>
                   <CheckBox fx:id="choosePrivat" mnemonicParsing="false" prefHeight="27.0" prefWidth="276.0" text="I want a private tour">
                      <font>
                         <Font name="AppleGothic Regular" size="14.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="3.0" top="3.0" />
-                     </VBox.margin></CheckBox>
+                     </VBox.margin>
+                  </CheckBox>
                   <CheckBox fx:id="chooseTourguide" mnemonicParsing="false" prefHeight="27.0" prefWidth="277.0" text="I want a tourguide">
                      <font>
                         <Font name="AppleGothic Regular" size="14.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="3.0" top="3.0" />
-                     </VBox.margin></CheckBox>
+                     </VBox.margin>
+                  </CheckBox>
                   <Label prefHeight="20.0" prefWidth="274.0" text="Pick a tour type:">
                      <font>
                         <Font name="AppleGothic Regular" size="14.0" />
@@ -120,43 +164,6 @@
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutY="104.0" prefHeight="39.0" prefWidth="600.0">
-         <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="200.0" minWidth="250.0" prefWidth="200.0" text="When would you like to go?" textAlignment="CENTER">
-                     <font>
-                        <Font name="AppleGothic Regular" size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="15.0" />
-                     </VBox.margin>
-                  </Label>
-                  <DatePicker fx:id="startTrip" minWidth="230.0" promptText="Date of trip" />
-               </children>
-               <HBox.margin>
-                  <Insets top="80.0" />
-               </HBox.margin>
-            </VBox>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="-3.0" layoutY="726.0" prefHeight="21.0" prefWidth="600.0" />
-      <HBox alignment="CENTER" layoutX="-1.0" layoutY="28.0" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #5F9EA0;">
-         <children>
-            <Label prefHeight="40.0" text="Book your tour" textFill="WHITE">
-               <font>
-                  <Font name="AppleGothic Regular" size="36.0" />
-               </font></Label>
-         </children>
-      </HBox>
-      <HBox alignment="BOTTOM_CENTER" layoutY="470.0" prefHeight="50.0" prefWidth="600.0">
-         <children>
-            <Button fx:id="fintMyTourButton" alignment="CENTER" mnemonicParsing="false" onAction="#getFilters" style="-fx-background-color: #5F9EA0;" text="Find my tour" textFill="WHITE">
-               <font>
-                  <Font name="AppleGothic Regular" size="18.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
+      <HBox alignment="CENTER" layoutY="726.0" prefHeight="21.0" prefWidth="600.0" />
    </children>
 </AnchorPane>

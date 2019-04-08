@@ -194,9 +194,9 @@ public class SearchController{
         tourFilter.setTourType("%");
         
         LocalDate temp = this.departure;
-temp.plusDays(1L);
-System.out.print(temp);
-       /* while(temp.compareTo(this.home) < 0){
+        temp.plusDays(1L);
+        System.out.print(temp);
+       /*while(temp.compareTo(this.home) < 0){
             
             tourFilter.setTimeStart(temp+"");
             
@@ -210,12 +210,9 @@ System.out.print(temp);
             temp.plusDays(1L);
             System.out.println(temp);
         }*/
-        tourFilter.setAccessibility(false);
-        tourFilter.setGuidedTour(true);
-        tourFilter.setPrivateTour(false);
-       
-        LinkedList<Tour> lll = tourController.search(tourFilter);
-        System.out.print(lll.size());
+
+        LinkedList<Tour> lll = tourController.searchByDate(tourFilter);
+        
     }
         
     
