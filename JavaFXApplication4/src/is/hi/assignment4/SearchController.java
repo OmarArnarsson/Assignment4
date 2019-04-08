@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import modeldaytour.Tour;
 import modeldaytour.TourFilter;
+import modelflight.ConnectedFlight;
 import modelflight.SearchEngine;
 import modelflight.SearchResult;
 
@@ -70,6 +71,7 @@ public class SearchController{
         tourController = new TourController(tourDB);
 
         Hotel =  new FilterEngine();
+        
 
     }  
     
@@ -78,8 +80,22 @@ public class SearchController{
         
         //process strings
         this.processFlight();
+        
+        ArrayList <ConnectedFlight> f1 = new ArrayList<>();
         SearchResult a = flightSearchTo.findFlightCourse();
+        int alength = a.getResultCount();
+        for (int i = 0; i < alength; i++) {
+            f1.add(a.getConnectedFlight(i));
+        }
+        System.out.println(f1);
+        
+        ArrayList <ConnectedFlight> f2 = new ArrayList<>();
         SearchResult b = flightSearchBack.findFlightCourse();
+        int blength = b.getResultCount();
+        for (int i = 0; i < blength; i++) {
+            f2.add(a.getConnectedFlight(i));
+        }
+        System.out.println(f2);
         
         //leita hotel
         //this.processHotel();
@@ -90,10 +106,10 @@ public class SearchController{
         System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
         ArrayList<Tour> DT = this.processDayTours();
         // byggja pakka = a
-        PackageList Pakkar = new PackageList();
-        double low = priceRange[0];
-        double high = priceRange[1];
-        ArrayList<Package> Pakkarnir = Pakkar.buildPackage(a, b, Hotels, DT, arrLoc, depLoc, departure, home, low, high, "");
+        //PackageList Pakkar = new PackageList();
+        //double low = priceRange[0];
+        //double high = priceRange[1];
+        //ArrayList<Package> Pakkarnir = Pakkar.buildPackage(a, b, Hotels, DT, arrLoc, depLoc, departure, home, low, high, "");
         
         //skila pakka a
         
