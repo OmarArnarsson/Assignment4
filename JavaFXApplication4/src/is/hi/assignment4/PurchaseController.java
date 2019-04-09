@@ -6,6 +6,7 @@
 package is.hi.assignment4;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -122,7 +123,7 @@ public class PurchaseController implements Initializable {
 
  
     @FXML
-    private void buttonHandler(ActionEvent event) {
+    private void buttonHandler(ActionEvent event) throws SQLException {
   
         this.book.setCostumerIDsetter(kennitala.getText());
         this.book.setSeatNumber("");
@@ -149,7 +150,10 @@ public class PurchaseController implements Initializable {
         this.cleanTextFields();
         if(this.passangerCount > 0){
             createBook(this.pack, this.passangerCount);
-        }            
+        }
+        if(this.passangerCount==0){
+        //sýna confirmation
+        }
     }
     
     public void cleanTextFields(){
