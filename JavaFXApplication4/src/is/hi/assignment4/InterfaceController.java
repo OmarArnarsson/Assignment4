@@ -7,6 +7,7 @@ package is.hi.assignment4;
  */
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -15,6 +16,8 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,7 +25,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -34,6 +39,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.PickResult;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -89,8 +95,8 @@ public class InterfaceController implements Initializable {
     private CheckBox check30;
     @FXML
     private CheckBox check80;
-
-    private PurchaseController purchaseController;
+    @FXML
+    private PurchaseController AnchorController;
 
     
     /**
@@ -102,6 +108,7 @@ public class InterfaceController implements Initializable {
         list = new PackageList();
         this.listaVal();
         this.synaAllt.setSelected(true);
+       
         
     }
 
@@ -240,9 +247,9 @@ public class InterfaceController implements Initializable {
     @FXML
     private void purchaseHandler(ActionEvent event) {
          
-        if(virkurIndex!=-1){
-            System.out.print(sc.getResultNr(virkurIndex).price);
-            this.purchaseController.createBook(sc.getResultNr(virkurIndex));
+        if(virkurIndex!=-1){      
+            this.AnchorController.createBook(sc.getResultNr(virkurIndex));
+         
         }
     }
 

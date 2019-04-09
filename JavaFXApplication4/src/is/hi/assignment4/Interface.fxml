@@ -9,6 +9,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="Grunnur" prefHeight="693.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.hi.assignment4.InterfaceController">
     <children>
+      <fx:include fx:id="Anchor" source="Purchase.fxml" />
       <Button fx:id="button" layoutX="329.0" layoutY="98.0" mnemonicParsing="false" onAction="#buttonHandler" text="Leita">
          <font>
             <Font name="DejaVu Sans Mono Bold" size="13.0" />
@@ -39,7 +40,6 @@
             <CheckBox fx:id="checkOver" mnemonicParsing="false" onAction="#checkOverHandler" text="80000kr+" />
          </children>
       </VBox>
-      <fx:include fx:id="purchController" source="Purchase.fxml" />
       <VBox layoutX="41.0" layoutY="374.0" prefHeight="163.0" prefWidth="123.0" spacing="15.0">
          <children>
             <Label text="Týpa" />
@@ -51,7 +51,6 @@
       <TextField fx:id="fjoldi" layoutX="329.0" layoutY="46.0" prefHeight="25.0" prefWidth="46.0" />
       <Label layoutX="329.0" layoutY="24.0" text="Fjöldi" />
       <Button fx:id="purchaseButton" layoutX="863.0" layoutY="654.0" mnemonicParsing="false" onAction="#purchaseHandler" text="Kaupa" />
-      <fx:include fx:id="kaupaPakka" source="Purchase.fxml" />
       <CheckBox fx:id="almennt" layoutX="41.0" layoutY="565.0" mnemonicParsing="false" onAction="#almenntHandler" text="Almennt farrými" />
       <CheckBox fx:id="saga" layoutX="41.0" layoutY="593.0" mnemonicParsing="false" onAction="#sagaHandler" text="Fyrsta farrými" />
       <Label layoutX="43.0" layoutY="537.0" text="Farrými" />

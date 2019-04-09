@@ -105,9 +105,6 @@ public class PackageList {
     public ArrayList<Tour>  filterType(ArrayList<Tour> a, boolean menning, boolean skodun, boolean adv){
         ArrayList<Tour> nList = new ArrayList<Tour>();
         System.out.println(menning+" "+skodun+" "+adv);    
-        System.out.println("Type OF DT: "+a.get(0).getTourType()+"  "+a.get(0).getTourName());
-        System.out.println("Type OF DT: "+a.get(1).getTourType()+"  "+a.get(1).getTourName());
-        System.out.println("Type OF DT: "+a.get(2).getTourType()+"  "+a.get(2).getTourName());
         if(menning && skodun && adv || !menning && !skodun && !adv){
             return a;
         }

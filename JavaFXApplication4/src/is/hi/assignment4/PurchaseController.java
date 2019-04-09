@@ -14,8 +14,15 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import java.util.Calendar;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 
 /**
@@ -42,11 +49,13 @@ public class PurchaseController implements Initializable {
     @FXML
     private DatePicker birthday;
     
-    
-    private Bookingmain book;
     @FXML
     private AnchorPane Anchor;
+    @FXML
+    private TextField land;
 
+        
+    private Bookingmain book;
     /**
      * Initializes the controller class.
      */
@@ -54,35 +63,50 @@ public class PurchaseController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
      
     }    
-
-    /*    @FXML*/
-    /*    private void buttonHandler(ActionEvent event) {
-    this.book.setCostumerIDsetter(kennitala.getText());
-    this.book.setSeatNumber("");
-    this.book.setBaggage(Integer.parseInt(baggage.getText()));
-    this.book.setFirstName(Fornafn.getText());
-    this.book.setLastName(Eftirnafn.getText());
-    this.book.setemail(email.getText());
+  
     
-    LocalDate leit = birthday.getValue();
-    int dagur = leit.getDayOfMonth();
-    int man = leit.getMonthValue();
-    int ar = leit.getYear();
-    
-    Calendar afmaeli = Calendar.getInstance();
-    afmaeli.set(ar, man, dagur);
-    
-    this.book.setBirthDay(afmaeli);
-    this.book.setPassportNumber(passportnum.getText());
-    this.book.setPhoneNumber(phone.getText());
-    this.book.makeBookings();
-    }*/
     public void createBook(Package pack){
-        DialogPane p= new DialogPane();
+
+        this.book = new Bookingmain(pack);
         Anchor.setVisible(true);
-        p.setContent(Anchor);
-        this.book= new Bookingmain(pack);
-        System.out.print(pack.price);
+
+        StackPane secondaryLayout = new StackPane();
+        secondaryLayout.getChildren().add(Anchor);
+ 
+        Scene secondScene = new Scene(secondaryLayout, 500, 300);
+ 
+                // New window (Stage)
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Second Stage");
+        newWindow.setScene(secondScene);
+        newWindow.show();
+     
+    }
+
+ 
+    @FXML
+    private void buttonHandler(ActionEvent event) {
+  
+        this.book.setCostumerIDsetter(kennitala.getText());
+        this.book.setSeatNumber("");
+        this.book.setBaggage(Integer.parseInt(baggage.getText()));
+        this.book.setFirstName(Fornafn.getText());
+        this.book.setLastName(Eftirnafn.getText());
+        this.book.setemail(email.getText());
+
+        LocalDate leit = birthday.getValue();
+        int dagur = leit.getDayOfMonth();
+        int man = leit.getMonthValue();
+        int ar = leit.getYear();
+    
+        Calendar afmaeli = Calendar.getInstance();
+        afmaeli.set(ar, man, dagur);
+    
+        this.book.setBirthDay(afmaeli);
+        this.book.setNationality(land.getText());
+        this.book.setPassportNumber(passportnum.getText());
+        this.book.setPhoneNumber(phone.getText());
+        this.book.makeBookings();
     }
     
 }
