@@ -13,9 +13,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import java.util.Calendar;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -60,12 +63,39 @@ public class PurchaseController implements Initializable {
     private Stage newWindow;
     private Package pack;
     private int passangerCount;
+    @FXML
+    private Button panta;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     
+        BooleanBinding fornafnValid = Bindings.createBooleanBinding(() -> {
+            return this.Fornafn.getText().isEmpty();
+        }, this.Fornafn.textProperty());
+        BooleanBinding eftirnafnValid = Bindings.createBooleanBinding(() -> {
+            return this.Eftirnafn.getText().isEmpty();
+        }, this.Eftirnafn.textProperty());
+        BooleanBinding baggageValid = Bindings.createBooleanBinding(() -> {
+            return this.baggage.getText().isEmpty();
+        }, this.baggage.textProperty());
+        BooleanBinding birthDayValid = Bindings.createBooleanBinding(() -> {
+            return this.birthday.getEditor().getText().isEmpty();
+        }, this.birthday.getEditor().textProperty());
+        BooleanBinding emailValid = Bindings.createBooleanBinding(() -> {
+            return this.email.getText().isEmpty();
+        }, this.email.textProperty());
+        BooleanBinding kennitalaValid = Bindings.createBooleanBinding(() -> {
+            return this.kennitala.getText().isEmpty();
+        }, this.kennitala.textProperty());
+        BooleanBinding landValid = Bindings.createBooleanBinding(() -> {
+            return this.land.getText().isEmpty();
+        }, this.land.textProperty());
+        BooleanBinding passportValid = Bindings.createBooleanBinding(() -> {
+            return this.passportnum.getText().isEmpty();
+        }, this.passportnum.textProperty());
+
+        panta.disableProperty().bind(fornafnValid.or(eftirnafnValid.or(baggageValid.or(birthDayValid.or(emailValid.or(kennitalaValid.or(landValid.or(passportValid))))))));
     }    
   
     
@@ -116,12 +146,22 @@ public class PurchaseController implements Initializable {
         this.book.makeBookings();
         newWindow.hide();
         this.passangerCount--;
-        System.out.print(this.passangerCount);
+        this.cleanTextFields();
         if(this.passangerCount > 0){
             createBook(this.pack, this.passangerCount);
-        }
-        
-       
+        }            
     }
     
+    public void cleanTextFields(){
+       
+        this.Fornafn.setText("");
+        this.passportnum.setText("");
+        this.Eftirnafn.setText("");
+        this.email.setText("");
+        this.kennitala.setText("");
+        this.phone.setText("");
+        this.baggage.setText("");
+        this.birthday.setValue(null);
+        this.land.setText("");
+    }
 }

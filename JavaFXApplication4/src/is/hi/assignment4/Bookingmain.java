@@ -45,8 +45,8 @@ public class Bookingmain {
     }
     
     public void makeBookings(){
-        this.flightBooking1 = new ConnectedBooking(this.pack.f1);
-        this.flightBooking2 = new ConnectedBooking(this.pack.f2);
+        this.flightBooking1 = new ConnectedBooking(this.pack.getFlightTo());
+        this.flightBooking2 = new ConnectedBooking(this.pack.getFlightBack());
         this.traveller= new Traveller(this.firstName, this.birthday, this.nationality,this.passportNumber, this.email, this.phoneNumber);
     }
 

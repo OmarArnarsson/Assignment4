@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import modeldaytour.Customer;
 import modeldaytour.Payment;
@@ -22,9 +23,11 @@ public class searchController {
     public CheckBox chooseTourguide;
     public DatePicker startTrip;
     public ChoiceBox chosenLocation;
-    public Button fintMyTourButton;
+    public Button findMyTourButton;
     public Slider chosenGroupSize;
     public ChoiceBox chosenTourType;
+    public Label currentPrice;
+    public Label currentGroupSize;
 
 
     public void getFilters(ActionEvent actionEvent) throws Exception {
@@ -41,7 +44,7 @@ public class searchController {
         customer.filter.setTourType(chosenTourType.getValue().toString());
 
         // using db created in Main
-        LinkedList<Tour> result = Main.db.selectTours(customer.filter);
+        LinkedList<Tour> result = Main.db.searchByDate(customer.filter);
 
         // using tourController created in Main
         Main.tourController.result = result;
@@ -56,7 +59,7 @@ public class searchController {
             System.out.println("No seats left");
         }
 
-        setupNextPage();
+        //setupNextPage();
     }
 
     // activated on window onload
@@ -70,12 +73,27 @@ public class searchController {
                 "Bus Tour", "Car Ride", "Adventure", "Bar Crawl", "Food Tour", "Jeep Ride", "Beer Tour"));
     }
 
+    public void currentPriceHandler(MouseEvent mouseEvent) {
+    }
+
+    /*public void currentPriceHandler(MouseEvent mouseEvent) {
+        currentPrice.setText("New value: ");
+    }*/
+/*
+    public void currentPriceHandler(ObservableValue<? extends Number> observable, //
+                        Number oldValue, Number newValue) {
+
+        currentPrice.setText("New value: " + newValue);
+    }*/
+
     private void setupNextPage() throws Exception {
        /* Parent resultView = FXMLLoader.load(getClass().getResource("view/searchResults.fxml"));
         Scene sceneResult = new Scene(resultView);
         Stage window = new Stage();
         window.setScene(sceneResult);
         window.show();*/
+
+
     }
 
 }

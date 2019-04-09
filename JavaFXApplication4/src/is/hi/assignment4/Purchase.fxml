@@ -26,7 +26,7 @@
       <Label layoutX="247.0" layoutY="14.0" text="Vegabréfsnúmer" />
       <Label layoutX="247.0" layoutY="66.0" text="Fjöldi farangurstaska" />
       <DatePicker fx:id="birthday" layoutX="247.0" layoutY="131.0" prefHeight="25.0" prefWidth="171.0" promptText="01-01-1992" />
-      <Button layoutX="269.0" layoutY="233.0" mnemonicParsing="false" onAction="#buttonHandler" text="Panta" />
+      <Button fx:id="panta" layoutX="269.0" layoutY="233.0" mnemonicParsing="false" onAction="#buttonHandler" text="Panta" />
       <TextField fx:id="land" layoutX="247.0" layoutY="181.0" promptText="Island" />
       <Label layoutX="247.0" layoutY="166.0" text="Fæðingarland" />
    </children>

@@ -2,18 +2,17 @@ package modeldaytour;
 
 public class Customer {
 
-    public String customerId;
-    public String firstName;
-    public String lastName;
-    public String email;
-    public String mobile;
+    private String customerId;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String mobile;
     public TourFilter filter; // search criteria from customer to be looked for in the db
-    public int tourId;        // id of the tour that the customer chooses
-    public BookingD booking;   // booking for the customer
+    private int tourId;        // id of the tour that the customer chooses
+    private BookingD booking;   // booking for the customer
 
     public Customer() {
         filter = new TourFilter();
-        booking = new BookingD();
     }
 
     // GETTERS --------------------------------------------------------------------------------------------
