@@ -98,7 +98,6 @@ public class SearchController{
         
         //process strings
         this.processFlight();
-        System.out.print(this.priceRange[0]+"  pR   "+this.priceRange[1]);
         ArrayList <ConnectedFlight> f1 = new ArrayList<>();
         SearchResult a = flightSearchTo.findFlightCourse();
         int alength = a.getResultCount();
@@ -130,7 +129,6 @@ public class SearchController{
 
         double low = this.priceRange[0];
         double high = this.priceRange[1];
-        System.out.print("áður en BUILD :"+this.priceRange[0]+"   "+this.priceRange[1]);
         ArrayList<Package> Pakkarnir = Pakkar.buildPackage(f1, f2, Hotels, DT, low, high, this.menning, this.adventure, this.skodunarferdir, this.economy, this.departure, this.home);
         
       
@@ -191,7 +189,6 @@ public class SearchController{
         flightSearchBack.setArrLocation(this.depLoc);
         flightSearchBack.setFlexibility(0);
         
-        System.out.println("DS"+this.priceRange[0]+"BOOM");
         
     }
       
@@ -284,7 +281,6 @@ public class SearchController{
             this.priceRange[0] = 150001;
             this.priceRange[1] = 9999999;
         }
-        System.out.print(this.priceRange[0]+"   "+this.priceRange[1]+" PRICERANGE");
     }
     
     public void setMenning(boolean a){

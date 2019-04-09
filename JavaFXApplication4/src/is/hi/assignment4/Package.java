@@ -57,9 +57,12 @@ public class Package {
          
          public String toString(){
              String verd = "Verð: "+this.getPrice();
+             String dags = ""+this.d.getTimeStart();
+             dags = dags.substring(0, 10);
              verd = verd.substring(0, verd.length()-2);
              String pakki = "Áfangastaður "+this.f1.toString() +"\n"+"\n"+
-                           "Dagferð: "+this.d.getTourName() + "\n"+"\n"+
+                           "Dagferð: "+this.d.getTourName() + "\n"+
+                           "Dagsetning: "+dags+"\n"+"\n"+
                            "Hotel: "+this.h.getName() + "\n"+"\n"+
                            "Heim "+this.f2.toString() + "\n"+"\n"+
                             verd +

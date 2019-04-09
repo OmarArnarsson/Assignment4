@@ -37,6 +37,7 @@
             <CheckBox fx:id="checkOver" mnemonicParsing="false" onAction="#checkOverHandler" text="150000kr +" />
          </children>
       </VBox>
+      <fx:include fx:id="purchController" source="Purchase.fxml" />
       <VBox layoutX="41.0" layoutY="374.0" prefHeight="163.0" prefWidth="123.0" spacing="15.0">
          <children>
             <Label text="Týpa" />
