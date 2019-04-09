@@ -33,7 +33,7 @@ public class Package {
         }  
         
         public void setPrice(double f1, double f2, double h, double d){
-            this.price = f1+f2+d+h;
+            this.price =f1+f2+d+h;
         }
         
         public Double getPrice(){
@@ -56,11 +56,13 @@ public class Package {
         }
          
          public String toString(){
-             String pakki = "Áfangastaður "+this.f1.toString() +"\n"+
-                           "Dagferð: "+this.d.getTourName() + "\n"+
-                           "Hotel: "+this.h.getName() + "\n"+
-                           "Heim "+this.f2.toString() + "\n"+
-                           "Verð: "+this.getPrice()+
+             String verd = "Verð: "+this.getPrice();
+             verd = verd.substring(0, verd.length()-2);
+             String pakki = "Áfangastaður "+this.f1.toString() +"\n"+"\n"+
+                           "Dagferð: "+this.d.getTourName() + "\n"+"\n"+
+                           "Hotel: "+this.h.getName() + "\n"+"\n"+
+                           "Heim "+this.f2.toString() + "\n"+"\n"+
+                            verd +
                             "\n" + "___________________________________________________"+
                             "\n";
              

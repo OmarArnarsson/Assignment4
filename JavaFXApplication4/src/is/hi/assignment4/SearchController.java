@@ -56,13 +56,14 @@ public class SearchController{
     private String depLoc1;
     private String arrLoc1;
     
+    private boolean economy=true;
+    
     private LocalDate departure;
     private LocalDate home;
 
-    private ArrayList<Package> listinn;
     
     private int count;
-    
+    private PackageList Pakkar;
     
     public SearchController(){
         
@@ -75,7 +76,7 @@ public class SearchController{
         tourController = new TourController(tourDB);
 
         Hotel =  new FilterEngine();
-
+        Pakkar = new PackageList();
      
         
 
@@ -83,10 +84,14 @@ public class SearchController{
     
     
     public void setList(ArrayList<Package> a){
-          this.listinn = a;
+          Pakkar.setList(a);
        }
     public Package getResultNr(int i){
-        return this.listinn.get(i);
+        return Pakkar.getResultNr(i);
+    }
+    
+    public void setEconomy(boolean a){
+        this.economy=a;
     }
     
     public ArrayList<Package> getResults() throws SQLException, CloneNotSupportedException, Exception{
@@ -122,14 +127,12 @@ public class SearchController{
         // byggja pakka = a
 
 
-        PackageList Pakkar = new PackageList();
+
         double low = this.priceRange[0];
         double high = this.priceRange[1];
-
-        ArrayList<Package> Pakkarnir = Pakkar.buildPackage(f1, f2, Hotels, DT, low, high, this.menning, this.adventure, this.skodunarferdir);
-        System.out.println(f1.get(1).getTotalEconomyPrice());
-         System.out.println(f2.get(1).getTotalEconomyPrice());
-    
+        System.out.print("áður en BUILD :"+this.priceRange[0]+"   "+this.priceRange[1]);
+        ArrayList<Package> Pakkarnir = Pakkar.buildPackage(f1, f2, Hotels, DT, low, high, this.menning, this.adventure, this.skodunarferdir, this.economy, this.departure, this.home);
+        
       
 
         //PackageList Pakkar = new PackageList();
@@ -149,8 +152,12 @@ public class SearchController{
         flightSearchTo.setPassangerCount(this.count);
         
         
-     
+        if(!this.economy){
+            flightSearchTo.setEconomy(false);
+        }
+        else {
             flightSearchTo.setEconomy(true);
+        }
         
         flightSearchTo.setDepLocation(this.depLoc);
 
@@ -166,9 +173,12 @@ public class SearchController{
         
         //flight home
         flightSearchBack.setPassangerCount(this.count);
-        System.out.print("SJRRRRr");
-    
+
+        if(!this.economy)
+            flightSearchBack.setEconomy(false);
+        else{
             flightSearchBack.setEconomy(true);
+       }
         
         flightSearchBack.setDepLocation(this.arrLoc);
 
@@ -235,6 +245,7 @@ public class SearchController{
         this.tourDB = new DatabaseManager();
         this.tourFilter = new TourFilter();
         this.tourController = new TourController(this.tourDB);
+        Pakkar = new PackageList();
     }
     public void setCount(int a){
         this.count = a;
@@ -273,6 +284,7 @@ public class SearchController{
             this.priceRange[0] = 150001;
             this.priceRange[1] = 9999999;
         }
+        System.out.print(this.priceRange[0]+"   "+this.priceRange[1]+" PRICERANGE");
     }
     
     public void setMenning(boolean a){

@@ -23,6 +23,6 @@
       <Label layoutX="247.0" layoutY="14.0" text="Vegabréfsnúmer" />
       <Label layoutX="247.0" layoutY="66.0" text="Fjöldi farangurstaska" />
       <DatePicker fx:id="birthday" layoutX="247.0" layoutY="131.0" prefHeight="25.0" prefWidth="171.0" promptText="01-01-1992" />
-      <Button layoutX="269.0" layoutY="233.0" mnemonicParsing="false" text="Panta" />
+      <Button layoutX="269.0" layoutY="233.0" mnemonicParsing="false" onAction="#buttonHandler" text="Panta" />
    </children>
 </AnchorPane>

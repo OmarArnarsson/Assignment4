@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import java.util.Calendar;
+import javafx.event.ActionEvent;
 
 
 /**
@@ -45,7 +46,13 @@ public class PurchaseController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       /* Bookingmain book = new Bookingmain();
+     
+    }    
+
+    @FXML
+    private void buttonHandler(ActionEvent event) {
+        System.out.print("BibbiKjellll");
+     /* Bookingmain book = new Bookingmain();
         book.setCostumerIDsetter(kennitala.getText());
         book.setSeatNumber("");
         book.setBaggage(Integer.parseInt(baggage.getText()));
@@ -64,7 +71,6 @@ public class PurchaseController implements Initializable {
         book.setBirthDay(afmaeli);
         book.setPassportNumber(passportnum.getText());
         book.setPhoneNumber(phone.getText());*/
-        
-    }    
+    }
     
 }

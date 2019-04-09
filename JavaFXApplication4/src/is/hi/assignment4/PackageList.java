@@ -6,6 +6,8 @@
 package is.hi.assignment4;
 
 import hotelStuff.Hotel;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import modelflight.ConnectedFlight;
@@ -18,7 +20,7 @@ import modeldaytour.Tour;
 public class PackageList {
     
     private ArrayList<Package> listinn;
-    
+  
     
     public PackageList(){
         this.listinn = new ArrayList<Package>();
@@ -32,22 +34,27 @@ public class PackageList {
                                             Double priceHigh,
                                             boolean menning,
                                             boolean adv,
-                                            boolean skodun)
+                                            boolean skodun,
+                                            boolean economy,
+                                            LocalDate toDate,
+                                            LocalDate homeDate)
     {
   
         if(f1.isEmpty() || f2.isEmpty() || h.isEmpty() || d.isEmpty()){
             System.out.println("No packages available");
-            return null;
+            return new ArrayList<Package>();
         }
         else {
-            System.out.println("before daytour and type filtering: " +d.size());
             System.out.print(d.size());
-            System.out.println("After daytour and type filtering: " +d.size());
             filterType(d, menning, skodun, adv);
+            System.out.println("Befor:"+ f1.size());
+            checkFlight(f1,toDate);
+             System.out.println("After:"+ f1.size());
+            checkFlight(f2,homeDate);
             System.out.print(d.size());
-            if(d.isEmpty()){
+            if(d.isEmpty() || f1.isEmpty() || f2.isEmpty()){
                 System.out.println("No packages available");
-                return null;
+                return new ArrayList<Package>();
             }
             ArrayList<Package> a = new ArrayList<Package>();
       
@@ -62,8 +69,18 @@ public class PackageList {
                     for(int k = 0; k<h.size(); k++){
                         for(int l = 0; l<d.size(); l++){
                             Package pack = new Package(f1.get(j),f2.get(i), d.get(l), h.get(k));
-                            pack.setPrice(pack.getFlightTo().getTotalEconomyPrice(), pack.getFlightBack().getTotalEconomyPrice(),0.0, pack.d.getPrice());
-                            a.add(pack);     
+                            double priceF1;
+                            double priceF2;
+                            if(economy){
+                                priceF1 = pack.getFlightTo().getTotalEconomyPrice();
+                                priceF2 = pack.getFlightBack().getTotalEconomyPrice();
+                            }
+                            else {
+                                priceF1 = pack.getFlightTo().getTotalBusinessPrice();
+                                priceF2 = pack.getFlightBack().getTotalBusinessPrice();
+                            }
+                            pack.setPrice(priceF2, priceF1,h.get(i).getPricerange(), pack.d.getPrice());
+                            a.add(pack);  
                         }
                     }
                 }
@@ -79,6 +96,12 @@ public class PackageList {
         
     }
     
+    public void setList(ArrayList<Package> a){
+        this.listinn = a;
+    }
+    public Package getResultNr(int i){
+        return this.listinn.get(i);
+    }
 
     public void filterType(ArrayList<Tour> a, boolean menning, boolean skodun, boolean adv){
         System.out.print(menning+" "+skodun+" "+adv);
@@ -143,24 +166,30 @@ public class PackageList {
     public void filterPrice(ArrayList<Package> a, Double priceLow, Double priceHigh){
         int size = a.size();
         for(int i = size-1; i>=0; i--){
-            if(a.get(i).getPrice() < priceHigh && a.get(i).getPrice() >= priceLow ){ 
+            if(!(a.get(i).getPrice() < priceHigh && a.get(i).getPrice() >= priceLow)){ 
                  a.remove(i);    
             }
         }
 
     }
     
- /*   // Að neðan færum við mögulega yfir í search
-    public void checkFlight(ArrayList<ConnectedFlight> f){
+    // Að neðan færum við mögulega yfir í search
+    public void checkFlight(ArrayList<ConnectedFlight> f, LocalDate d){
         for(int i = f.size()-1; i>=0; i--){
-                if(!f.get(i).getFlight(i).getFlightNumber().equals(i)){//)|| !f.get(i).getDepDate.equals(depDate)
-                  // || !f.get(i).arrLocation.equals( dest)   ){   
-                     System.out.println(f.get(i).getFlight(i).getArrDate()+"    "+depDate);
-                     f.remove(i);          
-                }                 
-            }
+                Calendar lastArrTime = f.get(i).getLastArrTime();
+                
+                lastArrTime.get(Calendar.DAY_OF_MONTH);
+                String date = d+"";
+                date = date.substring(8, 10);
+                int compare = Integer.parseInt(date);
+                if( !(lastArrTime.get(Calendar.DAY_OF_MONTH) == compare)){
+                    f.remove(i);    
+                }
+                
+            }                
+            
     }
-    
+    /*
     public void checkHotel(ArrayList<Hotel> h, Calendar go, Calendar home){
           for(int i = h.size()-1; i>=0; i--){
                 if(h.get(i).timeStart.compareTo(go) != 0 || h.get(i).timeEnd.compareTo(home) != 0 ){

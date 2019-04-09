@@ -82,6 +82,10 @@ public class InterfaceController implements Initializable {
 
     private SearchController sc;
     private PackageList list;
+    @FXML
+    private CheckBox almennt;
+    @FXML
+    private CheckBox saga;
 
     
     /**
@@ -98,13 +102,15 @@ public class InterfaceController implements Initializable {
     @FXML
     private void buttonHandler(ActionEvent event) throws SQLException, CloneNotSupportedException, Exception {
         
-        boolean all = !this.check50.isSelected() && !this.check100.isSelected() && !this.check150.isSelected() && !this.checkOver.isSelected() ;
+       
+        sc.resetEngines();
+        
+         boolean all = !this.check50.isSelected() && !this.check100.isSelected() && !this.check150.isSelected() && !this.checkOver.isSelected() ;
                       
         sc.setPriceRange(this.check50.isSelected(), this.check100.isSelected(), 
                          this.check150.isSelected(), this.checkOver.isSelected(),
                          all);
-        
-        sc.resetEngines();
+
 
         sc.setCount(Integer.parseInt(fjoldi.getText()));
         sc.setDepLoc(leit.getText());
@@ -253,7 +259,26 @@ public class InterfaceController implements Initializable {
         if(virkurIndex!=-1){
             sc.getResultNr(virkurIndex);
             System.out.print(sc.getResultNr(virkurIndex).getPrice());
+            
         }
+    }
+
+    @FXML
+    private void almenntHandler(ActionEvent event) {
+        if(almennt.isSelected()){
+            sc.setEconomy(true);
+            saga.setDisable(true);
+        }
+        else saga.setDisable(false);
+    }
+
+    @FXML
+    private void sagaHandler(ActionEvent event) {
+         if(saga.isSelected()){
+            sc.setEconomy(false);
+            almennt.setDisable(true);
+        }
+        else almennt.setDisable(false);
     }
 
    
