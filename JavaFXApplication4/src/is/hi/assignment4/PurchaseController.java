@@ -56,6 +56,10 @@ public class PurchaseController implements Initializable {
 
         
     private Bookingmain book;
+    private Scene secondScene;
+    private Stage newWindow;
+    private Package pack;
+    private int passangerCount;
     /**
      * Initializes the controller class.
      */
@@ -65,21 +69,24 @@ public class PurchaseController implements Initializable {
     }    
   
     
-    public void createBook(Package pack){
-
+    public void createBook(Package pack, int count){
+        
+        this.pack = pack;
+        this.passangerCount = count;
         this.book = new Bookingmain(pack);
         Anchor.setVisible(true);
 
         StackPane secondaryLayout = new StackPane();
         secondaryLayout.getChildren().add(Anchor);
  
-        Scene secondScene = new Scene(secondaryLayout, 500, 300);
+        secondScene = new Scene(secondaryLayout, 500, 300);
  
                 // New window (Stage)
-        Stage newWindow = new Stage();
+        newWindow = new Stage();
         newWindow.setTitle("Second Stage");
         newWindow.setScene(secondScene);
         newWindow.show();
+        
      
     }
 
@@ -107,6 +114,14 @@ public class PurchaseController implements Initializable {
         this.book.setPassportNumber(passportnum.getText());
         this.book.setPhoneNumber(phone.getText());
         this.book.makeBookings();
+        newWindow.hide();
+        this.passangerCount--;
+        System.out.print(this.passangerCount);
+        if(this.passangerCount > 0){
+            createBook(this.pack, this.passangerCount);
+        }
+        
+       
     }
     
 }

@@ -248,7 +248,8 @@ public class InterfaceController implements Initializable {
     private void purchaseHandler(ActionEvent event) {
          
         if(virkurIndex!=-1){      
-            this.AnchorController.createBook(sc.getResultNr(virkurIndex));
+            this.AnchorController.createBook(sc.getResultNr(virkurIndex), Integer.parseInt(this.fjoldi.getText()));
+            System.out.print(this.fjoldi.getText());
          
         }
     }
