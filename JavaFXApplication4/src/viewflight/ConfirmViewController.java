@@ -10,7 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import modelflight.Booking;
+import modelflight.BookingF;
 import modelflight.ConnectedBooking;
 
 import java.util.Set;
@@ -32,9 +32,9 @@ public class ConfirmViewController {
     @FXML
     private Text nationality;
     @FXML
-    private ListView<Booking> listView;
+    private ListView<BookingF> listView;
 
-    ObservableList<Booking> observableList = FXCollections.observableArrayList();
+    ObservableList<BookingF> observableList = FXCollections.observableArrayList();
 
     ConfirmViewController() {
 
@@ -54,9 +54,9 @@ public class ConfirmViewController {
 
         System.out.println(observableList.size());
 
-        listView.setCellFactory(param -> new ListCell<Booking>() {
+        listView.setCellFactory(param -> new ListCell<BookingF>() {
             @Override
-            protected void updateItem(Booking item, boolean empty) {
+            protected void updateItem(BookingF item, boolean empty) {
                 super.updateItem(item, empty);
 
                 if (empty || item == null) {

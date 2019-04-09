@@ -121,6 +121,7 @@ public class SearchController{
         ArrayList<Tour> DT = this.processDayTours();
         // byggja pakka = a
 
+
         PackageList Pakkar = new PackageList();
         double low = this.priceRange[0];
         double high = this.priceRange[1];
@@ -130,6 +131,13 @@ public class SearchController{
          System.out.println(f2.get(1).getTotalEconomyPrice());
     
       
+
+        //PackageList Pakkar = new PackageList();
+        //double low = priceRange[0];
+        //double high = priceRange[1];
+        //ArrayList<Package> Pakkarnir = Pakkar.buildPackage(a, b, Hotels, DT, arrLoc, depLoc, departure, home, low, high, "");
+
+
         
         //skila pakka a
         

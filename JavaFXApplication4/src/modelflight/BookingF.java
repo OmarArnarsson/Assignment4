@@ -3,7 +3,7 @@ package modelflight;
 import java.util.*;
 import java.nio.charset.*;
 
-public class Booking {
+public class BookingF {
 
     private Flight flight;
     private String seatNumber;
@@ -11,14 +11,14 @@ public class Booking {
     private Double price;
     private String bookingID;
 
-    public Booking(Flight _flight, String _seatNumber, Integer _baggage, Double _price ) {
+    public BookingF(Flight _flight, String _seatNumber, Integer _baggage, Double _price ) {
         flight = _flight;
         price = _price;
         seatNumber = _seatNumber;
         baggage = _baggage;
         price = _price;
     }
-    public Booking() {
+    public BookingF() {
     }
 
     public void changePrice(Double newPrice) {

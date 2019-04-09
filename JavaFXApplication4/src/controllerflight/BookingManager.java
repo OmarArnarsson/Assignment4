@@ -2,7 +2,7 @@ package controllerflight;
 
 import modelflight.Traveller;
 import modelflight.Flight;
-import modelflight.Booking;
+import modelflight.BookingF;
 import modelflight.ConnectedBooking;
 import modelflight.ConnectedFlight;
 
@@ -67,13 +67,13 @@ public class BookingManager {
 
     }
 
-    public void changeBooking(Booking _newBooking, Booking _oldBooking){
+    public void changeBooking(BookingF _newBooking, BookingF _oldBooking){
 
     }
-    public void changeSeat(Boolean economy, int row, String seat, Booking booking ){
+    public void changeSeat(Boolean economy, int row, String seat, BookingF booking ){
 
     }
-    public void changeBaggage(int bagCount, Booking booking){
+    public void changeBaggage(int bagCount, BookingF booking){
         booking.setBaggage(bagCount);
     }
 
@@ -100,10 +100,10 @@ public class BookingManager {
 
     //Setja inn sætaNR og flug og fjöldi bags
     public void makeBooking(String seatnum, Flight flight, int numBaggage){
-        Booking booking = new Booking(flight, seatnum, numBaggage, flight.getPrice(true));
+        BookingF booking = new BookingF(flight, seatnum, numBaggage, flight.getPrice(true));
         addBooking(booking);
     }
-    public void addBooking(Booking booking){
+    public void addBooking(BookingF booking){
         connectedBooking.addBooking(booking);
     }
 

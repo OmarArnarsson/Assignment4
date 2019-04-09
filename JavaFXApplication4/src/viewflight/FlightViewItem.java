@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import modelflight.Booking;
+import modelflight.BookingF;
 
 import java.io.IOException;
 
@@ -31,7 +31,7 @@ public class FlightViewItem
         }
     }
 
-    public void setInfo(Booking item)
+    public void setInfo(BookingF item)
     {
         String firstLine = "Frá: " + item.getFlight().getDepLocation() + " til: " + item.getFlight().getArrLocation() +
                 " Kl.: " + item.getFlight().getDepDate().getTime();

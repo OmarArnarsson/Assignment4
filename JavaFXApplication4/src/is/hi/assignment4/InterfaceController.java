@@ -72,8 +72,14 @@ public class InterfaceController implements Initializable {
     private ListView<Package> listinn;
     @FXML
     private TextField fjoldi;
+
         
     private int virkurIndex = -1;
+
+    @FXML
+    private Button purchaseButton;
+    
+
     private SearchController sc;
     private PackageList list;
 
@@ -241,14 +247,15 @@ public class InterfaceController implements Initializable {
             sc.setSkodunar(false);
     }
 
-   
-
     @FXML
     private void purchaseHandler(ActionEvent event) {
-        
+         
         if(virkurIndex!=-1){
             sc.getResultNr(virkurIndex);
+            System.out.print(sc.getResultNr(virkurIndex).getPrice());
         }
     }
-    
+
+   
+
 }
