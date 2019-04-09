@@ -62,6 +62,8 @@ public class Bookingmain {
         this.flightBooking1.confirmBooking();
         this.flightBooking2.confirmBooking();
 
+        this.dtBooking=new BookingD(this.pack.getTour(),this.costumerID);
+
     }
 
 
