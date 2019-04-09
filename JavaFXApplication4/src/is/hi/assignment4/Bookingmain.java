@@ -40,9 +40,9 @@ public class Bookingmain {
 
 
 
-    public Bookingmain(Package pack){
+    /*public Bookingmain(Package pack){
         this.pack =pack;
-    }
+    }*/
     
     public void makeBookings(){
         this.flightBooking1 = new ConnectedBooking(this.pack.f1);

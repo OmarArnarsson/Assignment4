@@ -6,11 +6,13 @@
 package is.hi.assignment4;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import java.util.Calendar;
 
 
 /**
@@ -37,14 +39,32 @@ public class PurchaseController implements Initializable {
     @FXML
     private DatePicker birthday;
     
-    private book = new Bookingmain<pack>();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        book = new Bookingmain();
+        Bookingmain book = new Bookingmain();
+        book.setCostumerIDsetter(kennitala.getText());
+        book.setSeatNumber("");
+        book.setBaggage(Integer.parseInt(baggage.getText()));
+        book.setFirstName(Fornafn.getText());
+        book.setLastName(Eftirnafn.getText());
+        book.setemail(email.getText());
+        
+        LocalDate leit = birthday.getValue();
+        int dagur = leit.getDayOfMonth();
+        int man = leit.getMonthValue();
+        int ar = leit.getYear();
+        
+        Calendar afmaeli = Calendar.getInstance();
+        afmaeli.set(ar, man, dagur);
+        
+        book.setBirthDay(afmaeli);
+        book.setPassportNumber(passportnum.getText());
+        book.setPhoneNumber(phone.getText());
+        
     }    
     
 }
