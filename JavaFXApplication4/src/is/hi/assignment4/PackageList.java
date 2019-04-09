@@ -20,7 +20,7 @@ import modeldaytour.Tour;
 public class PackageList {
     
     private ArrayList<Package> listinn;
-  
+
     
     public PackageList(){
         this.listinn = new ArrayList<Package>();
@@ -111,7 +111,7 @@ public class PackageList {
         }
         else if(menning && skodun && !adv){
             for(int i = 0; i<a.size(); i++){
-                if(!(a.get(i).getTourType().equals("Bar crawl") || a.get(i).getTourType().equals("Food tour") ||
+                if((a.get(i).getTourType().equals("Bar crawl") || a.get(i).getTourType().equals("Food tour") ||
                    a.get(i).getTourType().equals("Beer tour") || a.get(i).getTourType().equals("Car ride")  ||
                    a.get(i).getTourType().equals("Bus ride")  || a.get(i).getTourType().equals("Jeep ride"))){
                     a.remove(i);
@@ -120,7 +120,7 @@ public class PackageList {
         }
         else if(skodun && adv && !menning){
             for(int i = 0; i<a.size(); i++){
-                if(!(a.get(i).getTourType().equals("Adventure") || a.get(i).getTourType().equals("Car ride")  ||
+                if((a.get(i).getTourType().equals("Adventure") || a.get(i).getTourType().equals("Car ride")  ||
                    a.get(i).getTourType().equals("Bus ride")  || a.get(i).getTourType().equals("Jeep ride"))){
                     a.remove(i);
                 }
@@ -128,7 +128,7 @@ public class PackageList {
         }
         else if(menning && adv && !skodun){
             for(int i = 0; i<a.size(); i++){
-                if(!(a.get(i).getTourType().equals("Bar crawl") || a.get(i).getTourType().equals("Food tour") ||
+                if((a.get(i).getTourType().equals("Bar crawl") || a.get(i).getTourType().equals("Food tour") ||
                    a.get(i).getTourType().equals("Beer tour") || a.get(i).getTourType().equals("Adventure") || 
                    a.get(i).getTourType().equals("Jeep ride"))){
                     a.remove(i);
@@ -137,7 +137,7 @@ public class PackageList {
         }
         else if(menning && !adv && !skodun){
             for(int i = 0; i<a.size(); i++){
-                if(!(a.get(i).getTourType().equals("Bar crawl") || a.get(i).getTourType().equals("Food tour") ||
+                if((a.get(i).getTourType().equals("Bar crawl") || a.get(i).getTourType().equals("Food tour") ||
                    a.get(i).getTourType().equals("Beer tour"))){
                     a.remove(i);
                 }
@@ -145,7 +145,7 @@ public class PackageList {
         }
         else if(adv && !skodun && !menning){
             for(int i = 0; i<a.size(); i++){
-                if(!(a.get(i).getTourType().equals("Adventure") || 
+                if((a.get(i).getTourType().equals("Adventure") || 
                    a.get(i).getTourType().equals("Jeep ride"))){
                     a.remove(i);
                 }
@@ -153,7 +153,7 @@ public class PackageList {
         }
         else if(skodun && !menning && !adv){
             for(int i = 0; i<a.size(); i++){
-                if(!(a.get(i).getTourType().equals("Car ride") || a.get(i).getTourType().equals("Jeep ride") ||
+                if((a.get(i).getTourType().equals("Car ride") || a.get(i).getTourType().equals("Jeep ride") ||
                    a.get(i).getTourType().equals("Bus ride"))){
                     a.remove(i);
                 }

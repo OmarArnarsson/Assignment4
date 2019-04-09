@@ -86,7 +86,8 @@ public class InterfaceController implements Initializable {
     private CheckBox almennt;
     @FXML
     private CheckBox saga;
-
+    @FXML
+    private PurchaseController purchaseController;
     
     /**
      * Initializes the controller class.
