@@ -14,6 +14,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import java.util.Calendar;
 import javafx.event.ActionEvent;
+import javafx.scene.control.DialogPane;
+import javafx.scene.layout.AnchorPane;
 
 
 /**
@@ -40,6 +42,10 @@ public class PurchaseController implements Initializable {
     @FXML
     private DatePicker birthday;
     
+    
+    private Bookingmain book;
+    @FXML
+    private AnchorPane Anchor;
 
     /**
      * Initializes the controller class.
@@ -49,28 +55,34 @@ public class PurchaseController implements Initializable {
      
     }    
 
-    @FXML
-    private void buttonHandler(ActionEvent event) {
-        System.out.print("BibbiKjellll");
-     /* Bookingmain book = new Bookingmain();
-        book.setCostumerIDsetter(kennitala.getText());
-        book.setSeatNumber("");
-        book.setBaggage(Integer.parseInt(baggage.getText()));
-        book.setFirstName(Fornafn.getText());
-        book.setLastName(Eftirnafn.getText());
-        book.setemail(email.getText());
-        
-        LocalDate leit = birthday.getValue();
-        int dagur = leit.getDayOfMonth();
-        int man = leit.getMonthValue();
-        int ar = leit.getYear();
-        
-        Calendar afmaeli = Calendar.getInstance();
-        afmaeli.set(ar, man, dagur);
-        
-        book.setBirthDay(afmaeli);
-        book.setPassportNumber(passportnum.getText());
-        book.setPhoneNumber(phone.getText());*/
+    /*    @FXML*/
+    /*    private void buttonHandler(ActionEvent event) {
+    this.book.setCostumerIDsetter(kennitala.getText());
+    this.book.setSeatNumber("");
+    this.book.setBaggage(Integer.parseInt(baggage.getText()));
+    this.book.setFirstName(Fornafn.getText());
+    this.book.setLastName(Eftirnafn.getText());
+    this.book.setemail(email.getText());
+    
+    LocalDate leit = birthday.getValue();
+    int dagur = leit.getDayOfMonth();
+    int man = leit.getMonthValue();
+    int ar = leit.getYear();
+    
+    Calendar afmaeli = Calendar.getInstance();
+    afmaeli.set(ar, man, dagur);
+    
+    this.book.setBirthDay(afmaeli);
+    this.book.setPassportNumber(passportnum.getText());
+    this.book.setPhoneNumber(phone.getText());
+    this.book.makeBookings();
+    }*/
+    public void createBook(Package pack){
+        DialogPane p= new DialogPane();
+        Anchor.setVisible(true);
+        p.setContent(Anchor);
+        this.book= new Bookingmain(pack);
+        System.out.print(pack.price);
     }
     
 }

@@ -82,12 +82,16 @@ public class InterfaceController implements Initializable {
     private CheckBox almennt;
     @FXML
     private CheckBox saga;
+
     @FXML
     private CheckBox synaAllt;
     @FXML
     private CheckBox check30;
     @FXML
     private CheckBox check80;
+
+    private PurchaseController purchaseController;
+
     
     /**
      * Initializes the controller class.
@@ -96,7 +100,6 @@ public class InterfaceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         sc = new SearchController();
         list = new PackageList();
-        
         this.listaVal();
         this.synaAllt.setSelected(true);
         
@@ -238,9 +241,8 @@ public class InterfaceController implements Initializable {
     private void purchaseHandler(ActionEvent event) {
          
         if(virkurIndex!=-1){
-            sc.getResultNr(virkurIndex);
-            System.out.print(sc.getResultNr(virkurIndex).getPrice());
-            
+            System.out.print(sc.getResultNr(virkurIndex).price);
+            this.purchaseController.createBook(sc.getResultNr(virkurIndex));
         }
     }
 

@@ -19,7 +19,7 @@ import modelflight.Traveller;
 public class Bookingmain {
     
    // private BookingID
-    private Package pack;
+    Package pack;
     private ConnectedBooking flightBooking1;    
     private ConnectedBooking flightBooking2;
     private BookingD dtBooking;
@@ -40,9 +40,9 @@ public class Bookingmain {
 
 
 
-    /*public Bookingmain(Package pack){
+    public Bookingmain(Package pack){
         this.pack =pack;
-    }*/
+    }
     
     public void makeBookings(){
         this.flightBooking1 = new ConnectedBooking(this.pack.f1);
