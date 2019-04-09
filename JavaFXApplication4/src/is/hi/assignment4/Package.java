@@ -60,11 +60,34 @@ public class Package {
              String dags = ""+this.d.getTimeStart();
              dags = dags.substring(0, 10);
              verd = verd.substring(0, verd.length()-2);
-             String pakki = "Áfangastaður "+this.f1.toString() +"\n"+"\n"+
+             
+            String flugTo = "";
+            String flugBack = "";
+            
+            
+            
+            for(int i = 0; i<this.f1.getFlightCount(); i++){
+                String timiFlugTo = ""+this.f1.getFlight(i).getDepDate().getTime();
+                timiFlugTo = timiFlugTo.substring(0, timiFlugTo.length()-12);
+                String timiFlugTo2 = ""+this.f1.getFlight(i).getArrDate().getTime();
+                timiFlugTo2 = timiFlugTo2.substring(0, timiFlugTo2.length()-12);
+                flugTo += "Í loftið: "+timiFlugTo + "  Lending: "+timiFlugTo2+"\n";
+            }
+            for(int i = 0; i<this.f2.getFlightCount(); i++){
+                String timiFlugBack = ""+this.f2.getFlight(i).getDepDate().getTime();
+                timiFlugBack = timiFlugBack.substring(0, timiFlugBack.length()-12);
+                String timiFlugBack2 = ""+this.f2.getFlight(i).getArrDate().getTime();
+                timiFlugBack2 = timiFlugBack2.substring(0, timiFlugBack2.length()-12);
+                flugBack += "Í loftið: "+timiFlugBack + "  Lending: "+timiFlugBack2+"\n";
+            } 
+             
+             String pakki = "Áfangastaður "+this.f1.toString() +"\n"+
+                            flugTo+"\n"+
                            "Dagferð: "+this.d.getTourName() + "\n"+
                            "Dagsetning: "+dags+"\n"+"\n"+
                            "Hotel: "+this.h.getName() + "\n"+"\n"+
-                           "Heim "+this.f2.toString() + "\n"+"\n"+
+                           "Heim"+this.f2.toString() + "\n"+
+                            flugBack+"\n"+
                             verd +
                             "\n" + "___________________________________________________"+
                             "\n";
