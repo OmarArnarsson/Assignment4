@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
+
 /**
  * FXML Controller class
  *
@@ -35,13 +36,15 @@ public class PurchaseController implements Initializable {
     private TextField baggage;
     @FXML
     private DatePicker birthday;
+    
+    private book = new Bookingmain<pack>();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        book = new Bookingmain();
     }    
     
 }
