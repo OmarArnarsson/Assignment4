@@ -42,7 +42,30 @@ public class Package {
         public String getType(){
             return this.type;    
         }
-        
-        
+        public Tour getTour(){
+            return this.d;
+        }
+        public ConnectedFlight getFlightTo(){
+            return this.f1;
+        }
+         public ConnectedFlight getFlightBack(){
+            return this.f2;
+        }
+         public Hotel getHotel(){
+            return this.h;
+        }
+         
+         public String toString(){
+             String pakki = "Áfangastaður "+this.f1.toString() +"\n"+
+                           "Dagferð: "+this.d.getTourName() + "\n"+
+                           "Hotel: "+this.h.getName() + "\n"+
+                           "Heim "+this.f2.toString() + "\n"+
+                           "Verð: "+this.getPrice()+
+                            "\n" + "___________________________________________________"+
+                            "\n";
+             
+             return pakki;
+
+         }
         
     }

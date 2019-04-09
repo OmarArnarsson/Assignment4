@@ -45,6 +45,7 @@ public class SearchController{
     private TourController tourController;
     private TourFilter tourFilter;
     private DatabaseManager tourDB;
+    
     private double[] priceRange = new double[2];
     private boolean menning;
     private boolean adventure;
@@ -58,6 +59,8 @@ public class SearchController{
     private LocalDate departure;
     private LocalDate home;
 
+    private ArrayList<Package> listinn;
+    
     private int count;
     
     
@@ -72,63 +75,75 @@ public class SearchController{
         tourController = new TourController(tourDB);
 
         Hotel =  new FilterEngine();
+
+     
         
 
     }  
     
+    
+    public void setList(ArrayList<Package> a){
+          this.listinn = a;
+       }
+    public Package getResultNr(int i){
+        return this.listinn.get(i);
+    }
+    
     public ArrayList<Package> getResults() throws SQLException, CloneNotSupportedException, Exception{
-        
         
         //process strings
         this.processFlight();
-        
+        System.out.print(this.priceRange[0]+"  pR   "+this.priceRange[1]);
         ArrayList <ConnectedFlight> f1 = new ArrayList<>();
         SearchResult a = flightSearchTo.findFlightCourse();
         int alength = a.getResultCount();
         for (int i = 0; i < alength; i++) {
-            f1.add(a.getConnectedFlight(i));
+      
+                f1.add(a.getConnectedFlight(i));
         }
-        System.out.println(f1);
-        
+
         ArrayList <ConnectedFlight> f2 = new ArrayList<>();
         SearchResult b = flightSearchBack.findFlightCourse();
         int blength = b.getResultCount();
         for (int i = 0; i < blength; i++) {
-            f2.add(a.getConnectedFlight(i));
+                f2.add(b.getConnectedFlight(i));
         }
-        System.out.println(f2);
+        System.out.println("Fjöldi TO:  "+f1.size()+"   Fjöldi BACK:  "+f2.size());
         
         
         //leita hotel
         //this.processHotel();
         ArrayList<Hotel> Hotels = Hotel.findHotelLoc(arrLoc);
-        System.out.print(Hotels);
+        //System.out.print(Hotels.size());
         //System.out.print(HotelDAO.getAllHotels());
         //leita daytour
-        System.out.println("TO:  "+a.getResultCount()+"  HOME:    "+b.getResultCount());
+    
         ArrayList<Tour> DT = this.processDayTours();
         // byggja pakka = a
-<<<<<<< HEAD
+
         PackageList Pakkar = new PackageList();
-        double low = priceRange[0];
-        double high = priceRange[1];
-       // ArrayList<Package> Pakkarnir = Pakkar.buildPackage(a, b, Hotels, DT, arrLoc, depLoc, departure, home, low, high, "");
-=======
-        //PackageList Pakkar = new PackageList();
-        //double low = priceRange[0];
-        //double high = priceRange[1];
-        //ArrayList<Package> Pakkarnir = Pakkar.buildPackage(a, b, Hotels, DT, arrLoc, depLoc, departure, home, low, high, "");
->>>>>>> fcdc71af6b26cad8b3e540cc4621c059853a5a72
+        double low = this.priceRange[0];
+        double high = this.priceRange[1];
+
+        ArrayList<Package> Pakkarnir = Pakkar.buildPackage(f1, f2, Hotels, DT, low, high, this.menning, this.adventure, this.skodunarferdir);
+        System.out.println(f1.get(1).getTotalEconomyPrice());
+         System.out.println(f2.get(1).getTotalEconomyPrice());
+    
+      
         
         //skila pakka a
         
-        return new ArrayList<Package>();
+        return Pakkarnir;
     }
     
     public void processFlight(){
         //flight to
         flightSearchTo.setPassangerCount(this.count);
-        flightSearchTo.setEconomy(true);
+        
+        
+     
+            flightSearchTo.setEconomy(true);
+        
         flightSearchTo.setDepLocation(this.depLoc);
 
         Instant instant = Instant.from(this.departure.atStartOfDay(ZoneId.systemDefault()));
@@ -143,7 +158,10 @@ public class SearchController{
         
         //flight home
         flightSearchBack.setPassangerCount(this.count);
-        flightSearchBack.setEconomy(true);
+        System.out.print("SJRRRRr");
+    
+            flightSearchBack.setEconomy(true);
+        
         flightSearchBack.setDepLocation(this.arrLoc);
 
         Instant instant1 = Instant.from(this.home.atStartOfDay(ZoneId.systemDefault()));
@@ -155,7 +173,7 @@ public class SearchController{
         flightSearchBack.setArrLocation(this.depLoc);
         flightSearchBack.setFlexibility(0);
         
-        
+        System.out.println("DS"+this.priceRange[0]+"BOOM");
         
     }
       
@@ -163,56 +181,6 @@ public class SearchController{
     
     public ArrayList<Tour> processDayTours() throws Exception{
 
-        /*public TourFilter(int price, String groupSize,
-                      String location, String tourType,
-                      String timeStart, boolean guidedTour,
-                      boolean privateTour, boolean accessibility) {
-
-        this.price = price;
-        this.groupSize = gSize(Integer.parseInt(groupSize));
-        this.location = location;
-        this.tourType = tourType;
-        this.timeStart = timeStart;
-        this.guidedTour = guidedTour;
-        this.privateTour = privateTour;
-        this.accessibility = accessibility;
-        TourFilter tourFilter ;
-        if(this.menning && this.adventure && this.skodunarferdir || !this.menning && !this.adventure && !this.skodunarferdir) {
-            TourFilter filtAdv;
-            TourFilter filtBus;
-            TourFilter filtCar;
-            TourFilter filtBar;
-            TourFilter filtFood;
-            TourFilter filtBeer;
-            TourFilter filtJeep;
-            /*
-            busride
-            carride
-            barcrawl
-            foodtour
-            beertour
-            adv
-            jeepride
-            
-        }
-        else if(this.menning && this.adventure ){
-            
-        }
-        else if(this.adventure && this.skodunarferdir){
-            
-        }
-        else if(this.menning && this.skodunarferdir){
-            
-        }
-        else if(){
-            
-        }
-        else if(){
-            
-        }
-        else if(){
-            
-        }*/
         ArrayList<Tour> listinn = new ArrayList<>();
         
         tourFilter.setPrice(999999999);
@@ -223,8 +191,6 @@ public class SearchController{
         
         LocalDate temp = this.departure;
 
-        temp.plusDays(1L);
-        System.out.print(temp);
         
         while(temp.compareTo(this.home) < 0){
 
@@ -239,11 +205,10 @@ public class SearchController{
             }
             
             temp=temp.plusDays(1);
-            System.out.println(temp);
 
         }
         
-        System.out.print(listinn.size());
+        System.out.println("Fjöldi DT:  "+listinn.size());
         return listinn;
 
     }
@@ -258,7 +223,10 @@ public class SearchController{
     public void resetEngines(){
         this.flightSearchTo = new SearchEngine();
         this.flightSearchBack = new SearchEngine();
+        
+        this.tourDB = new DatabaseManager();
         this.tourFilter = new TourFilter();
+        this.tourController = new TourController(this.tourDB);
     }
     public void setCount(int a){
         this.count = a;
@@ -276,26 +244,26 @@ public class SearchController{
         this.arrLoc1 = a;
     }
     
-    public void setPriceRange(double a){
-        if(a == 0){
+    public void setPriceRange(boolean low, boolean med, boolean high, boolean highest, boolean all){
+        if(all){
             this.priceRange[0] = 0;
-            this.priceRange[1] = Integer.MAX_VALUE;;
+            this.priceRange[1] = 9999999;
         }
-        else if(a == 1){
+        else if(low){
             this.priceRange[0] = 0;
             this.priceRange[1] = 50000;
         }
-        else if(a == 2){
+        else if(med){
             this.priceRange[0] = 50001;
             this.priceRange[1] = 100000;
         }
-        else if(a == 3){
+        else if(high){
             this.priceRange[0] = 100001;
             this.priceRange[1] = 150000;
         }
-        else {
+        else if(highest){
             this.priceRange[0] = 150001;
-            this.priceRange[1] = Integer.MAX_VALUE;
+            this.priceRange[1] = 9999999;
         }
     }
     

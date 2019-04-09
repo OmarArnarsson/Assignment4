@@ -1,5 +1,5 @@
-package hotelStuff;
 
+package hotelStuff;
 
 public class Hotel {
     private String name;

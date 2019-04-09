@@ -1,11 +1,29 @@
-package hotelStuff;
 
+package hotelStuff;
 
 public class Room {
     private String hotelId;
     private int beds;
     private int wifi;
     private int price;
+    private int availableR;
+    private int roomId;
+
+    public int getAvailableR() {
+        return availableR;
+    }
+
+    public void setAvailableR(int availableR) {
+        this.availableR = availableR;
+    }
+
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
 
     public String getHotelId() {
         return hotelId;

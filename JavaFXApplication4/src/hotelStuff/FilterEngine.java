@@ -1,5 +1,4 @@
 package hotelStuff;
-
 import java.sql.*;
 import java.util.ArrayList;
 
