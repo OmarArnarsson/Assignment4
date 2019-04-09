@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import modelflight.ConnectedFlight;
 import modeldaytour.Tour;
 
@@ -42,6 +44,11 @@ public class PackageList {
   
         if(f1.isEmpty() || f2.isEmpty() || h.isEmpty() || d.isEmpty()){
             System.out.println("No packages available");
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Leitarniðurstöður");
+            alert.setHeaderText("Engir pakkar fundust");
+
+            alert.showAndWait();
             return new ArrayList<Package>();
         }
         else {

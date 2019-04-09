@@ -18,6 +18,8 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
@@ -57,7 +59,6 @@ public class PurchaseController implements Initializable {
     @FXML
     private TextField land;
 
-        
     private Bookingmain book;
     private Scene secondScene;
     private Stage newWindow;
@@ -147,9 +148,17 @@ public class PurchaseController implements Initializable {
         newWindow.hide();
         this.passangerCount--;
         this.cleanTextFields();
-        if(this.passangerCount > 0){
+        if(this.passangerCount > 0){   
             createBook(this.pack, this.passangerCount);
-        }            
+        }    
+        if(this.passangerCount == 0){
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Staðfesting");
+            alert.setHeaderText("Upplýsingar um pöntun");
+            alert.setContentText(this.book.getInfo());
+
+            alert.showAndWait();
+        }        
     }
     
     public void cleanTextFields(){
