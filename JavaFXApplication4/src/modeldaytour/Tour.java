@@ -25,7 +25,6 @@ public class Tour {
 
     // FUNCTIONS ----------------------------------------------------------------
 
-
     // SETTERS -------------------------------------------------------------------
 
     /**
@@ -89,7 +88,6 @@ public class Tour {
         if (privateTour == 0) this.privateTour = false;
     }
 
-
     public void setId(int id) {
         this.id = id;
     }
@@ -119,7 +117,6 @@ public class Tour {
     }
 
     // GETTERS ---------------------------------------------------------------------
-
 
     public int getId() {
         return id;
@@ -168,4 +165,5 @@ public class Tour {
     public int getPrice() {
         return price;
     }
+
 }

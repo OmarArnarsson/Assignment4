@@ -78,7 +78,7 @@ public class PackageList {
                                 priceF1 = pack.getFlightTo().getTotalBusinessPrice();
                                 priceF2 = pack.getFlightBack().getTotalBusinessPrice();
                             }
-                            pack.setPrice(priceF2, priceF1,h.get(i).getPricerange(), pack.d.getPrice());
+                            pack.setPrice(priceF2, priceF1,h.get(i).getPricerange(), pack.getTour().getPrice());
                             a.add(pack);  
                         }
                     }

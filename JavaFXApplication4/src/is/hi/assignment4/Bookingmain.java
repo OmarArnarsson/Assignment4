@@ -18,10 +18,10 @@ import modelflight.Traveller;
  * Háskóli Íslands
  */
 public class Bookingmain {
-    
+
    // private BookingID
     Package pack;
-    private BookingManager flightBooking1;    
+    private BookingManager flightBooking1;
     private BookingManager flightBooking2;
     private BookingD dtBooking;
     private Traveller traveller;
@@ -37,14 +37,14 @@ public class Bookingmain {
     private String passportNumber;
     private String phoneNumber;
     private String nationality;
-    
+
 
 
 
     public Bookingmain(Package pack){
         this.pack =pack;
     }
-    
+
     public void makeBookings(){
         this.traveller= new Traveller(this.firstName, this.birthday, this.nationality,this.passportNumber, this.email, this.phoneNumber);
         this.flightBooking1 = new BookingManager();
@@ -64,7 +64,7 @@ public class Bookingmain {
 
     }
 
-    
+
     public void setCostumerIDsetter(String ID){
         this.costumerID=ID;
     }

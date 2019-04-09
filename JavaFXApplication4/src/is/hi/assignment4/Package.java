@@ -16,12 +16,12 @@ import modeldaytour.Tour;
  * @author Þorsteinn Óskarsson, Háskóli Íslands, tho85@hi.is
  */
 public class Package {
-        public ConnectedFlight f1;
-        public ConnectedFlight f2;
-        public Tour d;
-        public Hotel h;
-        public Double price;
-        public String type; 
+        private ConnectedFlight f1;
+        private ConnectedFlight f2;
+        private Tour d;
+        private Hotel h;
+        private Double price;
+        private String type; 
         
         
         public Package(ConnectedFlight f1, ConnectedFlight f2, Tour d, Hotel h){
