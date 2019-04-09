@@ -57,10 +57,6 @@ public class InterfaceController implements Initializable {
     @FXML
     private CheckBox check50;
     @FXML
-    private CheckBox check100;
-    @FXML
-    private CheckBox check150;
-    @FXML
     private CheckBox checkOver;
     @FXML
     private CheckBox checkMenning;
@@ -87,7 +83,11 @@ public class InterfaceController implements Initializable {
     @FXML
     private CheckBox saga;
     @FXML
-    private PurchaseController purchaseController;
+    private CheckBox synaAllt;
+    @FXML
+    private CheckBox check30;
+    @FXML
+    private CheckBox check80;
     
     /**
      * Initializes the controller class.
@@ -98,6 +98,8 @@ public class InterfaceController implements Initializable {
         list = new PackageList();
         
         this.listaVal();
+        this.synaAllt.setSelected(true);
+        
     }
 
     @FXML
@@ -106,11 +108,10 @@ public class InterfaceController implements Initializable {
        
         sc.resetEngines();
         
-         boolean all = !this.check50.isSelected() && !this.check100.isSelected() && !this.check150.isSelected() && !this.checkOver.isSelected() ;
-                      
-        sc.setPriceRange(this.check50.isSelected(), this.check100.isSelected(), 
-                         this.check150.isSelected(), this.checkOver.isSelected(),
-                         all);
+      
+        sc.setPriceRange(this.check30.isSelected(), this.check50.isSelected(), 
+                         this.check80.isSelected(), this.checkOver.isSelected(),
+                         this.synaAllt.isSelected());
 
 
         sc.setCount(Integer.parseInt(fjoldi.getText()));
@@ -172,61 +173,40 @@ public class InterfaceController implements Initializable {
     @FXML
     private void check50Handler(ActionEvent event) {
         if(this.check50.isSelected()){
-            this.check100.setDisable(true);
-            this.check150.setDisable(true);
+            this.check30.setDisable(true);
+            this.check80.setDisable(true);
             this.checkOver.setDisable(true);
+            this.synaAllt.setDisable(true);
+            this.synaAllt.setSelected(false);
                
         }
         else {
-            this.check100.setDisable(false);
-            this.check150.setDisable(false);
-            this.checkOver.setDisable(false);       
+            this.synaAllt.setDisable(false);
+            this.check30.setDisable(false);
+            this.check80.setDisable(false);
+            this.checkOver.setDisable(false);  
+            this.synaAllt.setSelected(true);
         }
     }
 
-    @FXML
-    private void check100Handler(ActionEvent event) {
-        if(this.check100.isSelected()){
-            this.check50.setDisable(true);
-            this.check150.setDisable(true);
-            this.checkOver.setDisable(true);
-            
-        }
-        else {
-            this.check50.setDisable(false);
-            this.check150.setDisable(false);
-            this.checkOver.setDisable(false);
-        }
-    }
-
-    @FXML
-    private void check150Handler(ActionEvent event) {
-        if(this.check150.isSelected()){
-            this.check50.setDisable(true);
-            this.check100.setDisable(true);
-            this.checkOver.setDisable(true);
-            
-        }
-        else {
-            this.check50.setDisable(false);
-            this.check100.setDisable(false);
-            this.checkOver.setDisable(false);
-
-        }
-    }
+   
 
     @FXML
     private void checkOverHandler(ActionEvent event) {
         if(this.checkOver.isSelected()){
+            this.check30.setDisable(true);
             this.check50.setDisable(true);
-            this.check100.setDisable(true);
-            this.check150.setDisable(true);
+            this.check80.setDisable(true);
+            this.synaAllt.setDisable(true);
+            this.synaAllt.setSelected(false);
             
         }
         else {
+            this.synaAllt.setDisable(false);
+            this.check30.setDisable(false);
             this.check50.setDisable(false);
-            this.check100.setDisable(false);
-            this.check150.setDisable(false);
+            this.check80.setDisable(false);
+            this.synaAllt.setSelected(true);
         }
     }
 
@@ -279,7 +259,56 @@ public class InterfaceController implements Initializable {
             sc.setEconomy(false);
             almennt.setDisable(true);
         }
-        else almennt.setDisable(false);
+        else {
+             almennt.setDisable(false);
+             sc.setEconomy(true);
+         }
+    }
+
+    @FXML
+    private void synaAlltHandler(ActionEvent event) {
+         if(!this.check30.isSelected() && !this.check50.isSelected() && !this.check80.isSelected() && !this.checkOver.isSelected()){
+             this.synaAllt.setSelected(true);
+         }
+ 
+    }
+
+    @FXML
+    private void check30Handler(ActionEvent event) {
+        if(this.check30.isSelected()){
+            this.check50.setDisable(true);
+            this.check80.setDisable(true);
+            this.checkOver.setDisable(true);
+            this.synaAllt.setDisable(true);
+            this.synaAllt.setSelected(false);
+               
+        }
+        else {
+            this.synaAllt.setDisable(false);
+            this.check50.setDisable(false);
+            this.check80.setDisable(false);
+            this.checkOver.setDisable(false);  
+            this.synaAllt.setSelected(true);
+        }
+    }
+
+    @FXML
+    private void check80Handler(ActionEvent event) {
+        if(this.check80.isSelected()){
+            this.check30.setDisable(true);
+            this.check50.setDisable(true);
+            this.checkOver.setDisable(true);
+            this.synaAllt.setDisable(true);
+            this.synaAllt.setSelected(false);
+               
+        }
+        else {
+            this.synaAllt.setDisable(false);
+            this.check50.setDisable(false);
+            this.check30.setDisable(false);
+            this.checkOver.setDisable(false); 
+            this.synaAllt.setSelected(true);
+        }
     }
 
    

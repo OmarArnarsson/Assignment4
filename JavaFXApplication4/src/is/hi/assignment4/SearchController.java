@@ -77,7 +77,11 @@ public class SearchController{
 
         Hotel =  new FilterEngine();
         Pakkar = new PackageList();
-     
+        
+        
+        menning=false;
+        adventure=false;
+        skodunarferdir=false;
         
 
     }  
@@ -267,18 +271,18 @@ public class SearchController{
         }
         else if(low){
             this.priceRange[0] = 0;
-            this.priceRange[1] = 50000;
+            this.priceRange[1] = 30000;
         }
         else if(med){
-            this.priceRange[0] = 50001;
-            this.priceRange[1] = 100000;
+            this.priceRange[0] = 30001;
+            this.priceRange[1] = 50000;
         }
         else if(high){
-            this.priceRange[0] = 100001;
-            this.priceRange[1] = 150000;
+            this.priceRange[0] = 50001;
+            this.priceRange[1] = 80000;
         }
         else if(highest){
-            this.priceRange[0] = 150001;
+            this.priceRange[0] = 80001;
             this.priceRange[1] = 9999999;
         }
     }

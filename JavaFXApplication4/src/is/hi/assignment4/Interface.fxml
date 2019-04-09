@@ -12,7 +12,8 @@
       <Button fx:id="button" layoutX="329.0" layoutY="98.0" mnemonicParsing="false" onAction="#buttonHandler" text="Leita">
          <font>
             <Font name="DejaVu Sans Mono Bold" size="13.0" />
-         </font></Button>
+         </font>
+      </Button>
       <TextField fx:id="leit" layoutX="34.0" layoutY="46.0" prefHeight="25.0" prefWidth="183.0" />
       <DatePicker fx:id="dagsetning" layoutX="217.0" layoutY="46.0" prefHeight="25.0" prefWidth="82.0" />
       <TextField fx:id="leit1" layoutX="34.0" layoutY="100.0" prefHeight="25.0" prefWidth="183.0" />
@@ -31,10 +32,11 @@
       <VBox layoutX="41.0" layoutY="167.0" prefHeight="163.0" prefWidth="123.0" spacing="15.0">
          <children>
             <Label text="Verðbil" />
-            <CheckBox fx:id="check50" mnemonicParsing="false" onAction="#check50Handler" text="0 - 50000kr" />
-            <CheckBox fx:id="check100" mnemonicParsing="false" onAction="#check100Handler" text="50001 - 100000kr" />
-            <CheckBox fx:id="check150" mnemonicParsing="false" onAction="#check150Handler" text="100001 - 150000kr" />
-            <CheckBox fx:id="checkOver" mnemonicParsing="false" onAction="#checkOverHandler" text="150000kr +" />
+            <CheckBox fx:id="synaAllt" mnemonicParsing="false" onAction="#synaAlltHandler" text="Sýna allt" />
+            <CheckBox fx:id="check30" mnemonicParsing="false" onAction="#check30Handler" text="0 - 30000kr" />
+            <CheckBox fx:id="check50" mnemonicParsing="false" onAction="#check50Handler" text="30000 - 50000kr" />
+            <CheckBox fx:id="check80" mnemonicParsing="false" onAction="#check80Handler" text="50000 - 80000kr" />
+            <CheckBox fx:id="checkOver" mnemonicParsing="false" onAction="#checkOverHandler" text="80000kr+" />
          </children>
       </VBox>
       <fx:include fx:id="purchController" source="Purchase.fxml" />

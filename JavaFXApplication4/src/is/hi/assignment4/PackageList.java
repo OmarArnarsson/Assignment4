@@ -46,7 +46,7 @@ public class PackageList {
         }
         else {
             System.out.print(d.size());
-            filterType(d, menning, skodun, adv);
+            d = filterType(d, menning, skodun, adv);
             checkFlight(f1,toDate);
             checkFlight(f2,homeDate);
             System.out.print(d.size());
@@ -67,6 +67,7 @@ public class PackageList {
                     for(int k = 0; k<h.size(); k++){
                         for(int l = 0; l<d.size(); l++){
                             Package pack = new Package(f1.get(j),f2.get(i), d.get(l), h.get(k));
+                            System.out.println("DATES F1:  "+f1.get(j).getLastArrTime()+"DATES F2:  "+f2.get(i).getLastArrTime());
                             double priceF1;
                             double priceF2;
                             if(economy){
@@ -101,20 +102,22 @@ public class PackageList {
         return this.listinn.get(i);
     }
 
-    public void filterType(ArrayList<Tour> a, boolean menning, boolean skodun, boolean adv){
+    public ArrayList<Tour>  filterType(ArrayList<Tour> a, boolean menning, boolean skodun, boolean adv){
+        ArrayList<Tour> nList = new ArrayList<Tour>();
         System.out.println(menning+" "+skodun+" "+adv);    
         System.out.println("Type OF DT: "+a.get(0).getTourType()+"  "+a.get(0).getTourName());
         System.out.println("Type OF DT: "+a.get(1).getTourType()+"  "+a.get(1).getTourName());
         System.out.println("Type OF DT: "+a.get(2).getTourType()+"  "+a.get(2).getTourName());
         if(menning && skodun && adv || !menning && !skodun && !adv){
-            return;
+            return a;
         }
         else if(menning && skodun && !adv){
             for(int i = 0; i<a.size(); i++){
                 if((a.get(i).getTourType().equals("Bar crawl") || a.get(i).getTourType().equals("Food tour") ||
                    a.get(i).getTourType().equals("Beer tour") || a.get(i).getTourType().equals("Car ride")  ||
                    a.get(i).getTourType().equals("Bus ride")  || a.get(i).getTourType().equals("Jeep ride"))){
-                    a.remove(i);
+                    //a.remove(i);
+                    nList.add(a.get(i));
                 }
             }
         }
@@ -122,7 +125,8 @@ public class PackageList {
             for(int i = 0; i<a.size(); i++){
                 if((a.get(i).getTourType().equals("Adventure") || a.get(i).getTourType().equals("Car ride")  ||
                    a.get(i).getTourType().equals("Bus ride")  || a.get(i).getTourType().equals("Jeep ride"))){
-                    a.remove(i);
+                    //a.remove(i);
+                    nList.add(a.get(i));
                 }
             }
         }
@@ -131,7 +135,8 @@ public class PackageList {
                 if((a.get(i).getTourType().equals("Bar crawl") || a.get(i).getTourType().equals("Food tour") ||
                    a.get(i).getTourType().equals("Beer tour") || a.get(i).getTourType().equals("Adventure") || 
                    a.get(i).getTourType().equals("Jeep ride"))){
-                    a.remove(i);
+                    //a.remove(i);
+                    nList.add(a.get(i));
                 }
             }
         }
@@ -139,7 +144,8 @@ public class PackageList {
             for(int i = 0; i<a.size(); i++){
                 if((a.get(i).getTourType().equals("Bar crawl") || a.get(i).getTourType().equals("Food tour") ||
                    a.get(i).getTourType().equals("Beer tour"))){
-                    a.remove(i);
+                    //a.remove(i);
+                    nList.add(a.get(i));
                 }
             }
         }
@@ -147,7 +153,8 @@ public class PackageList {
             for(int i = 0; i<a.size(); i++){
                 if((a.get(i).getTourType().equals("Adventure") || 
                    a.get(i).getTourType().equals("Jeep ride"))){
-                    a.remove(i);
+                   // a.remove(i);
+                    nList.add(a.get(i));
                 }
             }
         }
@@ -155,11 +162,14 @@ public class PackageList {
             for(int i = 0; i<a.size(); i++){
                 if((a.get(i).getTourType().equals("Car ride") || a.get(i).getTourType().equals("Jeep ride") ||
                    a.get(i).getTourType().equals("Bus ride"))){
-                    a.remove(i);
+                   // a.remove(i);
+                    nList.add(a.get(i));
                 }
             }
         }  
-        System.out.println("Fjöldi DT eftir FILTERTYOE:  "+a.size());
+        System.out.println("Fjöldi DT eftir FILTERTYOE:  "+nList.size());
+        return nList;
+
     }
     
     public void filterPrice(ArrayList<Package> a, Double priceLow, Double priceHigh){
