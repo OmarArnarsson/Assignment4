@@ -6,6 +6,8 @@
 
 package is.hi.assignment4;
 import controllerflight.BookingManager;
+import hotelStuff.HotelDAO;
+import java.sql.SQLException;
 import java.util.Calendar;
 import modeldaytour.BookingD;
 import modeldaytour.Customer;
@@ -26,6 +28,7 @@ public class Bookingmain {
     private BookingD dtBooking;
     private Traveller traveller;
     private Customer customer;
+    private HotelDAO hotelBooking;
     //hlutir sem við fáum frá interface-inu
     private String costumerID;
     private String seatnumber;
@@ -45,7 +48,7 @@ public class Bookingmain {
         this.pack =pack;
     }
 
-    public void makeBookings(){
+    public void makeBookings() throws SQLException{
         this.traveller= new Traveller(this.firstName, this.birthday, this.nationality,this.passportNumber, this.email, this.phoneNumber);
         this.flightBooking1 = new BookingManager();
         this.flightBooking2 = new BookingManager();
@@ -63,6 +66,18 @@ public class Bookingmain {
         this.flightBooking2.confirmBooking();
 
         this.dtBooking=new BookingD(this.pack.getTour(),this.costumerID);
+        this.customer = new Customer();
+        this.customer.setBooking(dtBooking);
+        this.customer.setCustomerId(this.costumerID);
+        this.customer.setEmail(this.email);
+        this.customer.setFirstName(this.firstName);
+        this.customer.setLastName(this.lastName);
+        this.customer.setMobile(this.phoneNumber);
+        this.customer.setTourId(this.pack.getTour().getId());
+        
+        
+        this.hotelBooking.bokaHandler(420,this.pack.getHotel().getName());
+        
 
     }
 
@@ -96,5 +111,15 @@ public class Bookingmain {
     }
     public void setNationality(String nationality){
         this.nationality=nationality;
+    }
+    
+    public String getInfo(){
+        
+    String strengur= "Fulltnafn: " +this.firstName+" "+this.lastName+ "\n"+
+            "Bókunarnúmer(brottför): "+this.flightBooking1.getBookingNumber() +
+            "\nBókunarnúmer(heimflug): "+this.flightBooking2.getBookingNumber()+
+            "\nDagsferð: "+this.pack.getTour().getTourName()+ 
+            "\nHótel: "+this.pack.getHotel().getName();
+    return strengur;
     }
 }

@@ -43,12 +43,12 @@ public class PackageList {
     {
   
         if(f1.isEmpty() || f2.isEmpty() || h.isEmpty() || d.isEmpty()){
-            System.out.println("No packages available");
+
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Leitarniðurstöður");
             alert.setHeaderText("Engir pakkar fundust");
-
             alert.showAndWait();
+            
             return new ArrayList<Package>();
         }
         else {
@@ -59,6 +59,11 @@ public class PackageList {
             System.out.print(d.size());
             if(d.isEmpty() || f1.isEmpty() || f2.isEmpty()){
                 System.out.println("No packages available");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Leitarniðurstöður");
+                alert.setHeaderText("Engir pakkar fundust");
+                alert.showAndWait();
+            
                 return new ArrayList<Package>();
             }
             ArrayList<Package> a = new ArrayList<Package>();

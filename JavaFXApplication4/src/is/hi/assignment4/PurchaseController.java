@@ -6,7 +6,9 @@
 package is.hi.assignment4;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -59,6 +61,8 @@ public class PurchaseController implements Initializable {
     @FXML
     private TextField land;
 
+    //for demo
+    private ArrayList<Bookingmain> bookings;
     private Bookingmain book;
     private Scene secondScene;
     private Stage newWindow;
@@ -97,6 +101,8 @@ public class PurchaseController implements Initializable {
         }, this.passportnum.textProperty());
 
         panta.disableProperty().bind(fornafnValid.or(eftirnafnValid.or(baggageValid.or(birthDayValid.or(emailValid.or(kennitalaValid.or(landValid.or(passportValid))))))));
+        
+        this.bookings = new ArrayList<Bookingmain>();
     }    
   
     
@@ -123,7 +129,7 @@ public class PurchaseController implements Initializable {
 
  
     @FXML
-    private void buttonHandler(ActionEvent event) {
+    private void buttonHandler(ActionEvent event) throws SQLException {
   
         this.book.setCostumerIDsetter(kennitala.getText());
         this.book.setSeatNumber("");
@@ -147,19 +153,32 @@ public class PurchaseController implements Initializable {
         this.book.makeBookings();
         newWindow.hide();
         this.passangerCount--;
+        this.bookings.add(this.book);
+         
+        
         this.cleanTextFields();
         if(this.passangerCount > 0){   
+            
             createBook(this.pack, this.passangerCount);
+
         }    
+        
         if(this.passangerCount == 0){
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Staðfesting");
             alert.setHeaderText("Upplýsingar um pöntun");
-            alert.setContentText(this.book.getInfo());
-
+            String info="";
+            for(int i=0; i<this.bookings.size(); i++){
+                info+= "\n" + this.bookings.get(i).getInfo()+"\n"+
+                        "------------------------------------ \n";
+            }
+            alert.setContentText(info);
             alert.showAndWait();
-        }        
+        }
+       
     }
+    
+   
     
     public void cleanTextFields(){
        
