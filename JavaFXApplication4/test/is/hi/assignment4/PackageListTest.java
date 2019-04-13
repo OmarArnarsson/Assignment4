@@ -5,6 +5,8 @@
  */
 package is.hi.assignment4;
 
+import is.hi.model.PackageList;
+import is.hi.model.Package;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Calendar;

@@ -1,4 +1,4 @@
-package is.hi.assignment4;
+package is.hi.view;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -7,6 +7,9 @@ package is.hi.assignment4;
  */
 
 
+import is.hi.model.Package;
+import is.hi.model.PackageList;
+import is.hi.model.SearchController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -97,6 +100,8 @@ public class InterfaceController implements Initializable {
     private CheckBox check80;
     @FXML
     private PurchaseController AnchorController;
+    @FXML
+    private CheckBox connect;
 
     
     /**
@@ -318,6 +323,16 @@ public class InterfaceController implements Initializable {
             this.check30.setDisable(false);
             this.checkOver.setDisable(false); 
             this.synaAllt.setSelected(true);
+        }
+    }
+
+    @FXML
+    private void connectedHandler(ActionEvent event) {
+        if(this.connect.isSelected()){
+            sc.setConnected(true);
+        }
+        else{
+            sc.setConnected(false);
         }
     }
 

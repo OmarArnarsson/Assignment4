@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="Grunnur" prefHeight="693.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.hi.assignment4.InterfaceController">
+<AnchorPane id="AnchorPane" fx:id="Grunnur" prefHeight="693.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.hi.view.InterfaceController">
     <children>
       <fx:include fx:id="Anchor" source="Purchase.fxml" />
       <Button fx:id="button" layoutX="329.0" layoutY="98.0" mnemonicParsing="false" onAction="#buttonHandler" text="Leita">
@@ -54,5 +54,6 @@
       <CheckBox fx:id="almennt" layoutX="41.0" layoutY="565.0" mnemonicParsing="false" onAction="#almenntHandler" text="Almennt farrými" />
       <CheckBox fx:id="saga" layoutX="41.0" layoutY="593.0" mnemonicParsing="false" onAction="#sagaHandler" text="Fyrsta farrými" />
       <Label layoutX="43.0" layoutY="537.0" text="Farrými" />
+      <CheckBox fx:id="connect" layoutX="422.0" layoutY="104.0" mnemonicParsing="false" onAction="#connectedHandler" text="Sýna tengiflug" />
     </children>
 </AnchorPane>

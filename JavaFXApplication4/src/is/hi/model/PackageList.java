@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package is.hi.assignment4;
+package is.hi.model;
 
 import hotelStuff.Hotel;
 import java.text.SimpleDateFormat;
@@ -43,27 +43,15 @@ public class PackageList {
     {
   
         if(f1.isEmpty() || f2.isEmpty() || h.isEmpty() || d.isEmpty()){
-
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Leitarniðurstöður");
-            alert.setHeaderText("Engir pakkar fundust");
-            alert.showAndWait();
-            
+            System.out.println("No packages available");
             return new ArrayList<Package>();
         }
         else {
             System.out.print(d.size());
             d = filterType(d, menning, skodun, adv);
-            checkFlight(f1,toDate);
-            checkFlight(f2,homeDate);
             System.out.print(d.size());
             if(d.isEmpty() || f1.isEmpty() || f2.isEmpty()){
                 System.out.println("No packages available");
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Leitarniðurstöður");
-                alert.setHeaderText("Engir pakkar fundust");
-                alert.showAndWait();
-            
                 return new ArrayList<Package>();
             }
             ArrayList<Package> a = new ArrayList<Package>();
@@ -72,7 +60,6 @@ public class PackageList {
             checkFlight(f2, dest, dep, home);
             checkHotel(h, go, home);
             checkDayTour(d, go, home);*/
-            
             
             for(int j = 0; j<f1.size(); j++){
                 for(int i = 0; i<f2.size(); i++){
@@ -192,21 +179,7 @@ public class PackageList {
     }
     
     // Að neðan færum við mögulega yfir í search
-    public void checkFlight(ArrayList<ConnectedFlight> f, LocalDate d){
-        for(int i = f.size()-1; i>=0; i--){
-                Calendar lastArrTime = f.get(i).getLastArrTime();
-                
-                lastArrTime.get(Calendar.DAY_OF_MONTH);
-                String date = d+"";
-                date = date.substring(8, 10);
-                int compare = Integer.parseInt(date);
-                if( !(lastArrTime.get(Calendar.DAY_OF_MONTH) == compare)){
-                    f.remove(i);    
-                }
-                
-            }                
-            
-    }
+   
     /*
     public void checkHotel(ArrayList<Hotel> h, Calendar go, Calendar home){
           for(int i = h.size()-1; i>=0; i--){

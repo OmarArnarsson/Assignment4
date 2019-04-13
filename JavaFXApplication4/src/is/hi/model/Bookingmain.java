@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package is.hi.assignment4;
+package is.hi.model;
 import controllerflight.BookingManager;
 import hotelStuff.HotelDAO;
 import java.sql.SQLException;

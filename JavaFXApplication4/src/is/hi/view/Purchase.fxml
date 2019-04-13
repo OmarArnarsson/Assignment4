@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="Anchor" prefHeight="400.0" prefWidth="600.0" visible="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.hi.assignment4.PurchaseController">
+<AnchorPane fx:id="Anchor" prefHeight="400.0" prefWidth="600.0" visible="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="is.hi.view.PurchaseController">
    <children>
       <TextField fx:id="Fornafn" layoutX="14.0" layoutY="31.0" promptText="Jón" />
       <TextField fx:id="passportnum" layoutX="247.0" layoutY="31.0" promptText="A12345678" />

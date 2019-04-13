@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package is.hi.assignment4;
+package is.hi.model;
 
 
 import controllerdaytour.DatabaseManager;
@@ -24,6 +24,7 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import modeldaytour.Tour;
 import modeldaytour.TourFilter;
 import modelflight.ConnectedFlight;
@@ -55,7 +56,7 @@ public class SearchController{
     private String arrLoc;
     private String depLoc1;
     private String arrLoc1;
-    
+    private boolean connected = false;
     private boolean economy=true;
     
     private LocalDate departure;
@@ -116,6 +117,8 @@ public class SearchController{
         for (int i = 0; i < blength; i++) {
                 f2.add(b.getConnectedFlight(i));
         }
+        checkFlight(f1,this.departure, this.connected);
+        checkFlight(f2,this.home, this.connected);
         System.out.println("Fjöldi TO:  "+f1.size()+"   Fjöldi BACK:  "+f2.size());
         
         
@@ -133,9 +136,15 @@ public class SearchController{
 
         double low = this.priceRange[0];
         double high = this.priceRange[1];
+
         ArrayList<Package> Pakkarnir = Pakkar.buildPackage(f1, f2, Hotels, DT, low, high, this.menning, this.adventure, this.skodunarferdir, this.economy, this.departure, this.home);
         
-      
+        if(Pakkarnir.size() == 0){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Leitarniðurstöður");
+            alert.setHeaderText("Engir pakkar fundust");
+            alert.showAndWait();
+        }
 
         //PackageList Pakkar = new PackageList();
         //double low = priceRange[0];
@@ -233,6 +242,24 @@ public class SearchController{
     }
         
     
+     public void checkFlight(ArrayList<ConnectedFlight> f, LocalDate d, boolean connected){
+        for(int i = f.size()-1; i>=0; i--){
+                Calendar lastArrTime = f.get(i).getLastArrTime();
+                
+                lastArrTime.get(Calendar.DAY_OF_MONTH);
+                String date = d+"";
+                date = date.substring(8, 10);
+                int compare = Integer.parseInt(date);
+                if( !(lastArrTime.get(Calendar.DAY_OF_MONTH) == compare) || (f.get(i).getFlightCount() > 1 && !this.connected)){
+                    f.remove(i);    
+                }        
+                
+            }   
+        
+
+            
+    }
+    
     
     public void processHotel() throws SQLException{
         //Hotel.findHotelLoc(this.depLoc);
@@ -304,6 +331,9 @@ public class SearchController{
     public void setHomeDate(LocalDate value) {
         this.home = value;
         
+    }
+    public void setConnected(boolean c){
+        this.connected = c;
     }
     
 }

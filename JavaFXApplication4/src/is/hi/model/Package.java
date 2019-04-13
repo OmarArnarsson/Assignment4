@@ -1,4 +1,4 @@
-package is.hi.assignment4;
+package is.hi.model;
 
 
 import hotelStuff.Hotel;

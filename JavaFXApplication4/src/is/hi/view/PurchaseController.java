@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package is.hi.assignment4;
+package is.hi.view;
 
+import is.hi.model.Bookingmain;
+import is.hi.model.Package;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
